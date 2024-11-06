@@ -1,1 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
 
+body {
+    background-color: white;
+}
+
+#nav-bar {
+    text-align: center;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 1%;
+    padding-top: 1.5%;
+    padding-bottom: 1.5%;
+  }
+  
+.nav-option {
+    color: rgb(58, 30, 8);
+    font-family: "Itim", cursive;
+}
+
+.nav-option:hover {
+    text-shadow: 2px 2px 5px rgb(58, 30, 8);
+}
+
+
+#title {
+    background-color: #721404;
+}
+
+#title-p {
+    padding-top: 4%;
+}
+
+#logo {
+    display: flex;
+    margin: auto;
+    width: 30%;
+    height: 30%;
+
+    background-image: url(/images/Screenshot_2024-11-06_at_10.54.14_AM-removebg-preview.png);
+    background-repeat: no-repeat;
+    background-position: top center;
+}
+
+#title p {
+    color: white;
+    font-family: "Itim", cursive;
+    font-size: 40px;
+    text-align: center;
+    margin: 0;
+    padding-bottom: 5%;
+}
