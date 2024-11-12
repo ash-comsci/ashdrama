@@ -3,6 +3,7 @@
 <head>
   <title>ASH Dramas</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <style>
     .topnav {
       background-color: #212f3d ;
@@ -10,10 +11,12 @@
       position: fixed;
       top: 0;
       width: 100%;
-      transition: top 0.3s;
       z-index: 1000;
+      font-family: 'Roboto', sans-serif;
+      border: 5px ghostwhite;
     }
     .topnav a {
+      font-family: 'Roboto', sans-serif;
       float: left;
       display: block;
       color: white;
@@ -43,6 +46,8 @@
     .dropdown {
       float: left;
       overflow: hidden;
+      font-family: 'Roboto', sans-serif;
+      font-size: 18px; 
     }
 
     .dropdown .dropbtn {
@@ -105,7 +110,7 @@
       left: 0;
       background-color: #111;
       overflow-x: hidden;
-      transition: 0.5s;
+      transition: 0.075s;
       padding-top: 60px;
       background-color: black ;
       border: 1.5px black;
@@ -114,7 +119,7 @@
     .sidenav a {
       padding: 8px 8px 8px 32px;
       text-decoration: none;
-      font-size: 20px;
+      font-size: 18px;
       color: white;
       display: block;
     }
@@ -123,12 +128,14 @@
       color: gray;
     }
 
-    .sidenav .closebtn {
+    .closebtn {
       position: absolute;
       top: 0;
       right: 3px;
       font-size: 36px;
       margin-left: 40px;
+      border: 1px gray;
+      border-radius: 12px;
     }
       .p1 {
       font-family: 'Roboto', sans-serif;
@@ -138,7 +145,7 @@
       position: ;
       padding: 120px 80px;
       margin: 0px 0px;
-      width: 50%;
+      width: 55%;
       background-color:transparent;
       }
       .p2 {
@@ -150,27 +157,27 @@
       padding: 10px 25px;
       margin: 0px 0px;
       width: 100%;
-      font-family: 'Verdana', sans-serif;
+      font-family: 'Roboto', sans-serif;
       background-color:transparent;
       }
       .p3 {
         font-family: 'Roboto', sans-serif;
-        font-size: 50px;
+        font-size: 45px;
         font-weight: 100;
         color: black;
         position: ;
-        padding: 120px 80px;
+        padding: 60px 80px;
         margin: 0px 0px;
         width: 50%;
         background-color:transparent;
       }
       .p4 {
         font-family: 'Roboto', sans-serif;
-        font-size: 50px;
+        font-size: 45px;
         font-weight: 100;
         color: black;
         position: ;
-        padding: 120px 80px;
+        padding: 50px 140px;
         margin: 0px 0px;
         width: 50%;
         background-color:transparent;
@@ -217,7 +224,7 @@
 
     .section3 {
         background-image: url('');
-        background-color: lightyellow;
+        background-color: #343464;
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
@@ -247,37 +254,73 @@
         border: 1px solid #000; 
         margin: 20px 0;
     }
+    logo {
+      width: 10px; 
+      height: 10px; 
+      border-radius: 50%;
+    }
+    .logo-container {
+        width: 37px; 
+        height: 37px; 
+        overflow: hidden; 
+        border-radius: 50%; 
+        display: flex;
+        justify-content: center; 
+        align-items: center; 
+        background-color: #fff; 
+        margin: 10px 7px;
+    }
+    .logo-container2 {
+        position: absolute;
+        top:15px;
+        left:15px;
+        width: 60px; 
+        height: 60px; 
+        overflow: hidden; 
+        border-radius: 50%; 
+        display: flex;
+        justify-content: center; 
+        align-items: center; 
+        background-color: #fff; 
+        margin: 0px 0px;
+    }
   </style>
   <body>
-    <div class="topnav a" id="navbar">
+    <div class="topnav a">
       <div class="topnav-right">
-      <a href="index.html"><i class="fa fa-fw fa-home"></i> Text</a>
+      <a href="index.html"><i class="fa fa-fw fa-home"></i> Home</a>
         <div class="dropdown">
-          <button class="dropbtn" style="color:white;">Text <i class="fa fa-caret-down"></i>
+          <button class="dropbtn" style="color:white;">Schedule <i class="fa fa-caret-down"></i>
           </button>
           <div class="dropdown-content">
-            <a href="">Text</a>
-            <a href="">Text</a>
-            <a href="">Text</a>
+            <a href="#">Past Events</a>
+            <a href="#">Upcoming Events</a>
+            <a href="#">Tickets</a>
           </div>
         </div> 
-      <a href=""><i class="fa fa-fw fa-bookmark"></i>Text</a>
+      <a href=""><i class="fa fa-fw fa-user"></i>Producers</a>
       </div>
 
           <div class="topnav-left">
             <div id="mySidenav" class="sidenav">
-              <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-              <a href="index.html"> Home</a>
-              <a href="">Text</a>
-              <a href="" style="text-align:left">Text</a>
-              <a href="">Text</a>
-              <a href="">Text</a>
+              <div class="logo-container2">
+                <img src="DramaLogo.png" alt="Logo" width="110px" height="55px"></a>
+                </div>
+              <a href="index.html" style="margin-top: 25px;"><i class="fa fa-fw fa-home"></i> Home</a>
+              <a href="#"><i class="fa fa-fw fa-home"></i> Upcoming Events</a>
+              <a href="#"><i class="fa fa-fw fa-home"></i> Past Events</a>
+              <a href="#"><i class="fa fa-fw fa-user"></i> Producers</a>
+              <a href="#"><i class="fa fa-fw fa-money"></i> Tickets</a>
+              <a href="#"><i class="fa fa-fw fa-calendar"></i> Schedule</a>
             </div>
-              <span style="margin: 12px 12px; display: block; border: 1.5px solid;border-radius: 9px;padding: 4px 10px; color:white;font-size:16px;cursor:pointer" onclick="openNav()"><i class="fa fa-folder"></i></span>
+              <span style="margin: 12px 12px; display: block; border: 1.5px solid;border-radius: 9px;padding: 4px 10px; color:white;font-size:15px;font-family: 'Roboto', sans-serif; font-weight: 100;cursor:pointer" onclick="openNav()"><i class="fa fa-bars"></i></span>
           </div>
+      <div class="logo-container">
+      <a href="index.html"><img src="DramaLogo.png" alt="Logo" width="65px" height="40px"></a>
+      </div>
     </div>
     <div class="section section1">
-      <img style="max-width: 1300px"; src="https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630">
+      <img style="max-width: 1275px"; src="https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630">
       <div class="p1">
         <p>Welcome to All Saints High School</p>
         <p></p>
@@ -285,18 +328,21 @@
     </div>
 
     <div class="section section2">
-         <p id="fadeText">Text</p>
+         <p id="fadeText">Introduction</p>
+      <p id="fadeText">Introduction</p>
+      <p id="fadeText">Introduction</p>
+      <p id="fadeText">Introduction</p>
     </div>
     <div class="section section3">
       <div class="p3">
-      <p>Past Events</p>
+        <p>Upcoming Productions</p>
       </div>
       <img style="max-width: 1300px"; src="https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630">
     </div>
     <div class="section section4">
       <img style="max-width: 1300px"; src="https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630">
       <div class="p4">
-      <p>Upcoming Events</p>
+      <p>Past Productions</p>
       </div>
     </div>
     <div class="section section5">
@@ -323,33 +369,32 @@
 </head>
 
   <script>
-  function openNav() {
-  document.getElementById("mySidenav").style.width = "200px";
-  }
+    function openNav() {
+    document.getElementById("mySidenav").style.width = "240px";
+    }
 
-  function closeNav() {
-  document.getElementById("mySidenav").style.width = "0";
-  }
       let lastScrollTop = 0;
-      const navbar = document.getElementById("navbar");
+      const sidebar = document.getElementById("mySidenav");
 
       window.addEventListener("scroll", function() {
           let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
           if (scrollTop > lastScrollTop) {
-           
-              navbar.style.top = "-60px"; 
+
+                sidebar.style.width = "0";
+          } else if (scrollTop < lastScrollTop) {
+                sidebar.style.width = "0";
           } else {
-      
-              navbar.style.top = "0";
+                sidebar.style.width = "-200px";
           }
           lastScrollTop = scrollTop;
       });
+  
         const fadeText = document.getElementById("fadeText");
 
         window.addEventListener("scroll", function() {
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            const maxScroll = 700; 
+            const maxScroll = 650; 
             const newOpacity = Math.min(scrollTop / maxScroll, 1); 
             fadeText.style.opacity = newOpacity;
         });
