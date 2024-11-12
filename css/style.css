@@ -47,6 +47,7 @@ html, body {
     padding-bottom: 2%;
 }
 
+
 #logo {
     display: flex;
     margin: auto;
@@ -75,6 +76,54 @@ h2 {
     width: 100%;
 }
 
+.card-container {
+  background-color: transparent;
+  width: 347px;
+  height: 365px;
+  perspective: 1000px;
+}
+
+.card-inner {
+  position: relative;
+  text-align: center;
+  width: 347px;
+  height: 365px;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.card-container:hover .card-inner {
+    transform: rotateY(180deg);
+  }
+
+.front-card, .back-card {
+  width: 340px;
+  height: 365px;
+  position: absolute;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+.front-card img {
+    width: 340px;
+    height: 365px;
+    border-radius: 100%;
+}
+
+.back-card {
+    display: flex;
+    align-items: center;
+    border: none;
+    border-radius: 100%;
+    background-color: #343464;
+    transform: rotateY(180deg);
+}
+
+.back-card p {
+    font-size: 20px;
+}
+
+/*
 .card {
     display: flex;
     justify-content: center;
@@ -101,3 +150,4 @@ h2 {
 .info p {
     font-size: 25px;
 }
+*/
