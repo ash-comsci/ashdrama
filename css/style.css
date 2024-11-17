@@ -116,13 +116,14 @@ h2 {
     display: flex;
     align-items: center;
     border: 2px solid white;
-    background-color: #ffffff;
+    background-color: #65658f;
     transform: rotateY(180deg);
 }
 
 .back-card p {
     font-size: 20px;
-    color: #343464;
+    color: #fffff2;
+    margin: auto;
 }
 
 #upcoming-shows {
