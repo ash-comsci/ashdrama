@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/upcomingStyle.css">
+    <link rel="stylesheet" href="../css/producer.css">
     <script src="../js/main.js"></script>
     <title>The Producers</title>
 </head>
@@ -19,6 +19,25 @@
 
   <div id="subheading-div">
     <p class="title-p" id="subheading">The Producers</p>
+  </div>
+
+  <p id="producers-intro">All Saints Drama Productions puts together a multitude of plays and musicals each year that require preparation and guidance led by the following...</p>
+  <div class="producers">
+    <div class="producer">
+      <img src="https://i.ebayimg.com/images/g/OgsAAOSw9dNjf0EQ/s-l1200.jpg" alt="">
+      <p>Scott Jamieson <br> Technical Director</p>
+    </div>
+
+    <div class="producer">
+      <img src="../images/producers/mcsheffery.png" alt="">
+      <p>Shawna McSheffery <br> Director/Producer</p>
+    </div>
+
+    <div class="producer">
+      <img src="../images/producers/mader.png" alt="">
+      <p>Amanada Mader <br> Music Director</p>
+    </div>
+
   </div>
 </body>
 </html>

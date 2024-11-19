@@ -1,0 +1,9 @@
+.producers {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+#producers-intro {
+    font-size: 40px;
+}
