@@ -6,35 +6,37 @@
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <style>
     .topnav {
-      background-color: #212f3d ;
-      color: white;
+      background-color: ghostwhite ;
+      color: #721404;;
       position: fixed;
       top: 0;
       width: 100%;
-      z-index: 1000;
-      font-family: 'Roboto', sans-serif;
+      font-family: 'Roboto' , system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
       border: 5px ghostwhite;
+      transition: top 0.5s;
     }
     .topnav a {
-      font-family: 'Roboto', sans-serif;
+      font-family: 'Roboto' , system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
       float: left;
       display: block;
-      color: white;
+      color: #721404;;
       text-align: center;
       padding: 14px 16px;
       text-decoration: none;
       font-size: 18px;
       background-color: ;
       opacity: 100%;
+      transition: top 0.5s;
+
     }
     .topnav a:hover {
       opacity: 100%;
-      color:lightgrey;
+      color: black;
     }
 
     .topnav a.active {
       background-color: transparent;
-      color: white;
+      color: #721404;;
     }
     .topnav-left {
         float: left;
@@ -42,49 +44,59 @@
 
     .topnav-right {
         float: right;
+      
     }
     .dropdown {
       float: left;
       overflow: hidden;
-      font-family: 'Roboto', sans-serif;
+      font-family: 'Roboto' , system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
       font-size: 18px; 
+      color: #721404;
     }
 
     .dropdown .dropbtn {
       font-size: 18px;  
       border: none;
       outline: none;
-      color: rgb(7, 7, 7);
-      padding: 14px 16px;
-      background-color: inherit;
-      font-family: inherit;
+      padding: 14px 12px;
       margin: 0;
+      font-family: 'Roboto' , system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      color: #721404;
+      background-color: ghostwhite
     }
 
     .topnav a:hover, .dropdown:hover .dropbtn {
-      color: none;
+      color:;
     }
     .dropdown-content {
       display: none;
       position: absolute;
-      background-color: white;
-      min-width: 70px;
+      background-color: ghostwhite;
+      min-width: 140px;
       box-shadow: 0px 10px 16px 0px rgba(0,0,0,0);
       z-index: 0;
       text-align: center;
+      color: #721404;
+      border-bottom-right-radius:12px;
+      border-bottom-left-radius: 12px;
+      border-left: 0.1px solid ghostwhite;
+      border-right: 0.1px solid ghostwhite;
+      border-bottom: 0.1px solid ghostwhite;
     }
 
     .dropdown-content a {
       float: none;
-      color: black;
-      padding: 12px 10px;
-      text-decoration: none;
+      color: #721404;;
       display: block;
       text-align: center;
+      max-width: 140px;
     }
 
     .dropdown-content a:hover {
-      background-color: black;
+      background-color: ghostwhite;
+      color: black;
+      border-bottom-right-radius:12px;
+      border-bottom-left-radius: 12px;
     }
 
     .dropdown:hover .dropdown-content {
@@ -93,7 +105,7 @@
     body {
       margin: 0;
       padding: 0;
-      background-color: white;
+      background-color: #343464;
       background-size: cover;
       opacity:;
       background-position:,;
@@ -108,13 +120,12 @@
       z-index: 1;
       top: 0;
       left: 0;
-      background-color: #0a0a0a;
+      background-color:#343464;
       overflow-x: hidden;
-      transition: 0.075s;
+      transition: 0.1s;
       padding-top: 60px;
-      background-color: black ;
       border: 1.5px black;
-      border-radius: 10px;
+      border-top-right-radius: 12px;
     }
     .sidenav a {
       padding: 8px 8px 8px 32px;
@@ -138,7 +149,7 @@
       border-radius: 12px;
     }
       .p1 {
-      font-family: 'Roboto', sans-serif;
+      font-family: 'Roboto' , system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
       font-size: 50px;
       font-weight: 100;
       color: black;
@@ -157,11 +168,11 @@
       padding: 10px 25px;
       margin: 0px 0px;
       width: 100%;
-      font-family: 'Roboto', sans-serif;
+      font-family: 'Roboto' , system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
       background-color:transparent;
       }
       .p3 {
-        font-family: 'Roboto', sans-serif;
+        font-family: 'Roboto' , system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         font-size: 45px;
         font-weight: 100;
         color: black;
@@ -172,7 +183,7 @@
         background-color:transparent;
       }
       .p4 {
-        font-family: 'Roboto', sans-serif;
+        font-family: 'Roboto' , system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         font-size: 45px;
         font-weight: 100;
         color: black;
@@ -181,22 +192,40 @@
         margin: 0px 0px;
         width: 50%;
         background-color:transparent;
-      }
+        }
       .p5 {
-      font-family: 'Arial', sans-serif;
+        font-family: 'Roboto' , system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
       color:ghostwhite;
-      padding: 20px 50px;
+      padding: 0px 50px;
       margin: 0px;
-      width: 25%;
-      font-weight: 100;
-      font-size:19px;
+      width: 15%;
+      font-weight: 200;
+      font-size:18px;
+      }
+      .p5a {
+        font-family: 'Roboto' , system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      color:ghostwhite;
+      padding: 0px 50px;
+      margin: 0px;
+      width: 10%;
+      font-weight: 200;
+      font-size:18px;
+      }
+      .p5b {
+        font-family: 'Roboto' , system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      color:ghostwhite;
+      padding: 0px 50px;
+      margin: 0px;
+      width: 10%;
+      font-weight: 200;
+      font-size:18px;
       }
       .p6 {
-      font-family: 'Arial', sans-serif;
+        font-family: 'Roboto' , system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
       color:ghostwhite;
       padding: 20px 50px;
       margin: 0px;
-      width: 5%;
+      width: 0%;
       font-weight: 100;
       font-size:18px;
       }
@@ -245,10 +274,16 @@
         max-height: 475px;
     }
     #fadeText {
-        font-size: 23px;
-        opacity: 0;
-        transition: opacity 0.2s ease;
-        color: ghostwhite;
+      transition: opacity 0.2s ease;
+      color: ghostwhite;
+      font-family: 'Roboto' , system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      color:ghostwhite;
+      padding: 50px 50px;
+      margin: 0px;
+      padding-left: 50px;
+      font-weight: 100;
+      font-size:38px;
+      
     }
     hr {
         border: 1px solid #000; 
@@ -260,8 +295,8 @@
       border-radius: 50%;
     }
     .logo-container {
-        width: 37px; 
-        height: 37px; 
+        width: 36px; 
+        height: 36px; 
         overflow: hidden; 
         border-radius: 50%; 
         display: flex;
@@ -269,6 +304,7 @@
         align-items: center; 
         background-color: #fff; 
         margin: 10px 7px;
+        border: 0.5px solid lightgray;
     }
     .logo-container2 {
         position: absolute;
@@ -286,11 +322,11 @@
     }
   </style>
   <body>
-    <div class="topnav a">
+    <div id="navbar" class="topnav a">
       <div class="topnav-right">
       <a href="index.html"><i class="fa fa-fw fa-home"></i> Home</a>
         <div class="dropdown">
-          <button class="dropbtn" style="color:white;">Schedule <i class="fa fa-caret-down"></i>
+          <button class="dropbtn" style="color:#721404;"><i class="fa fa-fw fa-calendar"></i> Schedule <i class="fa fa-caret-down"></i>
           </button>
           <div class="dropdown-content">
             <a href="#">Past Events</a>
@@ -307,13 +343,13 @@
                 <img src="DramaLogo.png" alt="Logo" width="110px" height="55px"></a>
                 </div>
               <a href="index.html" style="margin-top: 25px;"><i class="fa fa-fw fa-home"></i> Home</a>
-              <a href="/html/upcoming.html"><i class="fa fa-fw fa-home"></i> Upcoming Shows</a>
-              <a href="/html/pastshows.html"><i class="fa fa-fw fa-home"></i> Past Shows</a>
-              <a href="https://mirianamalenica.wixsite.com/allsaints/producers"><i class="fa fa-fw fa-user"></i> Producers</a>
+              <a href="#">Upcoming Events</a>
+              <a href="#">Past Events</a>
+              <a href="#"><i class="fa fa-fw fa-user"></i> Producers</a>
               <a href="#"><i class="fa fa-fw fa-money"></i> Tickets</a>
-              <a href="#"><i class="fa fa-fw fa-calendar"></i> Event Schedule</a>
+              <a href="#"><i class="fa fa-fw fa-calendar"></i> Schedule </a>
             </div>
-              <span style="margin: 12px 12px; display: block; border: 1.5px solid;border-radius: 9px;padding: 4px 10px; color:white;font-size:15px;font-family: 'Roboto', sans-serif; font-weight: 100;cursor:pointer" onclick="openNav()"><i class="fa fa-bars"></i></span>
+              <span style="margin: 12px 12px; display: block; border: 1.5px solid;border-radius: 9px;padding: 4px 10px; color:#721404;font-size:15px;font-family: 'Roboto', sans-serif; font-weight: 100;cursor:pointer" onclick="openNav()"><i class="fa fa-bars"></i></span>
           </div>
       <div class="logo-container">
       <a href="index.html"><img src="DramaLogo.png" alt="Logo" width="65px" height="40px"></a>
@@ -322,16 +358,13 @@
     <div class="section section1">
       <img style="max-width: 1275px"; src="https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630">
       <div class="p1">
-        <p>Welcome to All Saints Drama Productions</p>
+        <p>Welcome to All Saints High School</p>
         <p></p>
         </div>
     </div>
 
     <div class="section section2">
-         <p id="fadeText">Introduction</p>
-      <p id="fadeText">Introduction</p>
-      <p id="fadeText">Introduction</p>
-      <p id="fadeText">Introduction</p>
+        <p id="fadeText">Introduction</p>
     </div>
     <div class="section section3">
       <div class="p3">
@@ -352,16 +385,23 @@
         <p>All Saints High School</p>
         <p>5115 Kanata Ave</p>
         <p>Kanata, ON K2K 3K5</p>
-        <p>Text</p>
         <hr>
     </div>
-      <div class="p6">
+      <div class="p5a">
           <br>
           <br>
           <p>Text</p>
           <p>Text</p>
           <p>Text</p>
+          <hr>
+      </div>
+      <div class="p5b">
+          <br>
+          <br>
           <p>Text</p>
+          <p>Text</p>
+          <p>Text</p>
+          <hr>
       </div>
     </div>
 
@@ -372,24 +412,41 @@
     function openNav() {
     document.getElementById("mySidenav").style.width = "240px";
     }
+    
 
-      let lastScrollTop = 0;
-      const sidebar = document.getElementById("mySidenav");
+      let lastScrollTop = 0; // Keep track of the last scroll position
+      const navbar = document.getElementById('navbar'); // Get the navbar element
 
-      window.addEventListener("scroll", function() {
-          let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      // Listen for scroll events
+      window.addEventListener('scroll', function() {
+          let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
 
-          if (scrollTop > lastScrollTop) {
-
-                sidebar.style.width = "0";
-          } else if (scrollTop < lastScrollTop) {
-                sidebar.style.width = "0";
+          // If the user scrolls down and has scrolled more than 50px
+          if (currentScroll > lastScrollTop && currentScroll > 20) {
+              navbar.style.top = "-200px"; // Hide the navbar by moving it up (adjust -60px for navbar height)
           } else {
-                sidebar.style.width = "-200px";
+              navbar.style.top = "0"; // Show the navbar again
           }
-          lastScrollTop = scrollTop;
+
+          // Update the last scroll position
+          lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // For mobile or negative scrolling
       });
-  
+    let lastScrollTop1 = 0;
+    const sidebar = document.getElementById("mySidenav");
+
+    window.addEventListener("scroll", function() {
+        let scrollTop1 = window.pageYOffset || document.documentElement.scrollTop1;
+
+        if (scrollTop1 > lastScrollTop1) {
+
+              sidebar.style.width = "0";
+        } else if (scrollTop1 < lastScrollTop1) {
+              sidebar.style.width = "0";
+        } else {
+              sidebar.style.width = "-200px";
+        }
+        lastScrollTop1 = scrollTop1;
+    });
         const fadeText = document.getElementById("fadeText");
 
         window.addEventListener("scroll", function() {
@@ -398,6 +455,7 @@
             const newOpacity = Math.min(scrollTop / maxScroll, 1); 
             fadeText.style.opacity = newOpacity;
         });
+
   </script>
 </html>
 
