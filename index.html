@@ -7,7 +7,7 @@
 </head>
 <body>
 
-  <div id="nav-bar" class="nav-bar">
+  <div id="nav-bar">
     <a href ="./index.html" class="nav-option">Home</a></h3>
     <a href ="./html/upcoming.html" class="nav-option">Upcoming Productions</a></h3>
     <a href ="./html/pastProductions.html" class="nav-option">Past Productions</a></h3>
@@ -68,21 +68,6 @@
   </div>
 
 </body>
-  <script>
-          let lastScrollTop = 0;
-      const navbar = document.getElementById('nav-bar');
-      window.addEventListener('scroll', function() {
-          let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-
-          
-          if (currentScroll > lastScrollTop && currentScroll > 20) {
-              navbar.style.top = "-200px";
-          } else {
-              navbar.style.top = "0";
-          }
-          lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
-      });
-  </script>
 </html>
 
 
