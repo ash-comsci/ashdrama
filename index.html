@@ -68,6 +68,25 @@
   </div>
 
 </body>
+  <script>
+          let lastScrollTop = 0; // Keep track of the last scroll position
+      const navbar = document.getElementById('navbar'); // Get the navbar element
+
+      // Listen for scroll events
+      window.addEventListener('scroll', function() {
+          let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+          // If the user scrolls down and has scrolled more than 50px
+          if (currentScroll > lastScrollTop && currentScroll > 20) {
+              navbar.style.top = "-200px"; // Hide the navbar by moving it up (adjust -60px for navbar height)
+          } else {
+              navbar.style.top = "0"; // Show the navbar again
+          }
+
+          // Update the last scroll position
+          lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // For mobile or negative scrolling
+      });
+  </script>
 </html>
 
 
