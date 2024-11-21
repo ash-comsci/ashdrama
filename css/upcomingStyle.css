@@ -104,4 +104,7 @@ h3 {
 
 .purchase-tickets a {
   font-size: 25px;
+  padding: 3%;
+  background-color: #343464;
+  border-radius: 10%;
 }
