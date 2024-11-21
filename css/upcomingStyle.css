@@ -77,6 +77,8 @@ hr {
     flex-direction: row;
     margin: auto;
     padding-top: 5%;
+    justify-content: center;
+    padding-bottom: 20%;
 }
 
 .purchase-tickets {
@@ -86,11 +88,23 @@ hr {
 }
 
 .section img {
-    width: 70%;
+    width: 80%;
     height: 120%;
     border-radius: 5%;
     float: right;
-    margin-right: 0;
 }
 
+h3 {
+  font-size: 35px;
+}
 
+.purchase-tickets p {
+  font-size: 20px;
+}
+
+.purchase-tickets a {
+  font-size: 25px;
+  padding: 3%;
+  background-color: #343464;
+  border-radius: 10%;
+}
