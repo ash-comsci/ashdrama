@@ -5,29 +5,19 @@ h1, h2, h3, h4, h5, h6, p, a {
     color: #fffff2;
 }
 
-body, body > div {
-    align-items: center;
+.curtain-0 {
     display: flex;
-    justify-content: center;
-  }
-  
-  body {
-    margin: 0;
-    height: 100vh;
-  }
+    align-items: center;
+}
   
   [class*=curtain] {
     position: relative;
-    border: 1px solid red;
-    height: 100px;
-    margin: 5vh;
-    padding: 5vw;
   }
   
   [class*=curtain]::after,
   [class*=curtain]::before {
     content: '';
-    background-color: green;
+    background-image: url(../images/63f82e20a63e5a1eb47939ad9e6159f4.png);
     position: absolute;
     transition-duration: 0.5s;
   }
@@ -43,11 +33,6 @@ body, body > div {
     width: 50%;
   }
   
-  .curtain-1::after,
-  .curtain-1::before {
-    height: 50%;
-    width: 100%;
-  }
   
   .curtain-0::after {
     right: 0;
@@ -62,21 +47,6 @@ body, body > div {
   .curtain-0:hover:after,
   .curtain-0:hover:before {
     transform: scaleX(0);
-  }
-  
-  .curtain-1::after {
-    bottom: 0;
-    transform-origin: bottom;
-  }
-  
-  .curtain-1::before {
-    top: 0;
-    transform-origin: top;
-  }
-  
-  .curtain-1:hover:after,
-  .curtain-1:hover:before {
-    transform: scaleY(0);
   }
   
 
@@ -150,7 +120,6 @@ body {
     background-position: top;
     background-size: 100%;
 
-    padding-bottom: 2%;
 }
 
 
