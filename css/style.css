@@ -5,12 +5,73 @@ h1, h2, h3, h4, h5, h6, p, a {
     color: #fffff2;
 }
 
+.curtain-0 {
+    display: flex;
+    align-items: center;
+}
+  
+  [class*=curtain] {
+    position: relative;
+  }
+  
+  [class*=curtain]::after,
+  [class*=curtain]::before {
+    content: '';
+    background-image: url(../images/63f82e20a63e5a1eb47939ad9e6159f4.png);
+    position: absolute;
+    transition-duration: 0.5s;
+  }
+  
+  [class*=curtain]:hover:after,
+  [class*=curtain]:hover:before {
+    opacity: 0;
+  }
+  
+  .curtain-0::after,
+  .curtain-0::before {
+    height: 100%;
+    width: 50%;
+  }
+  
+  
+  .curtain-0::after {
+    right: 0;
+    transform-origin: right;
+  }
+  
+  .curtain-0::before {
+    left: 0;
+    transform-origin: left;
+  }
+  
+  .curtain-0:hover:after,
+  .curtain-0:hover:before {
+    transform: scaleX(0);
+  }
+  
+
 /* navigation bar and title*/
 
 html, body {
     background-color: #721404;
     margin: 0;
     padding: 0;
+}
+
+body {
+    animation: fadeInAnimation ease 3s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
 
 #nav-bar {
@@ -34,6 +95,21 @@ html, body {
     text-decoration: underline;
 }
 
+#subheading-div{
+    background-color: #721404;
+    width: 100%;
+    background-image: url(/images/backgroundCurtains-2.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    padding-bottom: 5%;
+    padding-top: 5%;
+}
+
+#subheading {
+    font-size: 50px;
+}
+
 
 #title {
     background-color: #721404;
@@ -44,8 +120,8 @@ html, body {
     background-position: top;
     background-size: 100%;
 
-    padding-bottom: 2%;
 }
+
 
 #logo {
     display: flex;
@@ -70,34 +146,139 @@ html, body {
 h2 {
     display: flex;
     background-color: #343464;
+    padding: 1%;
+    padding-top: 2.5%;
     margin-bottom: 0;
     justify-content: center;
-    width: 100%;
+    font-size: 30px;
 }
 
-.card {
+.card-container {
+  background-color: transparent;
+  width: 347px;
+  height: 365px;
+  perspective: 1000px;
+  padding: 2.5%;
+}
+
+.card-inner {
+  position: relative;
+  text-align: center;
+  width: 347px;
+  height: 365px;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.card-container:hover .card-inner {
+    transform: rotateY(180deg);
+  }
+
+.front-card, .back-card {
+  width: 340px;
+  height: 365px;
+  position: absolute;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+.front-card img {
+    width: 340px;
+    height: 365px;
+}
+
+.back-card {
+    display: flex;
+    align-items: center;
+    border: 2px solid white;
+    background-color: #65658f;
+    transform: rotateY(180deg);
+}
+
+.back-card p {
+    font-size: 20px;
+    color: #fffff2;
+    margin: auto;
+}
+
+.page {
+    display: flex;
+    background-color: #343464;
+    margin-bottom: 5%;
+    justify-content: center;
+    padding-bottom: 2.5%
+}
+
+.dates {
     display: flex;
     justify-content: center;
-    align-items: top;
-    width: 100%;
-    background-color: #343464;
-    padding-bottom: 4%;
+    font-size: 20px;
 }
 
-.card img {
-    border-radius: 100%;
+
+.shows {
+    display: flex;
+    justify-content: center;
+    transition: transform 1s;
 }
 
-.info {
-    width: 30%;
-    padding-left: 2%;
+.shows img:hover {
+  transform: scale(1.1);
 }
 
-.info h3 {
-    font-size: 40px;
-    margin-bottom: 0;
+/* Slideshow container */
+.slideshow-container {
+    max-width: 45%;
+    position: relative;
+    margin: auto;
+    padding: 5%;
 }
 
-.info p {
-    font-size: 25px;
+.slideshow-container p {
+    text-align: center;
+    font-size: 30px;
 }
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: #fffff2;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+}
+
+.prev {
+    left: 0;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: #fffff2;
+  color: #343434;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+
