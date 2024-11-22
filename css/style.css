@@ -5,6 +5,10 @@ h1, h2, h3, h4, h5, h6, p, a {
     color: #fffff2;
 }
 
+:root {
+    --opacity: 100%;
+}
+
 .curtain-0 {
     display: flex;
     align-items: center;
@@ -24,7 +28,7 @@ h1, h2, h3, h4, h5, h6, p, a {
   
   [class*=curtain]:hover:after,
   [class*=curtain]:hover:before {
-    opacity: 0;
+    content: attr(opacity);
   }
   
   .curtain-0::after,

@@ -20,3 +20,10 @@ function showSlides(n) {
   }
   slides[slideIndex-1].style.display = "block";
 }
+
+// Curtain Fade
+
+function curtainFade() {
+  console.log("page loaded")
+  document.documentElement.style.setProperty('--opacity', "0%");
+}
