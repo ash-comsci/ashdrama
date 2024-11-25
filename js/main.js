@@ -23,7 +23,10 @@ function showSlides(n) {
 
 // Curtain Fade
 
+// Curtain Fade function to trigger the animation on page load
 function curtainFade() {
-  console.log("page loaded")
-  document.documentElement.style.setProperty('--opacity', "0%");
+  console.log("Page loaded");
+
+  // Add the class `curtain-opened` when the page is fully loaded
+  document.querySelector('.curtain-0').classList.add('curtain-opened');
 }
