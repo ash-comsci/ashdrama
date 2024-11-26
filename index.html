@@ -1,80 +1,123 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-  <title>All Saints 🎭 | 🎭 Drama Guild </title>
-  <link rel="icon" type="image/x-icon" href="/images/drama-fav.png">
-  <link rel="stylesheet" href="./css/style.css">
-  <script src="./js/main.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ash Drama Guild</title>
+  <link rel="stylesheet" href="../css/header.css">
+  <link rel="stylesheet" href="../css/globals.css">
+  <link rel="stylesheet" href="../css/buttons.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+  <link rel="stylesheet" href="../css/curtain.css">
+  <link rel="stylesheet" href="../css/index.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+
 </head>
+
 <body>
-
-  <div id="nav-bar">
-    <a href ="./index.html" class="nav-option">Home</a></h3>
-    <a href ="./html/upcoming.html" class="nav-option">Upcoming Productions</a></h3>
-    <a href ="./html/pastProductions.html" class="nav-option">Past Productions</a></h3>
-    <a href ="./html/theProducers.html" class="nav-option">The Producers</a></h3>
-    <a href ="./Tickets.html" class="nav-option">Tickets</a></h3>
-    <a href ="./Support_Us.html" class="nav-option">Support Us</a></h3>
+  <!-- Header Content-->
+  <div class="header_div poppins-semibold">
+    <div class="left_ctn">
+      <img class="header_logo" src="../images/ash-drama-BW.png" alt="Ash Drama" width="100" height="100">
+      <div class="header_title poppins-bold">
+        <h1>Ash Drama Guild</h1>
+      </div>
+    </div>
+    <div class="right_ctn">
+      <!-- Add selected class to right_menu to indicate what is selected-->
+      <a class="right_menu "
+        href="/productions/upcomming.html">
+        <span class="material-symbols-outlined">
+          upcoming
+        </span>
+        <p>Upcoming Productions</p>
+      </a>
+      <a class="right_menu">
+        <span class="material-symbols-outlined">
+          theater_comedy
+        </span>
+        <p>Past Productions</p>
+      </a>
+      <a class="right_menu"
+        href="/productions/our-town/theProducers.html">
+        <span class="material-symbols-outlined">
+          emoji_people
+        </span>
+        <p>The Producers</p>
+      </a>
+      <a class="right_menu"
+        href="/productions/our-town/tickets.html">
+        <span class="material-symbols-outlined">
+          local_activity
+        </span>
+        <p>Tickets</p>
+      </a>
+      <a class="right_menu"
+        href="/support.html">
+        <span class="material-symbols-outlined">
+          person_celebrate
+        </span>
+        <p>Support Us</p>
+      </a>
+    </div>
   </div>
-
-  <div class="curtain-0" id="title">
-    <div>
+  <div class="curtain-0 index_logo_bgr curtian_bg" id="title">
+    <div class="center_content flex_clm">
       <p class="title-p">All Saints Catholic High School Presents</p>
-      <img id="logo" src="./images/ash drama copy.png">
+      <img id="logo" class="center_logo" src="/images/ash-drama-BW.png">
     </div>
   </div>
 
-  <div id="welcome">
-    <p class="title-p">Welcome to the site of the most prestigious Drama Program in Ottawa</p>
-  </div>
-
-  <h2>Upcoming Events</h2>
   <div class="page">
-    
-      <div class="card-container">
-        <div class="card-inner">
-    
-          <div class="front-card">
-             <img src="./images/our town poster.png">
-          </div>
-          <div class="back-card">
-            <a href="./html/ourtown.html" style="text-decoration: none;">
-            <p>Small town girl Emily Webb has never known anything but the traditions and expectations of early 1900’s Grover’s Corners, New Hampshire. Along with everyone else in the town, she will learn the troubles of life, love, and death through experience.</p>
-          </a>
-          </div>
-        </div>
-        <p class="dates">November 28-29th</p>
-      </div>
-    
-      <div class="card-container">
-        <div class="card-inner">
-    
-          <div class="front-card">
-             <img src="./images/Footloose Poster.jpg">
-          </div>
-          <div class="back-card">
-            <p>Chicago city kid Ren moves to country town Bomont where he is shocked to discover there is a ban on dancing. As he finds new friends and new love, he fights against Reverend Shaw Moore in the battle for freedom, fun, and dancing.</p>
-          </div>
-        </div>
-        <p class="dates">February 11-12th</p>
-      </div>
     
     <div class="card-container">
       <div class="card-inner">
   
         <div class="front-card">
-           <img src="./images/Matilda-.jpg">
+           <img src="/images/ourtown/poster.png">
         </div>
+
         <div class="back-card">
-          <p>Coming Soon...</p>
+          <a href="./html/ourtown.html" style="text-decoration: none;">
+          <p>Small town girl Emily Webb has never known anything but the traditions and expectations of early 1900’s Grover’s Corners, New Hampshire. Along with everyone else in the town, she will learn the troubles of life, love, and death through experience.</p>
+        </a>
         </div>
       </div>
-      <p class="dates">May 14-15th</p>
+      <p class="dates">November 28-29th</p>
     </div>
+  
+    <div class="card-container">
+      <div class="card-inner">
+  
+        <div class="front-card">
+           <img src="/images/footloose/poster.jpg">
+        </div>
+        <div class="back-card">
+          <p>Chicago city kid Ren moves to country town Bomont where he is shocked to discover there is a ban on dancing. As he finds new friends and new love, he fights against Reverend Shaw Moore in the battle for freedom, fun, and dancing.</p>
+        </div>
+      </div>
+      <p class="dates">February 11-12th</p>
+    </div>
+  
+  <div class="card-container">
+    <div class="card-inner">
+
+      <div class="front-card">
+         <img src="./images/matilda/poster.jpg">
+      </div>
+      <div class="back-card">
+        <p>Coming Soon...</p>
+      </div>
+    </div>
+    <p class="dates">May 14-15th</p>
   </div>
-    
-    
+</div>
 </body>
+
 </html>
-
-

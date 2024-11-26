@@ -1,0 +1,60 @@
+.center_logo {
+    width: 50%;
+}
+
+.card-container {
+    flex: 1;
+    background-color: transparent;
+    /* width: 347px; */
+    /* height: 365px; */
+    /* perspective: 1000px; */
+}
+
+.card-inner {
+    position: relative;
+    text-align: center;
+    width: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.card-container:hover .card-inner {
+    transform: rotateY(180deg);
+}
+
+.front-card,
+.back-card {
+    /*width: 340px;*/
+    /*height: 365px;*/
+    position: absolute;
+    -webkit-backface-visibility: hidden;
+    /* Safari */
+    backface-visibility: hidden;
+}
+
+.front-card img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.back-card {
+    width: 100%;
+    background-color: #65658f;
+    transform: rotateY(180deg);
+}
+
+.back-card p {
+    font-size: 20px;
+    color: #fffff2;
+    margin: auto;
+}
+
+.page {
+    display: flex;
+    background-color: #343464;
+    /* margin-bottom: 5%; */
+    justify-content: center;
+    /* padding-bottom: 2.5%; */
+    gap: 1vw;
+}

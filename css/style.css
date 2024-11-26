@@ -4,52 +4,6 @@ h1, h2, h3, h4, h5, h6, p, a {
     font-family: "Itim", cursive;
     color: #fffff2;
 }
-
-.curtain-0 {
-    display: flex;
-    align-items: center;
-}
-  
-  [class*=curtain] {
-    position: relative;
-  }
-  
-  [class*=curtain]::after,
-  [class*=curtain]::before {
-    content: '';
-    background-image: url(../images/63f82e20a63e5a1eb47939ad9e6159f4.png);
-    position: absolute;
-    transition-duration: 0.5s;
-  }
-  
-  [class*=curtain]:hover:after,
-  [class*=curtain]:hover:before {
-    opacity: 0;
-  }
-  
-  .curtain-0::after,
-  .curtain-0::before {
-    height: 100%;
-    width: 50%;
-  }
-  
-  
-  .curtain-0::after {
-    right: 0;
-    transform-origin: right;
-  }
-  
-  .curtain-0::before {
-    left: 0;
-    transform-origin: left;
-  }
-  
-  .curtain-0:hover:after,
-  .curtain-0:hover:before {
-    transform: scaleX(0);
-  }
-  
-
 /* navigation bar and title*/
 
 html, body {

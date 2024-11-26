@@ -1,0 +1,52 @@
+.curtain-0 {
+    display: flex;
+    align-items: center;
+}
+
+[class*=curtain] {
+    position: relative;
+}
+
+[class*=curtain]::after,
+[class*=curtain]::before {
+    content: '';
+    background-image: url("../images/curtians.png");
+    position: absolute;
+    transition-duration: 0.5s;
+}
+
+[class*=curtain]:hover:after,
+[class*=curtain]:hover:before {
+    opacity: 0;
+}
+
+.curtain-0::after,
+.curtain-0::before {
+    height: 100%;
+    width: 50%;
+}
+
+
+.curtain-0::after {
+    right: 0;
+    transform-origin: right;
+}
+
+.curtain-0::before {
+    left: 0;
+    transform-origin: left;
+}
+
+.curtain-0:hover:after,
+.curtain-0:hover:before {
+    transform: scaleX(0);
+}
+
+.curtian_bg {
+    background-color: #721404;
+    width: 100%;
+    background-image: url("../images/backgroundCurtains-2.png");
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: 100%;
+}
