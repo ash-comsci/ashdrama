@@ -519,8 +519,58 @@
     .dot.active {
       background-color: #717171;
       }
+
+    :root {
+      --opacity: "100%";
+      --curtain-open: 0%; /* Initial state of the curtain */
+    }
+
+    .curtain-0 {
+      display: flex;
+      align-items: center;
+    }
+
+    [class*=curtain] {
+      position: relative;
+      opacity: var(--opacity); /* Use the CSS variable for opacity */
+    }
+
+    [class*=curtain]::after,
+    [class*=curtain]::before {
+      content: '';
+      background-image: url(../images/63f82e20a63e5a1eb47939ad9e6159f4.png);
+      position: absolute;
+      transition-duration: 3s;
+    }
+
+    .curtain-0::after,
+    .curtain-0::before {
+      height: 100%;
+      width: 50%;
+    }
+
+    .curtain-0::after {
+      right: 0;
+      transform-origin: right;
+    }
+
+    .curtain-0::before {
+      left: 0;
+      transform-origin: left;
+    }
+
+    /* Initially, the curtains are closed */
+    .curtain-0 {
+      --curtain-open: 100%; /* Start closed */
+    }
+
+    /* On page load, apply the curtain opening */
+    .curtain-opened::after,
+    .curtain-opened::before {
+      transform: scaleX(0);
+    }
   </style>
-  <body>
+  <body onload="curtainFade()">
     <div id="navbar" class="topnav a">
       <div class="topnav-right">
       <a href="index.html"><i class="fa fa-fw fa-home"></i> Home</a>
@@ -553,17 +603,17 @@
       <a href="index.html"><img src="./images/ash drama copy.png" alt="Logo" width="70px" height="37px"></a>
       </div>
     </div>
-    <div class="section section1">
-      <img style="max-width: 1275px"; src="./images/theatre.jpg">
-      <div class="p1">
-        <p>Welcome to All Saints High School</p>
-        <p></p>
-        </div>
-    </div>
+      <div class="section section1 curtain-0">
+        <img style="max-width: 1275px"; src="./images/theatre.jpg">
+        <div class="p1">
+          <p>Welcome to All Saints High School</p>
+          <p></p>
+          </div>
+      </div>
     <div class="section section2">
         <p id="fadeText">Welcome to the site of the most prestigious Drama Program in Ottawa</p>
     </div>
-    <div class="section section3">
+    <div class="section section3 curtain-0">
       <div class="p3">
         <p style="margin-top:-1620px; margin-left: -220px ;position: absolute;min-height:1000px;min-width:1000px;">Upcoming Events</p>
       </div>
@@ -638,20 +688,20 @@
       <div>
         <div class="slider" id="slider1">
           <div class="slides">
-            <img src="./images/LSOH1.png" alt="Slide 1">
-            <img src="./images/LSOH2.png" alt="Slide 2">
-            <img src="./images/SummerBrave1.png" alt="Slide 3">
-            <img src="./images/GlassMenagerie1.png" alt="Slide 4">
+            <img src="./images/pastProductions/LSOH1.png" alt="Slide 1">
+            <img src="./images/pastProductions/LSOH2.png" alt="Slide 2">
+            <img src="./images/pastProductions/SummerBrave1.png" alt="Slide 3">
+            <img src="./images/pastProductions/GlassMenagerie1.png" alt="Slide 4">
           </div>
         </div>
       </div>
     <div>
       <div class="slider" id="slider2">
         <div class="slides">
-        <img src="./images/HighschoolMusical1.png" alt="Slide 1">
-        <img src="./images/HighschoolMusical2.png" alt="Slide 2">
-        <img src="./images/DrowsyChaperone1.png" alt="Slide 3">
-        <img src="./images/UrineTown1.png" alt="Slide 4">
+        <img src="./images/pastProductions/HighschoolMusical1.png" alt="Slide 1">
+        <img src="./images/pastProductions/HighschoolMusical2.png" alt="Slide 2">
+        <img src="./images/pastProductions/DrowsyChaperone1.png" alt="Slide 3">
+        <img src="./images/pastProductions/UrineTown1.png" alt="Slide 4">
         </div>
       </div>
     </div>
@@ -677,7 +727,15 @@
     document.getElementById("mySidenav").style.width = "240px";
     }
    
+    /* Curtain Fade
 
+    // Curtain Fade function to trigger the animation on page load
+    function curtainFade() {
+      console.log("Page loaded");
+
+      // Add the class `curtain-opened` when the page is fully loaded
+      document.querySelector('.curtain-0').classList.add('curtain-opened');
+    }*/
 
     let lastScrollTop = 0;
       const navbar = document.getElementById('navbar');
