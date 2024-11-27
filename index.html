@@ -1,82 +1,763 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>All Saints 🎭 | 🎭 Drama Guild </title>
-  <link rel="icon" type="image/x-icon" href="/images/drama-fav.png">
-  <link rel="stylesheet" href="./css/style.css">
-  <script src="./js/main.js"></script>
-</head>
-<body>
+  <title>ASH Dramas</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <style>
+    .topnav {
+      background-color: ghostwhite ;
+      color: #721404;;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      font-family: 'Roboto' , system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      border: 5px ghostwhite;
+      transition: top 0.5s;
+      z-index: 1000;
+    }
+    .topnav a {
+      font-family: 'Roboto' , system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      float: left;
+      display: block;
+      color: #721404;;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 18px;
+      background-color: ;
+      opacity: 100%;
+      transition: top 0.5s;
+      z-index: 1000;
+    }
+    .topnav a:hover {
+      opacity: 100%;
+      color: black;
+    }
 
-  <div id="nav-bar">
-    <a href ="./index.html" class="nav-option">Home</a></h3>
-    <a href ="./html/upcoming.html" class="nav-option">Upcoming Productions</a></h3>
-    <a href ="./html/pastProductions.html" class="nav-option">Past Productions</a></h3>
-    <a href ="./html/theProducers.html" class="nav-option">The Producers</a></h3>
-    <a href ="./Tickets.html" class="nav-option">Tickets</a></h3>
-    <a href ="./Support_Us.html" class="nav-option">Support Us</a></h3>
-  </div>
 
-  <div class="curtain-0" id="title">
-    <div>
-      <p class="title-p">All Saints Catholic High School Presents</p>
-      <img id="logo" src="./images/ash drama copy.png">
-    </div>
-  </div>
+    .topnav a.active {
+      background-color: transparent;
+      color: #721404;;
+    }
+    .topnav-left {
+        float: left;
+    }
 
-  <div id="welcome">
-    <p class="title-p">Welcome to the site of the most prestigious Drama Program in Ottawa</p>
-  </div>
 
-  <h2>Upcoming Events</h2>
-  <div class="page">
-    
-      <div class="card-container">
-        <div class="card-inner">
-    
-          <div class="front-card">
-             <img src="./images/our town poster.png">
+    .topnav-right {
+        float: right;
+     
+    }
+    .dropdown {
+      float: left;
+      overflow: hidden;
+      font-family: 'Roboto' , system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      font-size: 18px;
+      color: #721404;
+    }
+
+
+    .dropdown .dropbtn {
+      font-size: 18px;  
+      border: none;
+      outline: none;
+      padding: 14px 12px;
+      margin: 0;
+      font-family: 'Roboto' , system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      color: #721404;
+      background-color: ghostwhite
+    }
+
+
+    .topnav a:hover, .dropdown:hover .dropbtn {
+      color:;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: ghostwhite;
+      min-width: 140px;
+      box-shadow: 0px 10px 16px 0px rgba(0,0,0,0);
+      z-index: 0;
+      text-align: center;
+      color: #721404;
+      border-bottom-right-radius:12px;
+      border-bottom-left-radius: 12px;
+      border-left: 0.1px solid ghostwhite;
+      border-right: 0.1px solid ghostwhite;
+      border-bottom: 0.1px solid ghostwhite;
+    }
+
+
+    .dropdown-content a {
+      float: none;
+      color: #721404;;
+      display: block;
+      text-align: center;
+      max-width: 140px;
+    }
+
+
+    .dropdown-content a:hover {
+      background-color: ghostwhite;
+      color: black;
+      border-bottom-right-radius:12px;
+      border-bottom-left-radius: 12px;
+    }
+
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #343464;
+      background-size: cover;
+      opacity:;
+      background-position:,;
+      background-repeat: no-repeat;
+      font-family: "Lato", sans-serif;
+      overflow-x: hidden;
+    }
+    .sidenav {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background-color:#343464;
+      overflow-x: hidden;
+      transition: 0.1s;
+      padding-top: 60px;
+      border: 1.5px black;
+      border-top-right-radius: 12px;
+    }
+    .sidenav a {
+      padding: 8px 8px 8px 32px;
+      text-decoration: none;
+      font-size: 18px;
+      color: white;
+      display: block;
+    }
+
+
+    .sidenav a:hover {
+      color: gray;
+    }
+
+
+    .closebtn {
+      position: absolute;
+      top: 0;
+      right: 3px;
+      font-size: 36px;
+      margin-left: 40px;
+      border: 1px gray;
+      border-radius: 12px;
+    }
+      .p1 {
+      font-family: 'Roboto' , system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      font-size: 50px;
+      font-weight: 100;
+      color: ghostwhite;
+      position: ;
+      padding: 120px 80px;
+      margin: 0px 0px;
+      width: 55%;
+      background-color:transparent;
+      }
+      .p2 {
+      font-size:21px;
+      color:ghostwhite;
+      position: ;
+      top: 260px;
+      right: 330px;
+      padding: 10px 25px;
+      margin: 0px 0px;
+      width: 100%;
+      font-family: 'Roboto' , system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      background-color:transparent;
+      }
+      .p3 {
+        font-family: 'Roboto' , system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-size: 55px;
+        font-weight: 100;
+        color: ghostwhite;
+        position: 0px, 0px;
+        margin-top: 0px;
+        margin-left: 0px;
+        background-color:transparent;
+        rotate: 90deg;
+        min-width: 10px;
+      }
+      .p3a {
+        font-family: 'Roboto' , system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-size: 55px;
+        font-weight: 100;
+        color: ghostwhite;
+        position: 0px, 0px;
+        margin-top: 0px;
+        margin-left: 0px;
+        background-color:transparent;
+        rotate: 350deg;
+        min-width: 10px;
+      }
+      .p4 {
+        font-family: 'Roboto' , system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-size: 45px;
+        font-weight: 100;
+        color: ghostwhite;
+        position: ;
+        margin: 0px 0px;
+        width: 100%;
+        background-color:transparent;
+        }
+      .p5 {
+        font-family: 'Roboto' , system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      color:ghostwhite;
+      padding: 0px 60px;
+      margin: 0px;
+      width: 20%;
+      font-weight: 200;
+      font-size:20px;
+      }
+      .p5a {
+        font-family: 'Roboto' , system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      color:ghostwhite;
+      padding: 0px 50px;
+      margin: 0px;
+      width: 10%;
+      font-weight: 200;
+      font-size:20px;
+      }
+      .p5b {
+        font-family: 'Roboto' , system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      color:ghostwhite;
+      padding: 0px 50px;
+      margin: 0px;
+      width: 10%;
+      font-weight: 200;
+      font-size:20px;
+      }
+      .p6 {
+        font-family: 'Roboto' , system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      color:ghostwhite;
+      padding: 20px 50px;
+      margin: 0px;
+      width: 0%;
+      font-weight: 100;
+      font-size:18px;
+      }
+    .section {
+        height: 100vh;
+        display: flex;
+        color: white;
+    }
+    .section1 {
+        background-image: linear-gradient(0deg, darkred, #343464);
+        background-color:;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+
+    .section2 {
+        background-image: url('');
+        background-color: black ;
+        max-width: 100%;
+        max-height: 250px;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+
+    .section3 {
+        background-image: url('');
+        background-color: #343464;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        max-height: 550px;
+    }
+    .section3a {
+        background-image: url('');
+        background-color: ghostwhite;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        max-height: 1.5px;
+    }
+    .section3b {
+        background-image: url('');
+        background-color: #343464;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        max-height: 700px;
+        padding-top: 100px;
+    }
+    .section4 {
+        background-image: url('');
+        background-color: darkred;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        max-height: 400px;
+    }
+    .section5 {
+        background-image: url('');
+        background-color: black;
+        background-size: cover;
+        background-repeat: no-repeat;
+        max-width: 100%;
+        max-height: 475px;
+    }
+    #fadeText {
+      transition: opacity 0.2s ease;
+      color: ghostwhite;
+      font-family: 'Roboto' , system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      color:ghostwhite;
+      padding: 80px 0px;
+      margin: 0px;
+      padding-left: 250px;
+      font-weight: 100;
+      font-size:45px;
+     
+    }
+    hr {
+        border: 1px solid #000;
+        margin: 20px 0;
+    }
+    .logo {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+    .logo-container {
+        width: 36px;
+        height: 36px;
+        overflow: hidden;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #fff;
+        margin: 10px 7px;
+        border: 0.5px solid lightgray;
+    }
+    .logo-container2 {
+        position: absolute;
+        top:15px;
+        left:15px;
+        width: 60px;
+        height: 60px;
+        overflow: hidden;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #fff;
+        margin: 0px 0px;
+    }
+    .card-container {
+  background-color: transparent;
+  width: 347px;
+  height: 365px;
+  perspective: 1000px;
+  padding-top: 3%;
+  padding-right: 100px;
+  border-radius: 10px;
+}
+
+
+.card-inner {
+  position: relative;
+  text-align: center;
+  width: 340px;
+  height: 365px;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+  border-radius: 10px;
+}
+
+
+.card-container:hover .card-inner {
+    transform: rotateY(180deg);
+    border-radius: 10px;
+  }
+
+
+.front-card, .back-card {
+  width: 340px;
+  height: 365px;
+  position: absolute;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+  border-radius: 10px;
+  z-index: 1000;
+}
+
+
+.front-card img {
+    width: 340px;
+    height: 365px;
+    border-radius: 10px;
+    z-index: 1000;
+}
+
+
+.back-card {
+    display: flex;
+    align-items: center;
+    border: 2px solid white;
+    background-color: #65658f;
+    border-radius: 10px;
+    transform: rotateY(180deg);
+}
+
+
+.back-card p {
+    font-size: 20px;
+    color: #fffff2;
+    margin: auto;
+    padding-left:15px;
+    padding-right:15px;
+}
+
+
+#upcoming-shows {
+    display: flex;
+    background-color: #343464;
+    justify-content: center;
+    padding-bottom: 2.5%
+   
+}
+
+
+.dates {
+    justify-content: center;
+    font-size: 20px;
+    text-align: center;
+    padding-left: 90px;
+    font-family: 'Roboto' , system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 300;
+}
+.slideshow-section {
+      display: flex;
+      justify-content: center;
+      space-between;
+    }
+
+
+    .slider {
+      width: 560px;
+      height: 400px;
+      overflow: hidden;
+      position: relative;
+    }
+
+
+    .slides {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      transform: translateY(0%);
+      transition: transform 0.5s ease-in-out;
+    }
+
+
+    .slides img {
+      object-fit: center;
+    }
+
+
+    .dots {
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+
+    .dot {
+      height: 12px;
+      width: 12px;
+      margin: 0 5px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      transition: background-color 0.3s;
+    }
+
+
+    .dot.active {
+      background-color: #717171;
+    }
+  </style>
+  <body>
+    <div id="navbar" class="topnav a">
+      <div class="topnav-right">
+      <a href="index.html"><i class="fa fa-fw fa-home"></i> Home</a>
+        <div class="dropdown">
+          <button class="dropbtn" style="color:#721404;"><i class="fa fa-fw fa-calendar"></i> Schedule <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a href="#">Past Events</a>
+            <a href="#">Upcoming Events</a>
+            <a href="#">Tickets</a>
           </div>
-    
-          
-          <div class="back-card">
-            <a href="./html/ourtown.html" style="text-decoration: none;">
-            <p>Small town girl Emily Webb has never known anything but the traditions and expectations of early 1900’s Grover’s Corners, New Hampshire. Along with everyone else in the town, she will learn the troubles of life, love, and death through experience.</p>
+        </div>
+      <a href="" style="padding-right:23px;"><i class="fa fa-fw fa-user"></i>Producers</a>
+      </div>
+
+
+          <div class="topnav-left">
+            <div id="mySidenav" class="sidenav">
+              <div class="logo-container2">
+                <img src="./images/ash drama copy.png" alt="Logo" width="110px" height="55px"></a>
+                </div>
+              <a href="index.html" style="margin-top: 25px;"><i class="fa fa-fw fa-home"></i> Home</a>
+              <a href="#">Upcoming Events</a>
+              <a href="#">Past Events</a>
+              <a href="#"><i class="fa fa-fw fa-user"></i> Producers</a>
+              <a href="#"><i class="fa fa-fw fa-money"></i> Tickets</a>
+              <a href="#"><i class="fa fa-fw fa-calendar"></i> Schedule </a>
+            </div>
+              <span style="margin: 12px 12px; display: block; border: 1.5px solid;border-radius: 9px;padding: 4px 10px; color:#721404;font-size:15px;font-family: 'Roboto', sans-serif; font-weight: 100;cursor:pointer" onclick="openNav()"><i class="fa fa-bars"></i></span>
+          </div>
+      <div class="logo-container">
+      <a href="index.html"><img src="./images/ash drama copy.png" alt="Logo" width="70px" height="37px"></a>
+      </div>
+    </div>
+    <div class="section section1">
+      <img style="max-width: 1275px"; src="./images/theatre.jpg">
+      <div class="p1">
+        <p>Welcome to All Saints High School</p>
+        <p></p>
+        </div>
+    </div>
+
+
+    <div class="section section2">
+        <p id="fadeText">Welcome to the site of the most prestigious Drama Program in Ottawa</p>
+    </div>
+    <div class="section section3">
+      <div class="p3">
+        <p style="margin-top:-1620px; margin-left: -220px ;position: absolute;min-height:1000px;min-width:1000px;">Upcoming Events</p>
+      </div>
+      <div class="section section3">
+        <div id="upcoming-shows">
+          <div style="padding-left: 60px;"></div>
+            <div class="card-container">
+              <div class="card-inner">
+                <div class="front-card">
+                   <img src="./images/our town poster.png">
+                </div>
+                <div class="back-card">
+                  <p>Small town girl Emily Webb has never known anything but the traditions and expectations of early 1900’s Grover’s Corners, New Hampshire. Along with everyone else in the town, she will learn the troubles of life, love, and death through experience.</p>
+                </div>
+              </div>
+              <p class="dates">November 28-29th</p>
+            </div>
           </a>
+          <div class="card-container">
+            <div class="card-inner">
+                <div class="front-card">
+                 <img src="./images/Footloose Poster.jpg">
+              </div>
+              <div class="back-card">
+                <p>Chicago city kid Ren moves to country town Bomont where he is shocked to discover there is a ban on dancing. As he finds new friends and new love, he fights against Reverend Shaw Moore in the battle for freedom, fun, and dancing.</p>
+              </div>
+            </div>
+            <p class="dates">February 11-12th</p>
+          </div>
+       
+          <div class="card-container">
+            <div class="card-inner">
+       
+              <div class="front-card">
+                 <img src="./images/Matilda-.jpg">
+              </div>
+              <div class="back-card">
+                <p>Coming Soon...</p>
+              </div>
+            </div>
+            <p class="dates">May 14-15th</p>
+          </div>
+          <div class="card-container">
+            <div class="card-inner">
+                <div class="front-card">
+                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeTQQvvkpk7aCZQQWwMBEPgia7OblsKzW7Zg&s">
+              </div>
+              <div class="back-card">
+                <p>Comming Soon</p>
+              </div>
+            </div>
+            <p class="dates">Comming Soon</p>
+          </div>
+          <div class="card-container">
+            <div class="card-inner">
+                <div class="front-card">
+                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeTQQvvkpk7aCZQQWwMBEPgia7OblsKzW7Zg&s">
+              </div>
+              <div class="back-card">
+                <p>Comming Soon</p>
+              </div>
+            </div>
+            <p class="dates">Comming Soon</p>
           </div>
         </div>
-        <p class="dates">November 28-29th</p>
       </div>
-    
-      <div class="card-container">
-        <div class="card-inner">
-    
-          <div class="front-card">
-             <img src="./images/Footloose Poster.jpg">
+    </div>
+     
+    </div>
+    <div class="section section4">
+      <div class="p4">
+        <p style="padding: 20px 100px;">Past Productions</p>
+      </div>
+      <div>
+        <div class="slider" id="slider1">
+          <div class="slides">
+            <img src="./images/LSOH1.png" alt="Slide 1">
+            <img src="./images/LSOH2.png" alt="Slide 2">
+            <img src="./images/SummerBrave1.png" alt="Slide 3">
+            <img src="./images/GlassMenagerie1.png" alt="Slide 4">
           </div>
-          <div class="back-card">
-            <p>Chicago city kid Ren moves to country town Bomont where he is shocked to discover there is a ban on dancing. As he finds new friends and new love, he fights against Reverend Shaw Moore in the battle for freedom, fun, and dancing.</p>
-          </div>
         </div>
-        <p class="dates">February 11-12th</p>
-      </div>
-    
-    <div class="card-container">
-      <div class="card-inner">
-  
-        <div class="front-card">
-           <img src="./images/Matilda-.jpg">
-        </div>
-        <div class="back-card">
-          <p>Coming Soon...</p>
+        <div class="dots" id="dots1">
+          <span class="dot active"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
         </div>
       </div>
-      <p class="dates">May 14-15th</p>
+
+
+    <div>
+      <div class="slider" id="slider2">
+        <div class="slides">
+        <img src="./images/HighschoolMusical1.png" alt="Slide 1">
+        <img src="./images/HighschoolMusical2.png" alt="Slide 2">
+        <img src="./images/DrowsyChaperone1.png" alt="Slide 3">
+        <img src="./images/UrineTown1.png" alt="Slide 4">
+        </div>
+      </div>
+      <div class="dots" id="dots2">
+        <span class="dot active"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+      </div>
     </div>
   </div>
-    
-    
-</body>
-</html>
+ 
+    <div class="section section5">
+      <div class="p5">
+        <br>
+        <br>
+        <p>All Saints High School</p>
+        <p>5115 Kanata Ave</p>
+        <p>Kanata, ON K2K 3K5</p>
+        <hr>
+    </div>
+      <div class="p5a">
+      </div>
+      <div class="p5b">
+      </div>
+    </div>
 
+
+  </body>
+</head>
+
+
+  <script>
+    function openNav() {
+    document.getElementById("mySidenav").style.width = "240px";
+    }
+   
+
+
+    let lastScrollTop = 0;
+      const navbar = document.getElementById('navbar');
+      window.addEventListener('scroll', function() {
+          let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+
+          if (currentScroll > lastScrollTop && currentScroll > 20) {
+              navbar.style.top = "-200px";
+          } else {
+              navbar.style.top = "0";
+          }
+          lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+      });
+    let lastScrollTop1 = 0;
+    const sidebar = document.getElementById("mySidenav");
+    window.addEventListener("scroll", function() {
+        let scrollTop1 = window.pageYOffset || document.documentElement.scrollTop1;
+
+
+        if (scrollTop1 > lastScrollTop1) {
+
+
+              sidebar.style.width = "0";
+        } else if (scrollTop1 < lastScrollTop1) {
+              sidebar.style.width = "0";
+        } else {
+              sidebar.style.width = "-200px";
+        }
+        lastScrollTop1 = scrollTop1;
+    });
+   
+   
+    const fadeText = document.getElementById("fadeText");
+
+
+        window.addEventListener("scroll", function() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const maxScroll = 650;
+            const newOpacity = Math.min(scrollTop / maxScroll, 1);
+            fadeText.style.opacity = newOpacity;
+        });
+
+
+     
+     
+    function createSlideshow(sliderId, dotsId) {
+      const slides = document.querySelector(`#${sliderId} .slides`);
+      const dots = document.querySelectorAll(`#${dotsId} .dot`);
+      let currentIndex = 0;
+    function showSlide(index) {
+        const slideHeight = slides.children[0].clientHeight;
+        slides.style.transform = `translateY(${-index * slideHeight}px)`;
+        dots.forEach(dot => dot.classList.remove('active'));
+        dots[index].classList.add('active');
+      }
+    function autoSlide() {
+        currentIndex = (currentIndex + 1) % slides.children.length;
+        showSlide(currentIndex);
+      }
+
+
+      setInterval(autoSlide, 2999);
+
+
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+          currentIndex = index;
+          showSlide(currentIndex);
+        });
+      });
+    }
+
+
+
+
+    createSlideshow('slider1', 'dots1');
+    createSlideshow('slider2', 'dots2');
+  </script>
+</html>
 
