@@ -1,84 +1,3 @@
-<!-- 
-<!DOCTYPE html>
-<html>
-<head>
-  <title>All Saints 🎭 | 🎭 Drama Guild </title>
-  <link rel="icon" type="image/x-icon" href="/images/drama-fav.png">
-  <link rel="stylesheet" href="./css/style.css">
-  <script src="./js/main.js"></script>
-</head>
-<body onload="curtainFade()">
-
-  <div id="nav-bar">
-    <a href ="./index.html" class="nav-option">Home</a></h3>
-    <a href ="./html/upcoming.html" class="nav-option">Upcoming Productions</a></h3>
-    <a href ="./html/pastProductions.html" class="nav-option">Past Productions</a></h3>
-    <a href ="./html/theProducers.html" class="nav-option">The Producers</a></h3>
-    <a href ="./Tickets.html" class="nav-option">Tickets</a></h3>
-    <a href ="./Support_Us.html" class="nav-option">Support Us</a></h3>
-  </div>
-
-  <div class="curtain-0">
-    <div id="title">
-      <p class="title-p">All Saints Catholic High School Presents</p>
-      <img id="logo" src="./images/ash drama copy.png">
-    </div>
-  </div>
-
-  
-
-  <h2>Upcoming Events</h2>
-  <div class="page">
-    
-      <div class="card-container">
-        <div class="card-inner">
-    
-          <div class="front-card">
-             <img src="./images/our town poster.png">
-          </div>
-    
-          
-          <div class="back-card">
-            <a href="./html/ourtown.html" style="text-decoration: none;">
-            <p>Small town girl Emily Webb has never known anything but the traditions and expectations of early 1900’s Grover’s Corners, New Hampshire. Along with everyone else in the town, she will learn the troubles of life, love, and death through experience.</p>
-          </a>
-          </div>
-        </div>
-        <p class="dates">November 28-29th</p>
-      </div>
-    
-      <div class="card-container">
-        <div class="card-inner">
-    
-          <div class="front-card">
-             <img src="./images/Footloose Poster.jpg">
-          </div>
-          <div class="back-card">
-            <p>Chicago city kid Ren moves to country town Bomont where he is shocked to discover there is a ban on dancing. As he finds new friends and new love, he fights against Reverend Shaw Moore in the battle for freedom, fun, and dancing.</p>
-          </div>
-        </div>
-        <p class="dates">February 11-12th</p>
-      </div>
-    
-    <div class="card-container">
-      <div class="card-inner">
-  
-        <div class="front-card">
-           <img src="./images/Matilda-.jpg">
-        </div>
-        <div class="back-card">
-          <p>Coming Soon...</p>
-        </div>
-      </div>
-      <p class="dates">May 14-15th</p>
-    </div>
-  </div>
-    
-    
-</body>
-</html>
--->
-
 <!DOCTYPE html>
 <head>
   <title>🎭 All Saints Drama Guild 🎭 </title>
@@ -315,6 +234,7 @@
       }
     .section {
       height: 100vh;
+      width: 100vw;
       display: flex;
       color: white;
       }
@@ -578,9 +498,9 @@
           <button class="dropbtn" style="color:#721404;"><i class="fa fa-fw fa-calendar"></i> Schedule <i class="fa fa-caret-down"></i>
           </button>
           <div class="dropdown-content">
-            <a href="#">Past Events</a>
-            <a href="#">Upcoming Events</a>
-            <a href="#">Tickets</a>
+            <a href="./html/pastProductions.html">Past Productions</a>
+            <a href="./html/upcoming.html">Upcoming Events</a>
+            <a href="./html/Tickets.html">Tickets</a>
           </div>
         </div>
       <a href="" style="padding-right:23px;"><i class="fa fa-fw fa-user"></i>Producers</a>
@@ -593,7 +513,7 @@
               <a href="index.html" style="margin-top: 25px;"><i class="fa fa-fw fa-home"></i> Home</a>
               <a href="#">Upcoming Events</a>
               <a href="#">Past Events</a>
-              <a href="#"><i class="fa fa-fw fa-user"></i> Producers</a>
+              <a href="./html/theProducers.html"><i class="fa fa-fw fa-user"></i> Producers</a>
               <a href="#"><i class="fa fa-fw fa-money"></i> Tickets</a>
               <a href="#"><i class="fa fa-fw fa-calendar"></i> Schedule </a>
             </div>
@@ -603,17 +523,20 @@
       <a href="index.html"><img src="./images/ash drama copy.png" alt="Logo" width="70px" height="37px"></a>
       </div>
     </div>
-      <div class="section section1 curtain-0">
+    <div class="curtain-0">
+      <div class="section section1">
         <img style="max-width: 1275px"; src="./images/theatre.jpg">
         <div class="p1">
           <p>Welcome to All Saints High School</p>
           <p></p>
           </div>
       </div>
+    </div>
     <div class="section section2">
         <p id="fadeText">Welcome to the site of the most prestigious Drama Program in Ottawa</p>
     </div>
-    <div class="section section3 curtain-0">
+
+    <div class="section section3">
       <div class="p3">
         <p style="margin-top:-1620px; margin-left: -220px ;position: absolute;min-height:1000px;min-width:1000px;">Upcoming Events</p>
       </div>
@@ -726,8 +649,6 @@
     function openNav() {
     document.getElementById("mySidenav").style.width = "240px";
     }
-   
-    /* Curtain Fade
 
     // Curtain Fade function to trigger the animation on page load
     function curtainFade() {
@@ -735,7 +656,7 @@
 
       // Add the class `curtain-opened` when the page is fully loaded
       document.querySelector('.curtain-0').classList.add('curtain-opened');
-    }*/
+    }
 
     let lastScrollTop = 0;
       const navbar = document.getElementById('navbar');
