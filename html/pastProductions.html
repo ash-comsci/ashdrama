@@ -5,9 +5,11 @@
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/pastProductionStyle.css">
+
  <script src="https://kit.fontawesome.com/92c94acf33.js" crossorigin="anonymous"></script>
- <script src="../js/main.js"></script>
+ 
 </head>
 
 <body>
@@ -37,68 +39,31 @@
             <a href="#"><i class="fa fa-fw fa-money"></i> Tickets</a>
             <a href="#"><i class="fa fa-fw fa-calendar"></i> Schedule </a>
           </div>
-            <span style="margin: 12px 12px; display: block; border: 1.5px solid;border-radius: 9px;padding: 4px 10px; color:#721404;font-size:15px;font-family: 'Roboto', sans-serif; font-weight: 100;cursor:pointer" onmouseenter="openNav()"><i class="fa fa-bars"></i></span>
+            <span id="menu" style="margin: 12px 12px; display: block; border: 1.5px solid;border-radius: 9px;padding: 4px 10px; color:#721404;font-size:15px;font-family: 'Roboto', sans-serif; font-weight: 100;cursor:pointer"><i class="fa fa-bars"></i></span>
         </div>
     <div class="logo-container" id="logo">
     <a href="index.html"><img src="./images/ash drama copy.png" alt="Logo" width="70px" height="37px"></a>
     </div>
   </div>
 
-  <div class="section section4">
-    <div class="p4">
+  <div class="pastHeader">
+    <div class="pastP">
       <p style="padding: 60px 60px;">Past Productions</p>
     </div>
     
-    <div class="slideshow-container">
-      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-      <a class="next" onclick="plusSlides(1)">&#10095;</a>
-
-      <div class="slides fade" style="display: block;">
-        <img src="../images/pastProductions/DrowsyChaperone1.png" style="width:100%">
-        <p>Drowsy Chaperone</p>
+    <div class="slideshow-container slides" id="slideshow-container">
+      <div class="slides">
+        <img src="../images/pastProductions/LSOH1.png" alt="Slide 1">
+        <img src="../images/pastProductions/LSOH2.png" alt="Slide 2">
+        <img src="../images/pastProductions/SummerBrave1.png" alt="Slide 3">
+        <img src="../images/pastProductions/GlassMenagerie1.png" alt="Slide 4">
+        <img src="../images/pastProductions/HighschoolMusical1.png" alt="Slide 1">
+        <img src="../images/pastProductions/HighschoolMusical2.png" alt="Slide 2">
+        <img src="../images/pastProductions/DrowsyChaperone1.png" alt="Slide 3">
+        <img src="../images/pastProductions/UrineTown1.png" alt="Slide 4">
       </div>
-
-      <div class="slides fade" style="display: none;">
-        <img src="../images/pastProductions/GlassMenagerie1.png" style="width:100%">
-        <p>Glass Menagerie</p>
-      </div>
-
-      <div class="slides fade" style="display: none;">
-        <img src="../images/pastProductions/HighschoolMusical1.png" style="width:100%">
-        <p>High School Musical</p>
-      </div>
-
-      <div class="slides fade" style="display: none;">
-        <img src="../images/pastProductions/LSOH1.png" style="width:100%">
-        <p>Little Shop of Horrors</p>
-      </div>
-
-      <div class="slides fade" style="display: none;">
-        <img src="../images/pastProductions/SummerBrave1.png" style="width:100%">
-        <p>Summer Brave</p>
-      </div>
-
-      <div class="slides fade" style="display: none;">
-        <img src="../images/pastProductions/HighschoolMusical2.png" style="width:100%">
-        <p>High School Musical</p>
-        <p></p>
-      </div>
-
-      <div class="slides fade" style="display: none;">
-        <img src="../images/pastProductions/LSOH2.png" style="width:100%">
-        <p>Little Shop of Horrors</p>
-      </div>
-
-      <div class="slides fade" style="display: none;">
-        <img src="../images/pastProductions/HighschoolMusical2.png" style="width:100%">
-        <p>High School Musical</p>
-      </div>
-
-      
-      
     </div>
   </div>
-
 
   <div class="section section5">
     <div class="p5">
@@ -115,5 +80,6 @@
     </div>
   </div>
 
+  <script src="../js/main.js"></script>
 </body>
 </html>
