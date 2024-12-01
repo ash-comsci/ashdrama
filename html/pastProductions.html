@@ -1,76 +1,119 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/pastProductionStyle.css">
-    <script src="../js/main.js"></script>
-    <title>Past Productions</title>
+<head>
+ <title>🎭 All Saints Drama Guild 🎭 </title>
+ <link rel="icon" type="image/x-icon" href="/images/drama-fav.png">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+ <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="../css/pastProductionStyle.css">
+ <script src="https://kit.fontawesome.com/92c94acf33.js" crossorigin="anonymous"></script>
+ <script src="../js/main.js"></script>
 </head>
+
 <body>
+  <div id="navbar" class="topnav a">
+    <div class="topnav-right">
+    <a href="index.html"><i class="fa fa-fw fa-home"></i> Home</a>
+      <div class="dropdown">
+        <button class="dropbtn" style="color:#721404;"><i class="fa fa-fw fa-calendar"></i> Schedule <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+          <a href="./html/pastProductions.html">Past Productions</a>
+          <a href="./html/upcoming.html">Upcoming Events</a>
+          <a href="./html/Tickets.html">Tickets</a>
+        </div>
+      </div>
+    <a href="" style="padding-right:23px;"><i class="fa fa-fw fa-user"></i>Producers</a>
+    </div>
+        <div class="topnav-left">
+          <div id="mySidenav" class="sidenav">
+            <div class="logo-container2">
+              <img src="./images/ash drama copy.png" alt="Logo" width="110px" height="55px"></a>
+              </div>
+            <a href="index.html" style="margin-top: 25px;"><i class="fa fa-fw fa-home"></i> Home</a>
+            <a href="#">Upcoming Events</a>
+            <a href="#">Past Events</a>
+            <a href="./html/theProducers.html"><i class="fa fa-fw fa-user"></i> Producers</a>
+            <a href="#"><i class="fa fa-fw fa-money"></i> Tickets</a>
+            <a href="#"><i class="fa fa-fw fa-calendar"></i> Schedule </a>
+          </div>
+            <span style="margin: 12px 12px; display: block; border: 1.5px solid;border-radius: 9px;padding: 4px 10px; color:#721404;font-size:15px;font-family: 'Roboto', sans-serif; font-weight: 100;cursor:pointer" onmouseenter="openNav()"><i class="fa fa-bars"></i></span>
+        </div>
+    <div class="logo-container" id="logo">
+    <a href="index.html"><img src="./images/ash drama copy.png" alt="Logo" width="70px" height="37px"></a>
+    </div>
+  </div>
+
+  <div class="section section4">
+    <div class="p4">
+      <p style="padding: 60px 60px;">Past Productions</p>
+    </div>
     
-  <div id="nav-bar">
-    <a href ="../index.html" class="nav-option">Home</a></h3>
-    <a href ="./upcoming.html" class="nav-option">Upcoming Productions</a></h3>
-    <a href ="./pastProductions.html" class="nav-option">Past Productions</a></h3>
-    <a href ="./theProducers.html" class="nav-option">The Producers</a></h3>
-</div>
+    <div class="slideshow-container">
+      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+      <a class="next" onclick="plusSlides(1)">&#10095;</a>
 
-  <div id="subheading-div">
-    <p class="title-p" id="subheading">Past Productions</p>
+      <div class="slides fade" style="display: block;">
+        <img src="../images/pastProductions/DrowsyChaperone1.png" style="width:100%">
+        <p>Drowsy Chaperone</p>
+      </div>
+
+      <div class="slides fade" style="display: none;">
+        <img src="../images/pastProductions/GlassMenagerie1.png" style="width:100%">
+        <p>Glass Menagerie</p>
+      </div>
+
+      <div class="slides fade" style="display: none;">
+        <img src="../images/pastProductions/HighschoolMusical1.png" style="width:100%">
+        <p>High School Musical</p>
+      </div>
+
+      <div class="slides fade" style="display: none;">
+        <img src="../images/pastProductions/LSOH1.png" style="width:100%">
+        <p>Little Shop of Horrors</p>
+      </div>
+
+      <div class="slides fade" style="display: none;">
+        <img src="../images/pastProductions/SummerBrave1.png" style="width:100%">
+        <p>Summer Brave</p>
+      </div>
+
+      <div class="slides fade" style="display: none;">
+        <img src="../images/pastProductions/HighschoolMusical2.png" style="width:100%">
+        <p>High School Musical</p>
+        <p></p>
+      </div>
+
+      <div class="slides fade" style="display: none;">
+        <img src="../images/pastProductions/LSOH2.png" style="width:100%">
+        <p>Little Shop of Horrors</p>
+      </div>
+
+      <div class="slides fade" style="display: none;">
+        <img src="../images/pastProductions/HighschoolMusical2.png" style="width:100%">
+        <p>High School Musical</p>
+      </div>
+
+      
+      
+    </div>
   </div>
+
+
+  <div class="section section5">
+    <div class="p5">
+      <br>
+      <br>
+      <p>All Saints High School</p>
+      <p>5115 Kanata Ave</p>
+      <p>Kanata, ON K2K 3K5</p>
+      <hr>
+    </div>
+    <div class="p5a">
+    </div>
+    <div class="p5b">
+    </div>
+  </div>
+
 </body>
-
-<div class="slideshow-container">
-
-  <!-- Full-width images with number and caption text -->
-  <div class="slides fade" style="display: block;">
-    <img src="../images/pastProductions/DrowsyChaperone1.png" style="width:100%">
-    <p>Drowsy Chaperone</p>
-  </div>
-
-  <div class="slides fade" style="display: none;">
-    <img src="../images/pastProductions/GlassMenagerie1.png" style="width:100%">
-    <p>Glass Menagerie</p>
-  </div>
-
-  <div class="slides fade" style="display: none;">
-    <img src="../images/pastProductions/HighschoolMusical1.png" style="width:100%">
-    <p>High School Musical</p>
-  </div>
-
-  <div class="slides fade" style="display: none;">
-    <img src="../images/pastProductions/LSOH1.png" style="width:100%">
-    <p>Little Shop of Horrors</p>
-  </div>
-
-  <div class="slides fade" style="display: none;">
-    <img src="../images/pastProductions/SummerBrave1.png" style="width:100%">
-    <p>Summer Brave</p>
-  </div>
-
-  <div class="slides fade" style="display: none;">
-    <img src="../images/pastProductions/HighschoolMusical2.png" style="width:100%">
-    <p>High School Musical</p>
-    <p></p>
-  </div>
-
-  <div class="slides fade" style="display: none;">
-    <img src="../images/pastProductions/LSOH2.png" style="width:100%">
-    <p>Little Shop of Horrors</p>
-  </div>
-
-  <div class="slides fade" style="display: none;">
-    <img src="../images/pastProductions/HighschoolMusical2.png" style="width:100%">
-    <p>High School Musical</p>
-  </div>
-
-  <!-- Next and previous buttons -->
-  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-  <a class="next" onclick="plusSlides(1)">&#10095;</a>
-</div>
-
-
-
 </html>

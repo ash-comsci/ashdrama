@@ -4,9 +4,13 @@ let slideIndex = 1;
 showSlides(slideIndex);
 
 // Next/previous controls
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
+
+showSlides(2)
+setTimeout(3000)
+showSlides(3)
+setTimeout(3000)
+showSlides(4)
+setTimeout(3000)
 
 
 
@@ -19,6 +23,16 @@ function showSlides(n) {
     slides[i].style.display = "none";
   }
   slides[slideIndex-1].style.display = "block";
+}
+
+let n = 0
+let slides = document.getElementsByClassName("slides");
+while (true) {
+  while (n != slides.length) {
+    showSlides(n)
+    setTimeout(3000)
+    n++
+  }
 }
 
 // Curtain Fade
@@ -90,29 +104,20 @@ function openNav() {
 
    
    
-function createSlideshow(sliderId, dotsId) {
+function createSlideshow(sliderId) {
   const slides = document.querySelector(`#${sliderId} .slides`);
-  const dots = document.querySelectorAll(`#${dotsId} .dot`);
   let currentIndex = 0;
   function showSlide(index) {
   const slideHeight = slides.children[0].clientHeight;
   slides.style.transform = `translateY(${-index * slideHeight}px)`;
-  dots.forEach(dot => dot.classList.remove('active'));
-  dots[index].classList.add('active');
   }
   function autoSlide() {
   currentIndex = (currentIndex + 1) % slides.children.length;
   showSlide(currentIndex);
   }
   setInterval(autoSlide, 2999);
-  dots.forEach((dot, index) => {
-  dot.addEventListener('click', () => {
-  currentIndex = index;
-  showSlide(currentIndex);
-  });
-  });
   }
-  createSlideshow('slider1', 'dots1');
-  createSlideshow('slider2', 'dots2');
+  createSlideshow('slider1');
+  createSlideshow('slider2');
 
   document.getElementById("mySidenav").addEventListener("mouseleave", closeNav)
