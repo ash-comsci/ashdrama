@@ -24,7 +24,7 @@ document.querySelectorAll('[data-action]').forEach(button=>button.addEventListen
 dialog.querySelectorAll('.close,.dialog-done').forEach(button=>button.addEventListener('click',()=>dialog.close()));
 dialog.addEventListener('click',event=>{const r=dialog.getBoundingClientRect();if(event.target===dialog&&(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom))dialog.close();});
 const toggle=document.querySelector('.motion-toggle');
-toggle.addEventListener('click',()=>{const paused=document.body.classList.toggle('lights-paused');toggle.setAttribute('aria-pressed',String(paused));toggle.textContent=paused?'Resume lighting':'Pause lighting';});
+toggle?.addEventListener('click',()=>{const paused=document.body.classList.toggle('lights-paused');toggle.setAttribute('aria-pressed',String(paused));toggle.textContent=paused?'Resume lighting':'Pause lighting';});
 if(settings.contactEmail){const contact=document.querySelector('#contact');contact.removeAttribute('data-panel');contact.href='mailto:'+settings.contactEmail;contact.textContent=settings.contactEmail;}
 document.querySelector('#year').textContent=new Date().getFullYear();
 
