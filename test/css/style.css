@@ -42,3 +42,20 @@ dialog{background:var(--silver);color:var(--ink);border:2px solid var(--gold);pa
   position: relative;
   z-index: 2;
 }
+/* Scoped styles: these affect only the two navigation announcement cards. */
+#ash-nav-announcement{width:min(560px,calc(100% - 32px));max-height:calc(100dvh - 40px);margin:auto;padding:0;overflow:auto;color:#f0f2f5;background:radial-gradient(ellipse at top right,#68163280,transparent 65%),#071628;border:1px solid #d9b466;border-radius:18px;box-shadow:0 30px 100px #000a;font:16px/1.65 Arial,Helvetica,sans-serif}
+#ash-nav-announcement::backdrop{background:#020710d4;backdrop-filter:blur(6px)}
+#ash-nav-announcement .ash-announcement-inner{position:relative;padding:42px 36px 34px}
+#ash-nav-announcement .ash-announcement-label{font-size:.75rem;letter-spacing:.18em;font-weight:bold;color:#edcb7d;padding-right:35px;margin:0 0 24px}
+#ash-nav-announcement .ash-announcement-badge{display:inline-block;font-size:.7rem;letter-spacing:.12em;font-weight:bold;padding:5px 10px;border:1px solid #edcb7d66;border-radius:30px;color:#edcb7d;background:#edcb7d0d}
+#ash-nav-announcement h2{font:normal clamp(2rem,6vw,2.8rem)/1.1 Georgia,serif;color:#fff5dc;margin:17px 0}
+#ash-nav-announcement #ash-nav-message{font-size:1rem;color:#d6dde6;margin:0 0 26px}
+#ash-nav-announcement button{font:inherit;cursor:pointer;transition:transform .2s,background .2s,box-shadow .2s}
+#ash-nav-announcement .ash-announcement-close{position:absolute;right:16px;top:16px;width:36px;height:36px;border:1px solid #ffffff40;border-radius:50%;background:#ffffff0d;color:white;font-size:1.4rem;line-height:1}
+#ash-nav-announcement .ash-announcement-done{padding:12px 20px;background:#edcb7d;color:#071628;border:1px solid #edcb7d;border-radius:8px;font-weight:bold;box-shadow:0 8px 20px #0004}
+#ash-nav-announcement button:hover{transform:translateY(-2px);box-shadow:0 10px 24px #0006}
+#ash-nav-announcement .ash-announcement-close:hover{background:#681632}
+#ash-nav-announcement button:focus-visible{outline:3px solid white;outline-offset:4px}
+@media(max-width:480px){#ash-nav-announcement .ash-announcement-inner{padding:35px 24px 26px}}
+@media(prefers-reduced-motion:reduce){#ash-nav-announcement button{transition:none}}
+
