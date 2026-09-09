@@ -1,6 +1,6 @@
 // Change these two values if you later want another destination or delay.
 const MAIN_PAGE_URL = 'https://ashdrama.ca/test/index.html';
-const INTRO_DURATION_MS = 5000;
+const INTRO_DURATION_MS = 15000;
 const enterLink = document.querySelector('.enter');
 enterLink.href = MAIN_PAGE_URL;
 document.documentElement.style.setProperty('--opening-duration', `${INTRO_DURATION_MS}ms`);
