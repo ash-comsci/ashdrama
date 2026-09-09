@@ -16,3 +16,29 @@ dialog{background:var(--silver);color:var(--ink);border:2px solid var(--gold);pa
 @media(max-width:760px){.cards{grid-template-columns:1fr}.show-card{min-height:450px}.card-content{padding:28px}.actions .btn{flex:1}.productions{padding-top:45px}}
 @media(max-width:650px){.hero{grid-template-columns:1fr;padding:40px 24px 0;gap:35px}.hero h1{font-size:clamp(2.7rem,12vw,4rem)}.playbill{max-width:330px;transform:rotate(3deg);margin:5px 0 15px}.hero-foot{margin-top:10px;flex-wrap:wrap;padding:18px 0;gap:10px}.hero-foot>span:last-child{display:none}.season-strip{font-size:.68rem;letter-spacing:.08em}.season-strip span{margin:0 10px}.playbill-top span{font-size:3.5rem}.about{padding:60px 24px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}.motion-toggle{display:none}.playbill{transform:none}}
+
+/* FALL PLAY POSTER: blur only the background, keeping text and buttons sharp. */
+.show-card.play {
+  isolation: isolate;
+}
+.show-card.play::before {
+  content: "";
+  position: absolute;
+  inset: -12px;
+  z-index: 0;
+  background: url("../images/game-of-tiaras.png") center 25% / cover no-repeat;
+  filter: blur(3px);
+  pointer-events: none;
+}
+.show-card.play::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(to bottom, rgba(6,19,40,.25) 0%, rgba(37,3,15,.65) 40%, rgba(2,8,18,.95) 75%, #020812 100%);
+  pointer-events: none;
+}
+.show-card.play .card-content {
+  position: relative;
+  z-index: 2;
+}
