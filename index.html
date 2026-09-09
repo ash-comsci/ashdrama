@@ -3,32 +3,29 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Welcome to the All Saints Drama Guild. The curtain is about to rise.">
-  <title>Welcome | All Saints Drama Guild</title>
+  <meta name="description" content="Welcome to All Saints Drama Guild. Watch the curtain rise on our new season.">
+  <title>The Curtain Rises | ASH Drama Guild</title>
   <link rel="icon" href="images/ash-drama-logo.png">
   <link rel="preload" as="image" href="images/ash-drama-logo.png">
   <link rel="stylesheet" href="css/opening.css">
   <script src="js/opening.js" defer></script>
 </head>
 <body>
-  <main class="stage" aria-label="Welcome to All Saints Drama Guild">
-    <div class="stage-halo" aria-hidden="true"></div>
-    <div class="spotlight spotlight-left" aria-hidden="true"></div>
-    <div class="spotlight spotlight-right" aria-hidden="true"></div>
-    <div class="spotlight spotlight-centre" aria-hidden="true"></div>
-    <div class="curtain curtain-left" aria-hidden="true"></div>
-    <div class="curtain curtain-right" aria-hidden="true"></div>
-    <div class="valance" aria-hidden="true"></div>
-    <div class="marquee" aria-hidden="true"></div>
-    <div class="welcome">
-      <p class="school">ALL SAINTS HIGH SCHOOL</p>
-      <img class="logo" src="images/ash-drama-logo.png" width="1017" height="750" alt="ASH Drama Guild">
-      <h1>The curtain is about to rise.</h1>
-      <p class="redirect-note">Your theatre experience begins in 5 seconds.</p>
-      <a class="enter" href="https://ashdrama.ca/test/index.html">Enter site <span aria-hidden="true">→</span></a>
-      <div class="progress" aria-hidden="true"><span></span></div>
-      <noscript><p class="no-script">Select “Enter site” to continue.</p></noscript>
+  <main class="theatre" aria-label="All Saints Drama Guild opening">
+    <div class="website-preview" aria-hidden="true" inert>
+      <div class="preview-fallback"><span>ALL SAINTS DRAMA GUILD</span><h2>The stage is yours.</h2><p>Opening our website…</p></div>
+      <iframe id="main-preview" src="https://ashdrama.ca/test/index.html" title="Preview of the All Saints Drama Guild website" tabindex="-1" loading="eager"></iframe>
     </div>
+    <div class="curtain" id="curtain">
+      <div class="velvet velvet-left" aria-hidden="true"></div>
+      <div class="velvet velvet-right" aria-hidden="true"></div>
+      <div class="light light-left" aria-hidden="true"></div>
+      <div class="light light-right" aria-hidden="true"></div>
+      <div class="logo-display"><p>ALL SAINTS HIGH SCHOOL</p><img id="ash-logo" src="images/ash-drama-logo.png" width="1017" height="750" alt="ASH Drama Guild"><h1>Let the show begin.</h1></div>
+      <div class="hem" aria-hidden="true"></div>
+    </div>
+    <div class="opening-controls"><p id="opening-status">The curtain rises over 10 seconds.</p><a class="enter" href="https://ashdrama.ca/test/index.html">Skip intro <span aria-hidden="true">→</span></a><div class="progress" aria-hidden="true"><span></span></div></div>
+    <noscript><style>.opening-controls>p{display:none}</style><p class="no-script">Select “Skip intro” to enter the site.</p></noscript>
   </main>
 </body>
 </html>

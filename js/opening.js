@@ -1,21 +1,30 @@
-// Change these two values if you later want another destination or delay.
+// The main website must be at this address, NOT this opening page.
 const MAIN_PAGE_URL = 'https://ashdrama.ca/test/index.html';
-const INTRO_DURATION_MS = 15000;
+const INTRO_DURATION_MS = 10000;
 const enterLink = document.querySelector('.enter');
+const preview = document.querySelector('#main-preview');
 enterLink.href = MAIN_PAGE_URL;
+preview.src = MAIN_PAGE_URL;
 document.documentElement.style.setProperty('--opening-duration', `${INTRO_DURATION_MS}ms`);
-let started = false;
 let redirectTimer;
+let started = false;
 function startOpening() {
   if (started) return;
   started = true;
-  document.body.classList.add('counting');
-  redirectTimer = window.setTimeout(() => {
-    // Replace the opening in browser history so Back doesn't repeat the intro.
-    window.location.replace(MAIN_PAGE_URL);
-  }, INTRO_DURATION_MS);
+  // Let the closed curtain paint before starting the ten-second lift.
+  window.requestAnimationFrame(() => window.requestAnimationFrame(() => {
+    document.body.classList.add('rising');
+    redirectTimer = window.setTimeout(() => window.location.replace(MAIN_PAGE_URL), INTRO_DURATION_MS);
+  }));
 }
 enterLink.addEventListener('click', () => window.clearTimeout(redirectTimer));
-// Start the five seconds once the logo and page resources have loaded.
-if (document.readyState === 'complete') startOpening();
-else window.addEventListener('load', startOpening, { once: true });
+if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  document.querySelector('#opening-status').textContent = 'Entering the site in 10 seconds.';
+}
+// Wait for the logo, but do not let a slow embedded website hold up the intro.
+const logo = document.querySelector('#ash-logo');
+if (logo.complete) startOpening();
+else {
+  logo.addEventListener('load', startOpening, { once: true });
+  logo.addEventListener('error', startOpening, { once: true });
+}

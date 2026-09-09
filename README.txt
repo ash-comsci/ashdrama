@@ -1,23 +1,20 @@
-ASH DRAMA — FIVE-SECOND CURTAIN OPENING
+ASH DRAMA — TEN-SECOND RISING CURTAIN
 
-CONTENTS
-index.html — the opening page only
-css/opening.css — curtains, stage, spotlights and responsive layout
-js/opening.js — five-second redirect
-images/ash-drama-logo.png — original ASH logo
+The screen opens on fully closed red velvet-style curtains with the ASH logo centred on them. The entire curtain and logo rise over ten seconds to reveal a live embedded view of https://ashdrama.ca/test/index.html. At ten seconds the browser navigates directly to that main website. Skip intro allows immediate entry.
 
-INSTALL ON GITHUB PAGES
+INSTALL
 1. Back up your current root index.html.
-2. Ensure your ACTUAL MAIN WEBSITE already works at https://ashdrama.ca/test/index.html. If moving the main site into test/, copy its index.html AND its css, js and images folders into test/ so its relative links still work. Keep CNAME in the repository root.
-3. Upload this package's index.html to your repository ROOT. It replaces the homepage with the opening screen.
-4. Merge this package's css, js and images folders with the folders at the repository root. Upload the files inside them; do not delete existing folder contents.
-5. Keep your existing root CNAME (ashdrama.ca), Pages settings and DNS unchanged.
-6. Commit. Visiting ashdrama.ca will show this opening, then redirect to ashdrama.ca/test/index.html.
+2. Your actual main website must already be published at https://ashdrama.ca/test/index.html with its own supporting folders.
+3. Upload this package's index.html to the repository ROOT (ashdrama.ca).
+4. Merge css/opening.css, js/opening.js and images/ash-drama-logo.png into the root's matching folders. If replacing the earlier intro, overwrite these files.
+5. Keep your existing CNAME and all test/ files unchanged. Commit your changes.
 
-IMPORTANT: Do not put this opening index.html at test/index.html. That address must hold the actual main website, or you will create a redirect loop.
+DO NOT upload this opening page to test/index.html: that is the redirect destination and must contain your actual main site, or the intro will loop and embed itself.
 
-The five seconds start after the page finishes loading, so the logo can appear before the countdown. Enter site skips ahead. Without JavaScript, the Enter site link still works. Reduced-motion preferences stop the spotlight animation.
+The preview uses your LIVE main page, so it reflects edits to that page without needing a replacement screenshot. It is noninteractive during the intro; the main page becomes fully interactive after navigation. The main page must permit iframe embedding. A network error or blocked embedding may prevent the preview from appearing, but the redirect still runs.
 
-To change timing or destination, edit INTRO_DURATION_MS or MAIN_PAGE_URL in js/opening.js. If changing the delay, update the sentence in index.html too. If changing the destination, update the HTML Enter site link for visitors without JavaScript.
+The ten-second clock begins with the curtain lift after the logo loads. Users preferring reduced motion get an immediate static reveal and the same ten-second redirect. Without JavaScript the Skip intro link still opens the main page.
 
-LOCAL PREVIEW: Unzip and open index.html. It WILL redirect to the live website after five seconds. To inspect for longer, temporarily increase INTRO_DURATION_MS in your preview copy.
+All styling is in css/opening.css; timing and destination are in js/opening.js. If changing the destination, also change the iframe and link addresses in index.html. No DNS changes are needed.
+
+Unzip and open index.html to preview locally; it WILL redirect to the live site after ten seconds. The live site also needs to load for the embedded preview to appear.
