@@ -2,8 +2,8 @@
 const settings = {
   contactEmail: '',
   shows: {
-    fall: { title: 'Fall play', date: 'November 2026', tickets: '', pictures: '', info: 'Our fall play arrives in November 2026. The title, performance dates, cast and ticket details will be announced soon.' },
-    frozen: { title: 'Disney’s Frozen', date: 'March 2027', tickets: '', pictures: '', info: 'Frozen comes to the All Saints stage in March 2027. Performance dates, cast and ticket details will be announced soon.' }
+    fall: { title: 'Game of Tiaras', date: 'November 2026', tickets: 'https://www.zeffy.com/en-CA/ticketing/game-of-tiaras-2', pictures: '', info: 'A hilarious dark comedy that mashes up the royal betrayal of King Lear and Game of Thrones with your favourite fairy tale princesses. When an aging king decides to divide his empire, Cinderella, Belle, and the Snow Queen launch into a ruthless, backstabbing power struggle for the crown. Packed with manipulation, unexpected alliances, and a hilariously high body count, this fast-paced satire is a wildly entertaining ride from start to finish..' },
+    frozen: { title: 'Disney’s Frozen', date: 'April 2027', tickets: '', pictures: '', info: 'Frozen comes to the All Saints stage in March 2027. Performance dates, cast and ticket details will be announced soon.' }
   }
 };
 const menu = document.querySelector('.menu');
