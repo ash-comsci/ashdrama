@@ -1,26 +1,23 @@
-ASH DRAMA — OPTION TWO: PLAYBILL
-
-Open index.html in your browser to preview. No installation is needed.
+ASH DRAMA — FIVE-SECOND CURTAIN OPENING
 
 CONTENTS
-index.html — page content and layout
-images/ash-drama-logo.png — your original logo, unchanged
-css/style.css — colours, layout, hover effects and animated lighting
-js/main.js — ticket/photo links, show information, contact email and interactions
-CNAME — custom domain setting for ashdrama.ca
-.nojekyll — serves the files as a plain static website
+index.html — the opening page only
+css/opening.css — curtains, stage, spotlights and responsive layout
+js/opening.js — five-second redirect
+images/ash-drama-logo.png — original ASH logo
 
-GITHUB PAGES
-1. Unzip this package on your computer.
-2. Back up your current website before replacing it.
-3. Upload the CONTENTS of this folder to the root of your existing GitHub Pages repository. Do not upload the ZIP itself or put index.html inside an extra enclosing folder.
-4. Replace the existing index.html; keep images, css and js alongside it. The CNAME included here contains ashdrama.ca, matching your current domain.
-5. Commit the changes. Keep your existing main / (root) Pages settings and Grape DNS settings.
+INSTALL ON GITHUB PAGES
+1. Back up your current root index.html.
+2. Ensure your ACTUAL MAIN WEBSITE already works at https://ashdrama.ca/test/index.html. If moving the main site into test/, copy its index.html AND its css, js and images folders into test/ so its relative links still work. Keep CNAME in the repository root.
+3. Upload this package's index.html to your repository ROOT. It replaces the homepage with the opening screen.
+4. Merge this package's css, js and images folders with the folders at the repository root. Upload the files inside them; do not delete existing folder contents.
+5. Keep your existing root CNAME (ashdrama.ca), Pages settings and DNS unchanged.
+6. Commit. Visiting ashdrama.ca will show this opening, then redirect to ashdrama.ca/test/index.html.
 
-EDITING
-In js/main.js, add ticket and photo URLs inside the empty quotes in settings.shows. Add your real contact email to contactEmail. Until supplied, buttons show honest coming-soon messages and contact details are marked as forthcoming.
-Edit headings and descriptions in index.html. Past Productions and Gallery currently have labelled empty sections, ready for real content. No past shows or production photos have been invented.
-Season assumed: November 2026 and March 2027.
-The Frozen panel uses original typography, not an official production poster.
+IMPORTANT: Do not put this opening index.html at test/index.html. That address must hold the actual main website, or you will create a redirect loop.
 
-Lighting can be paused using the on-page control. Reduced-motion preferences are respected automatically.
+The five seconds start after the page finishes loading, so the logo can appear before the countdown. Enter site skips ahead. Without JavaScript, the Enter site link still works. Reduced-motion preferences stop the spotlight animation.
+
+To change timing or destination, edit INTRO_DURATION_MS or MAIN_PAGE_URL in js/opening.js. If changing the delay, update the sentence in index.html too. If changing the destination, update the HTML Enter site link for visitors without JavaScript.
+
+LOCAL PREVIEW: Unzip and open index.html. It WILL redirect to the live website after five seconds. To inspect for longer, temporarily increase INTRO_DURATION_MS in your preview copy.
