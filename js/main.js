@@ -2,8 +2,8 @@
 const settings = {
   contactEmail: '',
   shows: {
-    fall: { title: 'Fall play', date: 'November 2026', tickets: '', pictures: '', info: 'Our fall play arrives in November 2026. The title, performance dates, cast and ticket details will be announced soon.' },
-    frozen: { title: 'Disney’s Frozen', date: 'March 2027', tickets: '', pictures: '', info: 'Frozen comes to the All Saints stage in March 2027. Performance dates, cast and ticket details will be announced soon.' }
+    fall: { title: 'Game Of Tiaras', date: 'November 2026', tickets: '', pictures: '', info: 'Our fall play arrives in November 2026. The title, performance dates, cast and ticket details will be announced soon.' },
+    frozen: { title: 'Disney’s Frozen', date: 'April 2027', tickets: '', pictures: '', info: 'Frozen comes to the Meridian Stage at Centrepointe in April 2027. Performance dates, cast and ticket details will be announced soon.' }
   }
 };
 const menu = document.querySelector('.menu');
