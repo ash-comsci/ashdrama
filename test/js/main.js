@@ -29,8 +29,8 @@ if(settings.contactEmail){const contact=document.querySelector('#contact');conta
 document.querySelector('#year').textContent=new Date().getFullYear();
 
 // Navigation panels remain ready for future production archives and photographs.
-const panels={past:{title:'Past Productions',text:'Our production archive is coming soon. Check back for highlights from earlier All Saints shows.'},gallery:{title:'Gallery',text:'Rehearsal, backstage and performance photographs will be shared here as the season unfolds.'},contact:{title:'Contact the Drama Guild',text:'Contact details will be announced here soon.'}};
-document.querySelectorAll('[data-panel]').forEach(control=>control.addEventListener('click',event=>{event.preventDefault();const panel=panels[control.dataset.panel];document.querySelector('#dialog-label').textContent='ASH DRAMA GUILD';document.querySelector('#dialog-title').textContent=panel.title;document.querySelector('#dialog-body').textContent=panel.text;dialog.showModal();}));
+const panels={past:{title:'Past Productions',text:'Our production archive is coming soon. Check back for highlights from earlier All Saints shows.'},gallery:{title:'Gallery',text:'Rehearsal, backstage and performance photographs will be shared here as the season unfolds.'},contact:{title:'Contact the Drama Guild',html:'<strong>Director:</strong> <a href="mailto:director@ashdrama.ca">director@ashdrama.ca</a><br><strong>Information:</strong> <a href="mailto:info@ashdrama.ca">info@ashdrama.ca</a>'}};
+document.querySelectorAll('[data-panel]').forEach(control=>control.addEventListener('click',event=>{event.preventDefault();const panel=panels[control.dataset.panel];document.querySelector('#dialog-label').textContent='ASH DRAMA GUILD';document.querySelector('#dialog-title').textContent=panel.title;const body=document.querySelector('#dialog-body');if(panel.html){body.innerHTML=panel.html;}else{body.textContent=panel.text;}dialog.showModal();}));
 
 /* Navigation announcements. Works with either ASH navbar layout. */
 (() => {
