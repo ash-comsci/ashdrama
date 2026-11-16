@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>All Saints Harmonics Hoodie</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;0,900;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --maroon:#7a1d2e; --maroon-dk:#561421; --maroon-lt:#a02a40;
+  --navy:#14213d; --navy-dk:#0b1428; --navy-lt:#24365e;
+  --gold:#e0b04a; --gold-lt:#f5d27a; --silver:#d9dde3;
+  --cream:#f7f1e8; --ink:#1a1a24; --muted:#5d6273;
+  --radius:18px; --shadow:0 18px 40px -18px rgba(11,20,40,.45);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,system-ui,sans-serif;color:var(--ink);background:var(--cream);line-height:1.6;overflow-x:hidden}
+h1,h2,h3{font-family:"Playfair Display",Georgia,serif;line-height:1.1}
+a{color:inherit}
+img{max-width:100%;display:block}
+.wrap{width:min(1180px,92vw);margin:0 auto}
+::selection{background:var(--gold);color:var(--navy)}
+
+/* scroll progress */
+#progress{position:fixed;top:0;left:0;height:4px;width:0;z-index:200;background:linear-gradient(90deg,var(--maroon-lt),var(--gold),var(--navy-lt))}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(11,20,40,.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(224,176,74,.25);transition:background .3s}
+nav.scrolled{background:rgba(11,20,40,.96)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:68px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff;font-family:"Playfair Display";font-weight:800;font-size:1.25rem;letter-spacing:.5px}
+.brand .clef{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--maroon),var(--maroon-dk));border:2px solid var(--gold);color:var(--gold);font-size:1.3rem;transition:transform .6s cubic-bezier(.3,1.6,.5,1)}
+.brand:hover .clef{transform:rotate(360deg) scale(1.1)}
+.links{display:flex;gap:6px;list-style:none}
+.links a{position:relative;display:block;padding:8px 14px;text-decoration:none;color:#dfe4ef;font-weight:500;font-size:.95rem;border-radius:10px;transition:color .25s,background .25s}
+.links a::after{content:"";position:absolute;left:14px;right:14px;bottom:4px;height:2px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.links a:hover{color:#fff;background:rgba(255,255,255,.06)}
+.links a:hover::after{transform:scaleX(1)}
+.links a.cta{background:var(--maroon);color:#fff;border:1px solid var(--gold)}
+.links a.cta::after{display:none}
+.links a.cta:hover{background:var(--gold);color:var(--navy)}
+.burger{display:none;background:none;border:0;color:#fff;font-size:1.6rem;cursor:pointer}
+
+/* HERO */
+.hero{position:relative;overflow:hidden;color:#fff;background:
+  radial-gradient(900px 500px at 85% 20%,rgba(160,42,64,.55),transparent 60%),
+  radial-gradient(700px 500px at 10% 90%,rgba(36,54,94,.9),transparent 60%),
+  linear-gradient(135deg,var(--navy-dk) 0%,var(--navy) 45%,var(--maroon-dk) 100%);padding:80px 0 110px}
+.staff{position:absolute;inset:auto 0 60px 0;height:90px;opacity:.12;background:repeating-linear-gradient(to bottom,#fff 0 2px,transparent 2px 20px)}
+.note{position:absolute;color:var(--gold);opacity:.0;font-size:2rem;animation:floatUp linear infinite;pointer-events:none;text-shadow:0 0 18px rgba(224,176,74,.6)}
+@keyframes floatUp{0%{transform:translateY(40px) rotate(-10deg);opacity:0}15%{opacity:.55}85%{opacity:.45}100%{transform:translateY(-620px) rotate(25deg);opacity:0}}
+.hero-grid{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;background:rgba(224,176,74,.14);border:1px solid rgba(224,176,74,.45);color:var(--gold-lt);font-size:.82rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase}
+.eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--gold);animation:pulse 1.6s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(224,176,74,.7)}100%{box-shadow:0 0 0 12px rgba(224,176,74,0)}}
+.hero h1{font-size:clamp(2.6rem,5.6vw,4.6rem);font-weight:900;margin:20px 0 14px}
+.shine{background:linear-gradient(100deg,var(--gold) 20%,#fff6d6 40%,var(--gold) 60%,#b98a2a 80%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 5s linear infinite}
+@keyframes shine{to{background-position:-250% 0}}
+.hero p.lead{font-size:1.15rem;color:#d3d9e8;max-width:540px}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:26px 0}
+.chip{padding:10px 16px;border-radius:12px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);font-size:.92rem;transition:transform .25s,background .25s,border-color .25s}
+.chip b{color:var(--gold-lt)}
+.chip:hover{transform:translateY(-3px);background:rgba(224,176,74,.15);border-color:var(--gold)}
+.btns{display:flex;flex-wrap:wrap;gap:14px;margin-top:6px}
+.btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border-radius:14px;font-weight:700;text-decoration:none;cursor:pointer;border:0;font-size:1rem;font-family:inherit;transition:transform .25s,box-shadow .25s,background .25s,color .25s}
+.btn .arr{transition:transform .25s}
+.btn:hover .arr{transform:translateX(5px)}
+.btn-gold{background:linear-gradient(135deg,var(--gold-lt),var(--gold));color:var(--navy-dk);box-shadow:0 10px 30px -10px rgba(224,176,74,.8)}
+.btn-gold:hover{transform:translateY(-3px);box-shadow:0 18px 38px -12px rgba(224,176,74,.95)}
+.btn-ghost{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.4)}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold-lt);transform:translateY(-3px)}
+.btn-maroon{background:var(--maroon);color:#fff;border:2px solid var(--maroon)}
+.btn-maroon:hover{background:var(--navy);border-color:var(--gold);transform:translateY(-3px);box-shadow:var(--shadow)}
+.btn::before{content:"";position:absolute;top:0;left:-120%;width:60%;height:100%;background:linear-gradient(110deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-20deg);transition:left .7s}
+.btn:hover::before{left:140%}
+.ripple{position:absolute;border-radius:50%;transform:scale(0);background:rgba(255,255,255,.55);animation:rip .6s linear;pointer-events:none}
+@keyframes rip{to{transform:scale(4);opacity:0}}
+
+/* hero product card */
+.stage{perspective:1200px}
+.product{position:relative;border-radius:28px;padding:18px;background:linear-gradient(145deg,rgba(255,255,255,.14),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.18);box-shadow:0 40px 80px -30px rgba(0,0,0,.7);transform-style:preserve-3d;transition:transform .15s ease-out}
+.product::before{content:"";position:absolute;inset:-3px;border-radius:30px;padding:3px;background:conic-gradient(from var(--ang,0deg),var(--gold),var(--maroon-lt),var(--navy-lt),var(--gold));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:spin 6s linear infinite;opacity:.9}
+@property --ang{syntax:"<angle>";initial-value:0deg;inherits:false}
+@keyframes spin{to{--ang:360deg}}
+.product .imgbox{position:relative;border-radius:20px;overflow:hidden;background:#eef0f3;cursor:zoom-in}
+.product img{width:100%;transform:translateZ(40px)}
+.lens{position:absolute;width:170px;height:170px;border-radius:50%;border:3px solid var(--gold);box-shadow:0 10px 30px rgba(0,0,0,.45),inset 0 0 20px rgba(0,0,0,.2);pointer-events:none;opacity:0;transform:scale(.6);transition:opacity .2s,transform .2s;background-repeat:no-repeat}
+.imgbox:hover .lens{opacity:1;transform:scale(1)}
+.zoom-hint{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);background:rgba(11,20,40,.8);color:#fff;font-size:.78rem;padding:6px 12px;border-radius:999px;transition:opacity .3s;white-space:nowrap}
+.imgbox:hover .zoom-hint{opacity:0}
+.badge{position:absolute;top:-16px;right:-16px;width:104px;height:104px;border-radius:50%;display:grid;place-items:center;text-align:center;background:radial-gradient(circle at 30% 30%,var(--maroon-lt),var(--maroon-dk));border:3px solid var(--gold);color:#fff;font-weight:800;font-size:.85rem;line-height:1.15;transform:translateZ(80px) rotate(12deg);animation:bob 3s ease-in-out infinite;box-shadow:0 14px 30px rgba(0,0,0,.45)}
+.badge span{display:block;font-family:"Playfair Display";font-size:1.55rem;color:var(--gold-lt)}
+@keyframes bob{50%{transform:translateZ(80px) rotate(4deg) translateY(-8px)}}
+.wave{position:absolute;bottom:-1px;left:0;width:100%;height:80px}
+
+/* marquee */
+.marquee{background:var(--maroon);color:var(--gold-lt);overflow:hidden;border-block:3px solid var(--gold);transform:rotate(-1.2deg);margin:-26px -10px 0;position:relative;z-index:3;box-shadow:var(--shadow)}
+.track{display:flex;width:max-content;animation:scroll 28s linear infinite;padding:14px 0;font-family:"Playfair Display";font-weight:800;font-size:1.35rem;letter-spacing:2px}
+.marquee:hover .track{animation-play-state:paused}
+.track span{padding:0 26px;white-space:nowrap}
+.track i{font-style:normal;color:#fff}
+@keyframes scroll{to{transform:translateX(-50%)}}
+
+/* sections */
+section{padding:96px 0;position:relative}
+.sec-head{text-align:center;max-width:720px;margin:0 auto 54px}
+.kicker{color:var(--maroon);font-weight:700;letter-spacing:2.5px;text-transform:uppercase;font-size:.8rem}
+.sec-head h2{font-size:clamp(2rem,4vw,3rem);margin:10px 0 14px;color:var(--navy)}
+.sec-head p{color:var(--muted);font-size:1.05rem}
+.bar{width:70px;height:4px;margin:16px auto 0;border-radius:4px;background:linear-gradient(90deg,var(--maroon),var(--gold),var(--navy))}
+
+/* feature flip cards */
+.features{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.flip{perspective:1000px;height:250px;cursor:pointer}
+.flip-in{position:relative;width:100%;height:100%;transition:transform .7s cubic-bezier(.4,.2,.2,1);transform-style:preserve-3d}
+.flip:hover .flip-in,.flip:focus-within .flip-in,.flip.flipped .flip-in{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;border-radius:var(--radius);padding:28px 24px;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;flex-direction:column;justify-content:center;box-shadow:var(--shadow)}
+.front{background:#fff;border:1px solid #e9e1d4}
+.front .ic{width:60px;height:60px;border-radius:16px;display:grid;place-items:center;font-size:1.8rem;margin-bottom:16px;background:linear-gradient(135deg,var(--navy),var(--navy-lt));color:var(--gold)}
+.flip:nth-child(even) .front .ic{background:linear-gradient(135deg,var(--maroon),var(--maroon-lt))}
+.front h3{font-size:1.3rem;color:var(--navy)}
+.front small{color:var(--muted);margin-top:6px}
+.back{transform:rotateY(180deg);background:linear-gradient(150deg,var(--navy),var(--maroon));color:#fff}
+.back h3{color:var(--gold-lt);font-size:1.15rem;margin-bottom:8px}
+.back p{font-size:.95rem;color:#e6e9f2}
+
+/* details */
+.details{background:linear-gradient(180deg,var(--cream),#efe5d6)}
+.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.spot{position:relative;border-radius:24px;overflow:hidden;box-shadow:var(--shadow);border:4px solid var(--navy)}
+.spot img{transition:transform .6s}
+.spot:hover img{transform:scale(1.08) rotate(-1deg)}
+.spot::after{content:"";position:absolute;inset:0;background:radial-gradient(260px 260px at var(--mx,50%) var(--my,50%),transparent 0,rgba(11,20,40,.55) 100%);transition:opacity .3s;opacity:0}
+.spot:hover::after{opacity:1}
+.spec{list-style:none;display:grid;gap:12px;margin-top:22px}
+.spec li{display:flex;gap:14px;align-items:flex-start;padding:14px 16px;border-radius:14px;background:#fff;border-left:5px solid var(--maroon);box-shadow:0 6px 16px -10px rgba(0,0,0,.25);transition:transform .25s,border-color .25s,box-shadow .25s}
+.spec li:nth-child(even){border-left-color:var(--navy)}
+.spec li:hover{transform:translateX(8px);border-left-color:var(--gold);box-shadow:var(--shadow)}
+.spec b{color:var(--navy)}
+.details h2{font-size:clamp(2rem,3.6vw,2.7rem);color:var(--navy);margin:10px 0}
+
+/* info strip */
+.info{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:-50px;position:relative;z-index:4}
+.info .card{background:#fff;border-radius:var(--radius);padding:22px;text-align:center;box-shadow:var(--shadow);border-top:5px solid var(--maroon);transition:transform .3s,border-color .3s}
+.info .card:nth-child(even){border-top-color:var(--navy)}
+.info .card:hover{transform:translateY(-8px);border-top-color:var(--gold)}
+.info .lbl{font-size:.75rem;text-transform:uppercase;letter-spacing:2px;color:var(--muted);font-weight:700}
+.info .val{font-family:"Playfair Display";font-weight:800;font-size:1.5rem;color:var(--maroon);margin-top:6px}
+.info .card:nth-child(even) .val{color:var(--navy)}
+.cd{display:flex;justify-content:center;gap:8px;margin-top:6px}
+.cd div{background:var(--navy);color:#fff;border-radius:8px;padding:4px 8px;min-width:44px}
+.cd b{display:block;font-family:"Playfair Display";font-size:1.2rem;color:var(--gold-lt)}
+.cd small{font-size:.62rem;text-transform:uppercase;letter-spacing:1px}
+
+/* sizing */
+.sizing{background:var(--navy);color:#fff;overflow:hidden}
+.sizing .sec-head h2{color:#fff}
+.sizing .sec-head p{color:#c3cadb}
+.sizing .kicker{color:var(--gold)}
+.size-cards{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.size-card{position:relative;overflow:hidden;border-radius:24px;padding:38px 34px;text-decoration:none;color:#fff;border:1px solid rgba(255,255,255,.15);background:linear-gradient(145deg,var(--maroon),var(--maroon-dk));transition:transform .35s,box-shadow .35s;cursor:pointer;text-align:left;font-family:inherit;font-size:inherit}
+.size-card.adult{background:linear-gradient(145deg,var(--navy-lt),var(--navy-dk))}
+.size-card::after{content:"";position:absolute;width:260px;height:260px;border-radius:50%;right:-80px;top:-80px;background:radial-gradient(circle,rgba(224,176,74,.45),transparent 70%);transition:transform .5s}
+.size-card:hover{transform:translateY(-10px) scale(1.01);box-shadow:0 30px 60px -20px rgba(0,0,0,.7)}
+.size-card:hover::after{transform:scale(1.6)}
+.size-card .big{font-family:"Playfair Display";font-size:4.5rem;font-weight:900;color:rgba(255,255,255,.1);position:absolute;right:24px;bottom:-10px;transition:color .35s,transform .35s}
+.size-card:hover .big{color:rgba(224,176,74,.3);transform:translateY(-8px)}
+.size-card h3{font-size:1.9rem;margin:10px 0}
+.size-card p{color:#dde2ee;max-width:360px}
+.size-card .go{display:inline-flex;gap:8px;align-items:center;margin-top:20px;font-weight:700;color:var(--gold-lt);border-bottom:2px solid transparent;transition:border-color .3s,gap .3s}
+.size-card:hover .go{border-color:var(--gold);gap:14px}
+.pills{display:flex;gap:6px;flex-wrap:wrap;margin-top:16px}
+.pills span{padding:4px 10px;border-radius:8px;background:rgba(255,255,255,.12);font-size:.8rem;font-weight:600;transition:background .2s,color .2s,transform .2s}
+.size-card:hover .pills span{background:var(--gold);color:var(--navy)}
+.size-card:hover .pills span:nth-child(2){transition-delay:.04s}.size-card:hover .pills span:nth-child(3){transition-delay:.08s}.size-card:hover .pills span:nth-child(4){transition-delay:.12s}.size-card:hover .pills span:nth-child(5){transition-delay:.16s}.size-card:hover .pills span:nth-child(6){transition-delay:.2s}.size-card:hover .pills span:nth-child(7){transition-delay:.24s}.size-card:hover .pills span:nth-child(8){transition-delay:.28s}
+
+.finder{margin-top:34px;padding:30px;border-radius:24px;background:rgba(255,255,255,.05);border:1px dashed rgba(224,176,74,.5);display:grid;grid-template-columns:1.1fr 1fr;gap:30px;align-items:center}
+.finder h3{color:var(--gold-lt);font-size:1.6rem}
+.finder p{color:#c3cadb;font-size:.95rem;margin-top:6px}
+.frow{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.seg{display:inline-flex;background:rgba(255,255,255,.08);border-radius:12px;padding:4px}
+.seg button{background:none;border:0;color:#cfd6e6;padding:8px 14px;border-radius:9px;font-weight:600;cursor:pointer;font-family:inherit;transition:background .25s,color .25s}
+.seg button.on{background:var(--gold);color:var(--navy)}
+.seg button:not(.on):hover{color:#fff;background:rgba(255,255,255,.08)}
+.finder input{width:120px;padding:11px 12px;border-radius:12px;border:2px solid rgba(255,255,255,.2);background:rgba(0,0,0,.2);color:#fff;font-size:1rem;font-family:inherit;transition:border-color .25s,box-shadow .25s}
+.finder input:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 4px rgba(224,176,74,.25)}
+.result{margin-top:14px;min-height:56px;padding:14px 16px;border-radius:14px;background:rgba(122,29,46,.5);border:1px solid rgba(224,176,74,.4);font-weight:600}
+.result .sz{font-family:"Playfair Display";font-size:1.8rem;color:var(--gold-lt);margin-right:8px}
+
+/* MODAL */
+.modal{position:fixed;inset:0;z-index:300;display:grid;place-items:center;padding:20px;background:rgba(7,12,26,.72);backdrop-filter:blur(6px);opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}
+.modal.open{opacity:1;visibility:visible}
+.sheet{width:min(820px,100%);max-height:90vh;overflow:auto;background:#fff;border-radius:24px;box-shadow:0 40px 90px rgba(0,0,0,.5);transform:translateY(40px) scale(.96);transition:transform .4s cubic-bezier(.2,1.3,.4,1)}
+.modal.open .sheet{transform:none}
+.sheet-head{position:sticky;top:0;z-index:2;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:22px 28px;color:#fff;background:linear-gradient(120deg,var(--maroon),var(--navy))}
+.sheet-head h3{font-size:1.7rem}
+.sheet-head small{color:var(--gold-lt);font-weight:600;letter-spacing:1px;text-transform:uppercase;font-size:.75rem}
+.x{width:42px;height:42px;border-radius:50%;border:2px solid rgba(255,255,255,.4);background:none;color:#fff;font-size:1.3rem;cursor:pointer;transition:transform .3s,background .3s,border-color .3s;flex-shrink:0}
+.x:hover{transform:rotate(90deg);background:var(--gold);border-color:var(--gold);color:var(--navy)}
+.sheet-body{padding:24px 28px 30px}
+.unit{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:16px}
+.unit .seg{background:#eef0f5}
+.unit .seg button{color:var(--navy)}
+.unit .seg button.on{background:var(--navy);color:#fff}
+table{width:100%;border-collapse:separate;border-spacing:0;font-size:.95rem;overflow:hidden;border-radius:14px;border:1px solid #e3e6ee}
+th{background:var(--navy);color:#fff;padding:12px 10px;text-align:center;font-weight:600}
+th:first-child{background:var(--maroon);text-align:left;padding-left:16px}
+td{padding:12px 10px;text-align:center;border-top:1px solid #edf0f5;transition:background .15s,color .15s}
+td:first-child{text-align:left;padding-left:16px;font-weight:700;color:var(--maroon)}
+tbody tr:nth-child(even) td{background:#f8f6f2}
+tbody tr:hover td{background:#fff3d6;color:var(--navy)}
+tbody tr:hover td:first-child{color:var(--maroon-dk)}
+td.colhi,th.colhi{background:#fde9b4 !important;color:var(--navy) !important}
+.how{display:grid;grid-template-columns:1.3fr 1.2fr 1fr;gap:12px;margin-top:20px}
+.how div{padding:14px;border-radius:14px;background:#f4f1ea;font-size:.88rem;color:var(--muted);transition:background .25s,transform .25s}
+.how div:hover{background:#fff3d6;transform:translateY(-3px)}
+.how b{display:block;color:var(--navy);margin-bottom:2px}
+.note-s{margin-top:16px;font-size:.82rem;color:var(--muted);padding:12px 14px;border-left:4px solid var(--gold);background:#fffaf0;border-radius:0 10px 10px 0}
+
+/* ORDER STEPS */
+.steps{position:relative;display:grid;gap:22px;max-width:880px;margin:0 auto}
+.steps::before{content:"";position:absolute;left:35px;top:20px;bottom:20px;width:4px;border-radius:4px;background:linear-gradient(var(--maroon),var(--gold),var(--navy))}
+.step{position:relative;display:grid;grid-template-columns:74px 1fr;gap:22px;align-items:start}
+.num{position:relative;z-index:1;width:74px;height:74px;border-radius:50%;display:grid;place-items:center;font-family:"Playfair Display";font-weight:900;font-size:1.8rem;color:var(--gold-lt);background:var(--navy);border:4px solid var(--cream);box-shadow:0 0 0 3px var(--maroon);transition:transform .4s cubic-bezier(.3,1.7,.5,1),background .3s}
+.step:hover .num{transform:scale(1.15) rotate(-8deg);background:var(--maroon)}
+.step-card{background:#fff;border-radius:var(--radius);padding:22px 24px;box-shadow:0 10px 24px -14px rgba(0,0,0,.3);border:1px solid #ece4d6;transition:transform .3s,box-shadow .3s,border-color .3s}
+.step:hover .step-card{transform:translateX(8px);box-shadow:var(--shadow);border-color:var(--gold)}
+.step-card h3{font-size:1.3rem;color:var(--navy);margin-bottom:6px}
+.step-card p{color:var(--muted)}
+.step-card .tag{display:inline-block;margin-top:10px;font-size:.8rem;font-weight:700;padding:4px 10px;border-radius:8px;background:#f8e7ea;color:var(--maroon)}
+.scocta{margin:54px auto 0;max-width:880px;border-radius:26px;padding:36px;display:flex;gap:26px;align-items:center;justify-content:space-between;flex-wrap:wrap;color:#fff;background:linear-gradient(120deg,var(--maroon-dk),var(--maroon) 40%,var(--navy) 100%);background-size:200% 200%;animation:grad 8s ease infinite;box-shadow:var(--shadow);position:relative;overflow:hidden}
+@keyframes grad{50%{background-position:100% 50%}}
+.scocta h3{font-size:1.8rem}
+.scocta p{color:#e2e6f0;max-width:460px}
+.scocta .url{display:inline-block;margin-top:8px;font-family:ui-monospace,Menlo,monospace;font-size:.88rem;color:var(--gold-lt);background:rgba(0,0,0,.25);padding:4px 10px;border-radius:8px}
+.tips{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:880px;margin:28px auto 0}
+.tip{background:#fff;border-radius:16px;padding:20px;border:1px solid #ece4d6;transition:transform .3s,background .3s,color .3s}
+.tip:hover{transform:translateY(-6px) rotate(-.6deg);background:var(--navy);color:#fff}
+.tip:hover h4{color:var(--gold-lt)}
+.tip:hover p{color:#d3d9e8}
+.tip h4{font-size:1rem;color:var(--maroon);margin-bottom:4px;transition:color .3s}
+.tip p{font-size:.9rem;color:var(--muted);transition:color .3s}
+
+/* FAQ */
+.faq{background:linear-gradient(180deg,#efe5d6,var(--cream))}
+.acc{max-width:820px;margin:0 auto;display:grid;gap:14px}
+.qa{background:#fff;border-radius:16px;border:1px solid #e9e0d1;overflow:hidden;transition:box-shadow .3s,border-color .3s}
+.qa:hover{border-color:var(--maroon);box-shadow:0 10px 24px -14px rgba(0,0,0,.35)}
+.qa button{width:100%;display:flex;justify-content:space-between;align-items:center;gap:14px;padding:20px 22px;background:none;border:0;text-align:left;font:600 1.05rem Inter,sans-serif;color:var(--navy);cursor:pointer}
+.qa .pm{width:32px;height:32px;flex-shrink:0;border-radius:50%;display:grid;place-items:center;background:var(--cream);color:var(--maroon);font-size:1.3rem;transition:transform .35s,background .3s,color .3s}
+.qa.open .pm{transform:rotate(135deg);background:var(--maroon);color:#fff}
+.qa .ans{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.qa .ans p{padding:0 22px 20px;color:var(--muted)}
+
+/* footer */
+footer{background:var(--navy-dk);color:#aab3c8;padding:56px 0 30px;border-top:4px solid var(--maroon)}
+.foot{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;align-items:center}
+footer .brand{font-size:1.4rem}
+footer a.fl{color:var(--gold-lt);text-decoration:none;border-bottom:1px dashed transparent;transition:border-color .2s}
+footer a.fl:hover{border-color:var(--gold)}
+.copy{text-align:center;margin-top:34px;font-size:.85rem;opacity:.7}
+
+/* misc */
+#toTop{position:fixed;right:22px;bottom:22px;z-index:150;width:52px;height:52px;border-radius:50%;border:2px solid var(--gold);background:var(--maroon);color:var(--gold-lt);font-size:1.3rem;cursor:pointer;opacity:0;transform:translateY(20px);transition:opacity .3s,transform .3s,background .3s}
+#toTop.show{opacity:1;transform:none}
+#toTop:hover{background:var(--navy);transform:translateY(-4px)}
+.burst{position:fixed;pointer-events:none;z-index:400;font-size:1.3rem;color:var(--gold);animation:burst .9s ease-out forwards;text-shadow:0 0 8px rgba(224,176,74,.7)}
+@keyframes burst{to{transform:translate(var(--dx),var(--dy)) rotate(var(--r)) scale(.4);opacity:0}}
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+
+@media (max-width:940px){
+  .hero-grid,.detail-grid,.finder{grid-template-columns:1fr}
+  .features,.info{grid-template-columns:repeat(2,1fr)}
+  .size-cards,.tips,.how{grid-template-columns:1fr}
+  .links{display:none;position:absolute;top:68px;left:0;right:0;flex-direction:column;background:var(--navy-dk);padding:12px}
+  .links.open{display:flex}
+  .burger{display:block}
+  .badge{right:6px;top:-10px;width:88px;height:88px}
+}
+@media (max-width:560px){
+  .features,.info{grid-template-columns:1fr}
+  .steps::before{left:27px}
+  .step{grid-template-columns:58px 1fr;gap:14px}
+  .num{width:58px;height:58px;font-size:1.4rem}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+
+<nav id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top"><span class="clef">𝄞</span> ASH Harmonics</a>
+    <button class="burger" id="burger" aria-label="Menu">☰</button>
+    <ul class="links" id="links">
+      <li><a href="#details">The Hoodie</a></li>
+      <li><a href="#sizing">Sizing</a></li>
+      <li><a href="#order">How to Order</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a class="cta" href="https://www.schoolcashonline.com/" target="_blank" rel="noopener">Order on School Cash ↗</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="staff"></div>
+  <div id="notes"></div>
+  <div class="wrap hero-grid">
+    <div class="reveal">
+      <span class="eyebrow"><span class="dot"></span>Orders now open</span>
+      <h1>The Official <span class="shine">All Saints Harmonics</span> Hoodie</h1>
+      <p class="lead">Wear the music. A cozy, bold red pullover with our chrome-and-gold ASH crest, made for rehearsals, concerts and everything in between.</p>
+      <div class="chips">
+        <div class="chip">Price: <b data-cfg="price"></b></div>
+        <div class="chip">Sizes: <b>Youth XS – Adult 4XL</b></div>
+        <div class="chip">Pay via: <b>School Cash Online</b></div>
+      </div>
+      <div class="btns">
+        <a class="btn btn-gold" href="#order">How to Order <span class="arr">→</span></a>
+        <a class="btn btn-ghost" href="#sizing">Find My Size <span class="arr">→</span></a>
+      </div>
+    </div>
+    <div class="stage reveal d2">
+      <div class="product" id="product">
+        <div class="badge"><div><span data-cfg="price"></span>each</div></div>
+        <div class="imgbox" id="imgbox">
+          <img src="hoodie.jpg" alt="Red pullover hoodie with the ASH All Saints Harmonics logo in chrome and gold with music notes" id="heroImg">
+          <div class="lens" id="lens"></div>
+          <div class="zoom-hint">🔍 Hover to zoom in on the print</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <svg class="wave" viewBox="0 0 1440 80" preserveAspectRatio="none"><path fill="#f7f1e8" d="M0,40 C240,90 480,0 720,30 C960,60 1200,10 1440,40 L1440,80 L0,80 Z"/></svg>
+</header>
+
+<div class="marquee" aria-hidden="true">
+  <div class="track" id="track"></div>
+</div>
+
+<!-- KEY INFO -->
+<div class="wrap" style="padding-top:90px">
+  <div class="info">
+    <div class="card reveal"><div class="lbl">Price</div><div class="val" data-cfg="price"></div></div>
+    <div class="card reveal d1"><div class="lbl">Order Deadline</div><div class="val" data-cfg="deadlineText"></div></div>
+    <div class="card reveal d2"><div class="lbl">Time Left to Order</div><div class="cd" id="countdown"></div></div>
+    <div class="card reveal d3"><div class="lbl">Pickup</div><div class="val" style="font-size:1.1rem" data-cfg="pickup"></div></div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker">Why you'll love it</div>
+      <h2>Made to Be Worn Loud</h2>
+      <p>Hover over (or tap) each card to flip it over.</p>
+      <div class="bar"></div>
+    </div>
+    <div class="features">
+      <div class="flip reveal" tabindex="0"><div class="flip-in">
+        <div class="face front"><div class="ic">♫</div><h3>Show-Stopping Print</h3><small>Chrome & gold ASH crest</small></div>
+        <div class="face back"><h3>Built to Stand Out</h3><p>The full-colour front print features a treble clef, flowing staff lines and a banner reading “All Saints Harmonics.”</p></div>
+      </div></div>
+      <div class="flip reveal d1" tabindex="0"><div class="flip-in">
+        <div class="face front"><div class="ic">☁</div><h3>Soft Fleece Comfort</h3><small>Warm for winter rehearsals</small></div>
+        <div class="face back"><h3>Cozy Inside</h3><p>A brushed fleece interior keeps you warm on early mornings and cold concert nights.</p></div>
+      </div></div>
+      <div class="flip reveal d2" tabindex="0"><div class="flip-in">
+        <div class="face front"><div class="ic">✋</div><h3>Kangaroo Pocket</h3><small>Plus a drawstring hood</small></div>
+        <div class="face back"><h3>Practical Too</h3><p>A front pouch pocket for your phone, pencil and reeds, and an adjustable lined hood with metal grommets.</p></div>
+      </div></div>
+      <div class="flip reveal d3" tabindex="0"><div class="flip-in">
+        <div class="face front"><div class="ic">★</div><h3>Youth & Adult Sizes</h3><small>For students, family & fans</small></div>
+        <div class="face back"><h3>Everyone Can Join</h3><p>Available in youth and adult sizes, so parents, siblings and grandparents can show their support.</p></div>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- DETAILS -->
+<section class="details" id="details">
+  <div class="wrap detail-grid">
+    <div class="spot reveal" id="spot"><img src="logo.jpg" alt="Close-up of the ASH All Saints Harmonics logo"></div>
+    <div class="reveal d1">
+      <div class="kicker">The Details</div>
+      <h2>A Crest Worth Singing About</h2>
+      <p style="color:var(--muted)">Our class hoodie celebrates everyone who makes music at All Saints. It's perfect for concert days, field trips and showing your ASH pride all year long.</p>
+      <ul class="spec">
+        <li>🎨 <span><b>Colour:</b> Classic red with a chrome-silver, gold and black front print</span></li>
+        <li>🧵 <span><b>Style:</b> Pullover hoodie with lined hood, drawstrings and ribbed cuffs and waistband</span></li>
+        <li>👕 <span><b>Fit:</b> Unisex, relaxed. If you're between sizes, size up for a roomier fit</span></li>
+        <li>🧺 <span><b>Care:</b> Machine wash cold, inside out. Tumble dry low and do not iron the print</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SIZING -->
+<section class="sizing" id="sizing">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker">Get the perfect fit</div>
+      <h2>Sizing Charts</h2>
+      <p>Choose a chart below to see full measurements, or use the size finder.</p>
+      <div class="bar"></div>
+    </div>
+    <div class="size-cards">
+      <button class="size-card reveal" data-open="youth">
+        <span class="big">YOUTH</span>
+        <div class="kicker" style="color:var(--gold-lt)">Ages 4 – 20</div>
+        <h3>Youth Sizing Chart</h3>
+        <p>Hoodie and body measurements for youth sizes, with an age guide to help you choose.</p>
+        <div class="pills"><span>XS</span><span>S</span><span>M</span><span>L</span><span>XL</span></div>
+        <span class="go">View youth chart <span>→</span></span>
+      </button>
+      <button class="size-card adult reveal d1" data-open="adult">
+        <span class="big">ADULT</span>
+        <div class="kicker" style="color:var(--gold-lt)">Unisex fit</div>
+        <h3>Adult Sizing Chart</h3>
+        <p>Chest, body length, sleeve and body-fit measurements for adult unisex sizes XS to 4XL.</p>
+        <div class="pills"><span>XS</span><span>S</span><span>M</span><span>L</span><span>XL</span><span>2XL</span><span>3XL</span><span>4XL</span></div>
+        <span class="go">View adult chart <span>→</span></span>
+      </button>
+    </div>
+
+    <div class="finder reveal">
+      <div>
+        <h3>🎯 Quick Size Finder</h3>
+        <p>Measure around the fullest part of the chest, under the arms, with a soft tape. Enter it here and we'll suggest a size.</p>
+      </div>
+      <div>
+        <div class="frow">
+          <div class="seg" id="fGroup"><button class="on" data-v="youth">Youth</button><button data-v="adult">Adult</button></div>
+          <div class="seg" id="fUnit"><button class="on" data-v="in">in</button><button data-v="cm">cm</button></div>
+          <input id="fChest" type="number" min="0" step="0.5" placeholder="Chest" aria-label="Chest measurement">
+        </div>
+        <div class="result" id="fResult">Enter a chest measurement to see your size.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ORDER -->
+<section id="order">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker">Ordering is easy</div>
+      <h2>How to Order on School Cash Online</h2>
+      <p>All hoodie orders and payments are handled through School Cash Online, the OCSB's secure online payment system. No cash needs to come to school.</p>
+      <div class="bar"></div>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><div class="num">1</div><div class="step-card">
+        <h3>Sign in or register</h3>
+        <p>Go to School Cash Online and sign in. New users can select <b>Register</b>, fill in a name, email and password, then confirm the account from the email that is sent.</p>
+        <span class="tag">Takes about 5 minutes</span>
+      </div></div>
+      <div class="step reveal"><div class="num">2</div><div class="step-card">
+        <h3>Add your student</h3>
+        <p>Choose <b>Add a Student</b>, select the board (OCSB) and <b>All Saints Catholic High School</b>, then enter your child's student number, last name and birth date.</p>
+        <span class="tag">You only do this once</span>
+      </div></div>
+      <div class="step reveal"><div class="num">3</div><div class="step-card">
+        <h3>Find the hoodie item</h3>
+        <p>On your student's page, look for the item called <b>“All Saints Harmonics Hoodie”</b> under the school's items for sale.</p>
+      </div></div>
+      <div class="step reveal"><div class="num">4</div><div class="step-card">
+        <h3>Choose the size and quantity</h3>
+        <p>Pick the size and quantity, then select <b>Add to Cart</b>. Check the sizing charts above before you choose. You can add extra hoodies for family members.</p>
+        <span class="tag">Double-check youth vs. adult!</span>
+      </div></div>
+      <div class="step reveal"><div class="num">5</div><div class="step-card">
+        <h3>Check out and pay</h3>
+        <p>Open your cart, select <b>Checkout</b> and pay by credit card or e-cheque. You'll get an email receipt, so keep it for your records.</p>
+      </div></div>
+    </div>
+
+    <div class="scocta reveal">
+      <div>
+        <h3>Ready to order?</h3>
+        <p>Head to School Cash Online to sign in and place your hoodie order before the deadline.</p>
+        <span class="url">www.schoolcashonline.com</span>
+      </div>
+      <a class="btn btn-gold" href="https://www.schoolcashonline.com/" target="_blank" rel="noopener">Go to School Cash Online <span class="arr">↗</span></a>
+    </div>
+
+    <div class="tips">
+      <div class="tip reveal"><h4>📧 Turn on email alerts</h4><p>Choose to receive notifications so you'll see new school items as soon as they're posted.</p></div>
+      <div class="tip reveal d1"><h4>👨‍👩‍👧 More than one child?</h4><p>Add each student to the same account and check out everything in one payment.</p></div>
+      <div class="tip reveal d2"><h4>🔐 Forgot your password?</h4><p>Use <b>Forgot Password</b> on the sign-in page, or select <b>Support</b> for help from School Cash.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker">Questions?</div>
+      <h2>Frequently Asked Questions</h2>
+      <div class="bar"></div>
+    </div>
+    <div class="acc" id="acc">
+      <div class="qa reveal"><button>Who can order a hoodie?<span class="pm">+</span></button><div class="ans"><p>The hoodie is designed for All Saints Harmonics students, but families and friends are welcome to order too. Just add extra hoodies when you check out on School Cash Online.</p></div></div>
+      <div class="qa reveal"><button>Can I pay with cash or cheque?<span class="pm">+</span></button><div class="ans"><p>We ask that all orders go through School Cash Online so sizes and payments are tracked together. If you can't use School Cash Online, contact the All Saints Music Department to make other arrangements.</p></div></div>
+      <div class="qa reveal"><button>How do I know which size to choose?<span class="pm">+</span></button><div class="ans"><p>Open the youth or adult sizing chart above, or use the Quick Size Finder. The best way to check is to measure a hoodie that already fits well, laid flat, and compare it to the chart.</p></div></div>
+      <div class="qa reveal"><button>Can I exchange for a different size?<span class="pm">+</span></button><div class="ans"><p>Hoodies are custom-printed in one order, so exchanges may not be possible once they arrive. Please check the sizing carefully before you check out.</p></div></div>
+      <div class="qa reveal"><button>When and where do I pick it up?<span class="pm">+</span></button><div class="ans"><p data-cfg="pickupLong"></p></div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="brand" href="#top"><span class="clef">𝄞</span> All Saints Harmonics</a>
+        <p style="margin-top:10px">All Saints Catholic High School · Ottawa Catholic School Board</p>
+      </div>
+      <div>
+        <p>Order online: <a class="fl" href="https://www.schoolcashonline.com/" target="_blank" rel="noopener">schoolcashonline.com ↗</a></p>
+        <p>Questions? Contact the All Saints Music Department.</p>
+      </div>
+    </div>
+    <div class="copy">♪ Sing it. Play it. Wear it. ♪</div>
+  </div>
+</footer>
+
+<button id="toTop" aria-label="Back to top">↑</button>
+
+<!-- SIZE CHART MODALS -->
+<div class="modal" id="modal-youth" role="dialog" aria-modal="true" aria-labelledby="yt">
+  <div class="sheet">
+    <div class="sheet-head"><div><small>All Saints Harmonics Hoodie</small><h3 id="yt">Youth Sizing Chart</h3></div><button class="x" data-close>✕</button></div>
+    <div class="sheet-body">
+      <div class="unit"><span style="color:var(--muted);font-size:.9rem">Hover a size to highlight it</span><div class="seg" data-unit-for="youth"><button class="on" data-v="in">Inches</button><button data-v="cm">Centimetres</button></div></div>
+      <div id="tbl-youth"></div>
+      <div class="how">
+        <div><b>Hoodie measurements</b>Chest, body length (shoulder to back hem) and sleeve (centre back of neck, over the shoulder, to cuff) of the hoodie itself.</div>
+        <div><b>Fits chest / waist</b>The body measurements each size is made for. Measure your child, then match these columns.</div>
+        <div><b>Between sizes?</b>Size up. Kids grow, and a roomier hoodie layers better.</div>
+      </div>
+      <p class="note-s">Manufacturer measurements for the Vault L0550Y youth pullover hooded sweatshirt. Youth XL fits about the same chest as an adult XS.</p>
+    </div>
+  </div>
+</div>
+<div class="modal" id="modal-adult" role="dialog" aria-modal="true" aria-labelledby="at">
+  <div class="sheet">
+    <div class="sheet-head"><div><small>All Saints Harmonics Hoodie</small><h3 id="at">Adult Sizing Chart</h3></div><button class="x" data-close>✕</button></div>
+    <div class="sheet-body">
+      <div class="unit"><span style="color:var(--muted);font-size:.9rem">Hover a size to highlight it · Unisex fit</span><div class="seg" data-unit-for="adult"><button class="on" data-v="in">Inches</button><button data-v="cm">Centimetres</button></div></div>
+      <div id="tbl-adult"></div>
+      <div class="how">
+        <div><b>Hoodie measurements</b>Chest, body length (shoulder to back hem) and sleeve (centre back of neck, over the shoulder, to cuff) of the hoodie itself.</div>
+        <div><b>Fits chest / waist</b>The body measurements each size is made for. Measure yourself, then match these columns.</div>
+        <div><b>Between sizes?</b>Size up for a looser fit, or if you plan to layer underneath.</div>
+      </div>
+      <p class="note-s">Manufacturer measurements for the Vault L00550 adult pullover hooded sweatshirt, unisex fit.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ===== EDIT THESE DETAILS ===== */
+const CONFIG = {
+  price: "$45",
+  deadline: "2026-12-04T23:59:00",          // order deadline (local time)
+  deadlineText: "Fri, Dec 4",
+  pickup: "Music Room",
+  pickupLong: "Hoodies will be handed out to students in the Music Room once they arrive. We'll announce the pickup date in class and on the morning announcements."
+};
+/* ============================== */
+
+document.querySelectorAll("[data-cfg]").forEach(el => el.textContent = CONFIG[el.dataset.cfg]);
+
+/* size data (inches) */
+const SIZES = {
+  youth: { cols:["Size","Age guide","Hoodie chest","Body length","Sleeve","Fits chest","Fits waist"],
+    rows:[["XS","4–6",32,20,25,[24,25],[22,23]],["S","8–10",34,21,27,[26,27],[24,25]],["M","10–12",36,23,29,[28,29],[26,27]],["L","14–16",38,25,31,[30,31],[28,29]],["XL","18–20",40,26,33,[32,33],[30,31]]],
+    num:[2,3,4,5,6] },
+  adult: { cols:["Size","Hoodie chest","Body length","Sleeve","Fits chest","Fits waist"],
+    rows:[["XS",36,26.25,34,[29,32],[26,28]],["S",40,27.5,35,[33,36],[29,31]],["M",44,28.75,36,[37,40],[32,34]],["L",48,30,37,[41,44],[35,37]],["XL",52,31,38,[45,48],[38,40]],["2XL",56,32.25,39,[49,52],[41,43]],["3XL",60,33.5,40,[53,56],[44,46]],["4XL",64,34.5,41,[57,60],[47,49]]],
+    num:[1,2,3,4,5] }
+};
+const units = {youth:"in", adult:"in"};
+const fmt = (v,u) => {
+  if (Array.isArray(v)) return v.map(x=>fmt(x,u)).join("–");
+  if (u==="cm") return Math.round(v*2.54);
+  const w=Math.floor(v), fr={0.25:"¼",0.5:"½",0.75:"¾"}[+(v-w).toFixed(2)];
+  return fr ? w+" "+fr : v;
+};
+function renderTable(k){
+  const d=SIZES[k], u=units[k];
+  let h="<table><thead><tr>"+d.cols.map((c,i)=>`<th>${c}${d.num.includes(i)?` <span style="opacity:.7;font-weight:400">(${u})</span>`:""}</th>`).join("")+"</tr></thead><tbody>";
+  d.rows.forEach(r=>{ h+="<tr>"+r.map((c,i)=>`<td>${d.num.includes(i)?fmt(c,u):c}</td>`).join("")+"</tr>"; });
+  document.getElementById("tbl-"+k).innerHTML=h+"</tbody></table>";
+  // column hover highlight
+  const t=document.querySelector("#tbl-"+k+" table");
+  t.querySelectorAll("td,th").forEach(cell=>{
+    cell.addEventListener("mouseenter",()=>{const i=cell.cellIndex;if(i===0)return;t.querySelectorAll("tr").forEach(tr=>tr.children[i]&&tr.children[i].classList.add("colhi"))});
+    cell.addEventListener("mouseleave",()=>t.querySelectorAll(".colhi").forEach(c=>c.classList.remove("colhi")));
+  });
+}
+renderTable("youth"); renderTable("adult");
+document.querySelectorAll("[data-unit-for]").forEach(seg=>{
+  seg.addEventListener("click",e=>{
+    const b=e.target.closest("button"); if(!b) return;
+    seg.querySelectorAll("button").forEach(x=>x.classList.toggle("on",x===b));
+    units[seg.dataset.unitFor]=b.dataset.v; renderTable(seg.dataset.unitFor);
+  });
+});
+
+/* modals */
+let lastFocus=null;
+function openModal(k){ lastFocus=document.activeElement; const m=document.getElementById("modal-"+k); m.classList.add("open"); document.body.style.overflow="hidden"; m.querySelector(".x").focus(); try{history.replaceState(null,"","#"+k+"-sizes")}catch(e){} }
+function closeModals(){ document.querySelectorAll(".modal.open").forEach(m=>m.classList.remove("open")); document.body.style.overflow=""; if(lastFocus) lastFocus.focus(); try{history.replaceState(null,"","#sizing")}catch(e){} }
+document.querySelectorAll("[data-open]").forEach(b=>b.addEventListener("click",()=>openModal(b.dataset.open)));
+document.querySelectorAll(".modal").forEach(m=>m.addEventListener("click",e=>{ if(e.target===m||e.target.closest("[data-close]")) closeModals(); }));
+document.addEventListener("keydown",e=>{ if(e.key==="Escape") closeModals(); });
+function hashRoute(){ const h=location.hash; if(h==="#youth-sizes") openModal("youth"); else if(h==="#adult-sizes") openModal("adult"); }
+window.addEventListener("hashchange",hashRoute); hashRoute();
+
+/* size finder */
+const f={group:"youth",unit:"in"};
+function segBind(id,key){ const s=document.getElementById(id); s.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;s.querySelectorAll("button").forEach(x=>x.classList.toggle("on",x===b));f[key]=b.dataset.v;findSize();}); }
+segBind("fGroup","group"); segBind("fUnit","unit");
+const fIn=document.getElementById("fChest"), fOut=document.getElementById("fResult");
+fIn.addEventListener("input",findSize);
+function findSize(){
+  let v=parseFloat(fIn.value);
+  if(!v||v<=0){ fOut.innerHTML="Enter a chest measurement to see your size."; return; }
+  if(f.unit==="cm") v=v/2.54;
+  const d=SIZES[f.group], fi=d.cols.indexOf("Fits chest");
+  const rows=d.rows; let pick=null;
+  for(const r of rows){ if(v<=r[fi][1]){ pick=r; break; } }
+  if(!pick){
+    fOut.innerHTML = f.group==="youth"
+      ? `<span class="sz">Adult</span> That's larger than youth XL. Switch to <b>Adult</b> to find a size.`
+      : `<span class="sz">4XL+</span> Larger than our biggest size. Contact the Music Department and we'll do our best to help.`;
+    return;
+  }
+  const small = v < rows[0][fi][0]-2;
+  fOut.innerHTML = `<span class="sz">${f.group==="youth"?"Youth ":"Adult "}${pick[0]}</span>` +
+    (small? "This is our smallest size, so it may fit a little roomy." : "This should be a comfortable fit. Size up for a looser look.");
+  fOut.animate([{transform:"scale(.96)"},{transform:"scale(1)"}],{duration:250});
+}
+
+/* countdown */
+function tick(){
+  const el=document.getElementById("countdown"); const diff=new Date(CONFIG.deadline)-new Date();
+  if(diff<=0){ el.innerHTML='<div style="padding:8px 12px"><b style="font-size:1rem">Orders closed</b></div>'; return; }
+  const d=Math.floor(diff/864e5), h=Math.floor(diff/36e5)%24, m=Math.floor(diff/6e4)%60, s=Math.floor(diff/1e3)%60;
+  el.innerHTML=[[d,"days"],[h,"hrs"],[m,"min"],[s,"sec"]].map(([n,l])=>`<div><b>${String(n).padStart(2,"0")}</b><small>${l}</small></div>`).join("");
+}
+tick(); setInterval(tick,1000);
+
+/* floating notes */
+const glyphs=["♪","♫","♬","♩","𝄞"], notes=document.getElementById("notes");
+for(let i=0;i<16;i++){ const n=document.createElement("span"); n.className="note"; n.textContent=glyphs[i%glyphs.length];
+  n.style.left=Math.random()*100+"%"; n.style.bottom=(-20+Math.random()*40)+"px"; n.style.fontSize=(1.2+Math.random()*1.8)+"rem";
+  n.style.animationDuration=(9+Math.random()*9)+"s"; n.style.animationDelay=(-Math.random()*16)+"s"; notes.appendChild(n); }
+
+/* marquee */
+const phrase='<span>ALL SAINTS HARMONICS <i>♪</i></span><span>SING <i>♫</i></span><span>PLAY <i>♬</i></span><span>BELONG <i>♪</i></span><span>WEAR THE MUSIC <i>♫</i></span>';
+document.getElementById("track").innerHTML=phrase.repeat(4);
+
+/* 3D tilt + magnifier */
+const prod=document.getElementById("product"), box=document.getElementById("imgbox"), lens=document.getElementById("lens"), img=document.getElementById("heroImg");
+const fine = matchMedia("(hover:hover)").matches;
+if(fine){
+  prod.addEventListener("mousemove",e=>{ const r=prod.getBoundingClientRect(); const x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
+    prod.style.transform=`rotateY(${x*12}deg) rotateX(${-y*12}deg)`; });
+  prod.addEventListener("mouseleave",()=>prod.style.transform="");
+  box.addEventListener("mousemove",e=>{
+    const r=box.getBoundingClientRect(), x=e.clientX-r.left, y=e.clientY-r.top, z=2.6;
+    lens.style.left=(x-85)+"px"; lens.style.top=(y-85)+"px";
+    lens.style.backgroundImage=`url(${img.src})`;
+    lens.style.backgroundSize=`${r.width*z}px ${r.height*z}px`;
+    lens.style.backgroundPosition=`${-(x*z-85)}px ${-(y*z-85)}px`;
+  });
+}
+/* spotlight on logo */
+const spot=document.getElementById("spot");
+spot.addEventListener("mousemove",e=>{const r=spot.getBoundingClientRect(); spot.style.setProperty("--mx",(e.clientX-r.left)+"px"); spot.style.setProperty("--my",(e.clientY-r.top)+"px");});
+
+/* flip on tap for touch */
+document.querySelectorAll(".flip").forEach(c=>c.addEventListener("click",()=>{ if(!fine) c.classList.toggle("flipped"); }));
+
+/* ripple on buttons */
+document.querySelectorAll(".btn").forEach(b=>b.addEventListener("click",e=>{
+  const r=b.getBoundingClientRect(), s=document.createElement("span"), d=Math.max(r.width,r.height);
+  s.className="ripple"; s.style.width=s.style.height=d+"px"; s.style.left=(e.clientX-r.left-d/2)+"px"; s.style.top=(e.clientY-r.top-d/2)+"px";
+  b.appendChild(s); setTimeout(()=>s.remove(),600);
+}));
+
+/* music-note burst on click */
+document.addEventListener("click",e=>{
+  if(e.target.closest(".modal,input")) return;
+  for(let i=0;i<6;i++){ const n=document.createElement("span"); n.className="burst"; n.textContent=glyphs[Math.floor(Math.random()*4)];
+    n.style.left=e.clientX+"px"; n.style.top=e.clientY+"px";
+    const a=Math.random()*Math.PI*2, dist=40+Math.random()*50;
+    n.style.setProperty("--dx",Math.cos(a)*dist+"px"); n.style.setProperty("--dy",(Math.sin(a)*dist-30)+"px"); n.style.setProperty("--r",(Math.random()*90-45)+"deg");
+    document.body.appendChild(n); setTimeout(()=>n.remove(),900); }
+});
+
+/* FAQ accordion */
+document.querySelectorAll(".qa button").forEach(b=>b.addEventListener("click",()=>{
+  const qa=b.parentElement, ans=qa.querySelector(".ans"), open=qa.classList.contains("open");
+  document.querySelectorAll(".qa.open").forEach(o=>{o.classList.remove("open");o.querySelector(".ans").style.maxHeight=null;});
+  if(!open){ qa.classList.add("open"); ans.style.maxHeight=ans.scrollHeight+"px"; }
+}));
+
+/* nav, progress, back-to-top */
+const nav=document.getElementById("nav"), prog=document.getElementById("progress"), toTopBtn=document.getElementById("toTop");
+addEventListener("scroll",()=>{ const y=scrollY, h=document.documentElement.scrollHeight-innerHeight;
+  prog.style.width=(y/h*100)+"%"; nav.classList.toggle("scrolled",y>40); toTopBtn.classList.toggle("show",y>600); },{passive:true});
+toTopBtn.addEventListener("click",()=>scrollTo({top:0,behavior:"smooth"}));
+document.getElementById("burger").addEventListener("click",()=>document.getElementById("links").classList.toggle("open"));
+document.querySelectorAll(".links a").forEach(a=>a.addEventListener("click",()=>document.getElementById("links").classList.remove("open")));
+
+/* reveal on scroll */
+const io=new IntersectionObserver(es=>es.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target);} }),{threshold:.12});
+document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
