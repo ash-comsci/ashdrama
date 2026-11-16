@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Game of Tiaras — Program</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#110c0e; --ink:#f3ece4; --muted:#b9a9a3; --accent:#c8202a; --gold:#f2d21b;
+    --pw:300px; --ph:474px;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{
+    background:
+      radial-gradient(ellipse 70% 55% at 50% 45%, rgba(170,20,30,.28), transparent 70%),
+      radial-gradient(ellipse at 50% 120%, rgba(242,210,27,.06), transparent 60%),
+      var(--bg);
+    color:var(--ink); font-family:Inter,system-ui,sans-serif;
+    display:flex; flex-direction:column; overflow:hidden;
+    -webkit-tap-highlight-color:transparent;
+  }
+  header{ text-align:center; padding:14px 12px 4px; flex:none }
+  header h1{
+    font-family:Cinzel,serif; font-weight:700; letter-spacing:.12em;
+    font-size:clamp(20px,3.2vw,30px); margin:0; text-transform:uppercase;
+  }
+  header p{ margin:4px 0 0; color:var(--muted); font-size:13px; letter-spacing:.06em }
+
+  #stage{ flex:1; position:relative; display:flex; align-items:center; justify-content:center; min-height:0 }
+  #book{
+    position:relative; width:calc(var(--pw)*2); height:var(--ph);
+    transition:transform .8s cubic-bezier(.4,.1,.2,1);
+  }
+  .leaf{
+    position:absolute; left:50%; top:0; width:var(--pw); height:var(--ph);
+    transform-origin:left center; transform-style:preserve-3d;
+    transform:perspective(2600px) rotateY(0deg);
+    transition:transform .8s cubic-bezier(.4,.1,.2,1);
+    cursor:pointer;
+  }
+  .leaf.flipped{ transform:perspective(2600px) rotateY(-180deg) }
+  .face{
+    position:absolute; inset:0; backface-visibility:hidden; -webkit-backface-visibility:hidden;
+    background:#fff; overflow:hidden;
+    box-shadow:0 18px 40px rgba(0,0,0,.55);
+  }
+  .face img{ width:100%; height:100%; display:block; object-fit:contain; user-select:none; -webkit-user-drag:none }
+  .face.back{ transform:rotateY(180deg) }
+  .face.front::after,.face.back::after{ content:""; position:absolute; top:0; bottom:0; width:9%; pointer-events:none }
+  .face.front::after{ left:0; background:linear-gradient(to right, rgba(0,0,0,.22), transparent) }
+  .face.back::after{ right:0; background:linear-gradient(to left, rgba(0,0,0,.22), transparent) }
+  .face.blank{ background:#f6f2ec }
+  .face.cover-face::after{ display:none }
+
+  /* single-page (phone) mode */
+  #single{ position:relative; width:var(--pw); height:var(--ph); display:none; perspective:2000px }
+  #single .face{ backface-visibility:visible; transition:transform .45s ease, opacity .45s ease }
+  #single .face::after{ display:none }
+  #single .face.out-left{ transform:rotateY(70deg) translateX(-30%); opacity:0; transform-origin:left center }
+  #single .face.out-right{ transform:rotateY(-70deg) translateX(30%); opacity:0; transform-origin:right center }
+  body.single #book{ display:none }
+  body.single #single{ display:block }
+
+  .nav{
+    position:absolute; top:50%; transform:translateY(-50%); z-index:50;
+    width:44px; height:44px; border-radius:50%; border:1px solid rgba(255,255,255,.18);
+    background:rgba(20,14,16,.7); color:var(--ink); font-size:22px; line-height:1;
+    display:flex; align-items:center; justify-content:center; cursor:pointer;
+    backdrop-filter:blur(6px); transition:background .2s, opacity .2s;
+  }
+  .nav:hover{ background:var(--accent) }
+  .nav:disabled{ opacity:.25; cursor:default; background:rgba(20,14,16,.7) }
+  #prev{ left:max(10px, 2vw) } #next{ right:max(10px, 2vw) }
+
+  footer{ flex:none; padding:6px 12px 12px; display:flex; flex-direction:column; align-items:center; gap:8px }
+  .bar{ display:flex; align-items:center; gap:10px }
+  .bar button{
+    background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.14); color:var(--ink);
+    font:500 13px Inter,sans-serif; padding:7px 12px; border-radius:999px; cursor:pointer;
+  }
+  .bar button:hover{ background:rgba(255,255,255,.14) }
+  #counter{ min-width:110px; text-align:center; font-size:13px; color:var(--muted); font-variant-numeric:tabular-nums }
+  #thumbs{ display:flex; gap:8px; overflow-x:auto; max-width:100%; padding:2px 4px 4px; scrollbar-width:thin }
+  #thumbs button{
+    flex:none; width:38px; height:60px; padding:0; border:2px solid transparent; border-radius:3px;
+    background:#fff; cursor:pointer; opacity:.55; transition:opacity .2s, border-color .2s;
+  }
+  #thumbs button img{ width:100%; height:100%; object-fit:cover; display:block }
+  #thumbs button:hover{ opacity:.9 }
+  #thumbs button.on{ opacity:1; border-color:var(--gold) }
+
+  /* zoom overlay */
+  #zoom{
+    position:fixed; inset:0; z-index:100; background:rgba(8,5,6,.94); display:none;
+    overflow:auto; padding:56px 16px 24px;
+  }
+  #zoom.open{ display:block }
+  #zoom .pages{ display:flex; gap:4px; justify-content:center; margin:0 auto; width:max-content; max-width:none }
+  #zoom img{ display:block; background:#fff; height:auto }
+  #zoomClose{
+    position:fixed; top:12px; right:12px; z-index:101; background:var(--accent); color:#fff; border:0;
+    font:600 14px Inter,sans-serif; padding:8px 14px; border-radius:999px; cursor:pointer;
+  }
+  #zoomHint{ position:fixed; top:18px; left:16px; color:var(--muted); font-size:12px; z-index:101 }
+
+  @media (max-width:560px){ header p{ font-size:12px } .nav{ width:38px; height:38px; font-size:19px } }
+</style>
+</head>
+<body>
+<header>
+  <h1>Game of Tiaras</h1>
+  <p>All Saints Catholic High School · Drama Production · 2026–2027</p>
+</header>
+
+<div id="stage">
+  <button class="nav" id="prev" aria-label="Previous page">&#8249;</button>
+  <div id="book" aria-live="polite"></div>
+  <div id="single"></div>
+  <button class="nav" id="next" aria-label="Next page">&#8250;</button>
+</div>
+
+<footer>
+  <div class="bar">
+    <button id="zoomBtn" title="Zoom in on the current page">&#128269; Zoom</button>
+    <span id="counter"></span>
+    <button id="fsBtn" title="Full screen">&#x26F6; Full screen</button>
+  </div>
+  <div id="thumbs"></div>
+</footer>
+
+<div id="zoom" role="dialog" aria-label="Zoomed page">
+  <span id="zoomHint">Scroll to read · tap a page to zoom further</span>
+  <button id="zoomClose">Close ✕</button>
+  <div class="pages"></div>
+</div>
+
+<script>
+/* ------- PAGE LIST: add new pages here, in reading order ------- */
+const PAGES = [
+  { src: "pages/p00-cover.png",             label: "Cover" },
+  { src: "pages/p01-credits.png",           label: "Credits" },
+  { src: "pages/p02-credits-continued.png", label: "Credits (cont.)" },
+  { src: "pages/p03-whos-who.png",          label: "Who's Who" },
+];
+const RATIO = 371 / 586; // page width / height
+/* --------------------------------------------------------------- */
+
+const book = document.getElementById('book');
+const single = document.getElementById('single');
+const prevBtn = document.getElementById('prev'), nextBtn = document.getElementById('next');
+const counter = document.getElementById('counter');
+const thumbs = document.getElementById('thumbs');
+const N = PAGES.length, LEAVES = Math.ceil(N / 2);
+let flippedCount = 0;   // spread mode: leaves turned
+let page = 0;           // single mode: page index
+let mode = null;
+const leaves = [];
+const raising = new Map();
+
+function face(i, cls) {
+  const f = document.createElement('div');
+  f.className = 'face ' + cls;
+  if (i < N) {
+    const img = document.createElement('img');
+    img.src = PAGES[i].src; img.alt = PAGES[i].label; img.draggable = false;
+    f.appendChild(img);
+    if (i === 0) f.classList.add('cover-face');
+  } else f.classList.add('blank');
+  return f;
+}
+
+for (let l = 0; l < LEAVES; l++) {
+  const leaf = document.createElement('div');
+  leaf.className = 'leaf';
+  leaf.appendChild(face(2 * l, 'front'));
+  leaf.appendChild(face(2 * l + 1, 'back'));
+  leaf.addEventListener('click', () => {
+    if (leaf.classList.contains('flipped')) go(-1); else go(1);
+  });
+  book.appendChild(leaf);
+  leaves.push(leaf);
+}
+
+PAGES.forEach((p, i) => {
+  const b = document.createElement('button');
+  b.title = p.label; b.setAttribute('aria-label', 'Go to ' + p.label);
+  const img = document.createElement('img'); img.src = p.src; img.alt = '';
+  b.appendChild(img);
+  b.onclick = () => goToPage(i);
+  thumbs.appendChild(b);
+});
+
+function zOrder() {
+  leaves.forEach((leaf, l) => {
+    const flipped = l < flippedCount;
+    let z = flipped ? l + 1 : LEAVES - l;
+    if (raising.has(l)) z = 1000;
+    leaf.style.zIndex = z;
+  });
+}
+
+function setFlipped(target) {
+  target = Math.max(0, Math.min(LEAVES, target));
+  if (target === flippedCount) return;
+  const dir = target > flippedCount ? 1 : -1;
+  const changing = [];
+  if (dir > 0) for (let l = flippedCount; l < target; l++) changing.push(l);
+  else for (let l = flippedCount - 1; l >= target; l--) changing.push(l);
+  flippedCount = target;
+  changing.forEach((l, k) => {
+    const leaf = leaves[l];
+    clearTimeout(raising.get(l));
+    raising.set(l, setTimeout(() => { raising.delete(l); zOrder(); }, 820 + k * 90));
+    leaf.style.transitionDelay = (k * 90) + 'ms';
+    leaf.classList.toggle('flipped', dir > 0);
+  });
+  zOrder();
+  page = flippedCount === 0 ? 0 : Math.min(N - 1, 2 * flippedCount - 1);
+  update();
+}
+
+function showSingle(i, dir) {
+  const old = single.querySelector('.face');
+  const f = face(i, 'front');
+  if (old && dir) {
+    old.classList.add(dir > 0 ? 'out-left' : 'out-right');
+    old.style.zIndex = 2;
+    setTimeout(() => old.remove(), 460);
+  } else if (old) old.remove();
+  single.prepend(f);
+}
+
+function goToPage(i) {
+  i = Math.max(0, Math.min(N - 1, i));
+  if (mode === 'single') {
+    if (i === page) return;
+    const dir = i > page ? 1 : -1;
+    page = i; flippedCount = Math.floor((page + 1) / 2);
+    showSingle(page, dir); update();
+  } else {
+    setFlipped(Math.floor((i + 1) / 2));
+  }
+}
+
+function go(d) {
+  if (mode === 'single') goToPage(page + d);
+  else setFlipped(flippedCount + d);
+}
+
+function visiblePages() {
+  if (mode === 'single') return [page];
+  const v = [];
+  if (flippedCount > 0) v.push(2 * flippedCount - 1);
+  if (2 * flippedCount < N) v.push(2 * flippedCount);
+  return v;
+}
+
+function update() {
+  const v = visiblePages();
+  // centre the closed book
+  if (mode === 'spread') {
+    let shift = 0;
+    if (flippedCount === 0) shift = -0.5;
+    else if (2 * flippedCount >= N) shift = 0.5;
+    book.style.transform = `translateX(calc(var(--pw) * ${shift}))`;
+  }
+  counter.textContent = v.map(i => PAGES[i].label).join('  ·  ');
+  const atStart = mode === 'single' ? page === 0 : flippedCount === 0;
+  const atEnd = mode === 'single' ? page === N - 1 : (flippedCount === LEAVES || 2 * flippedCount >= N);
+  prevBtn.disabled = atStart; nextBtn.disabled = atEnd;
+  [...thumbs.children].forEach((b, i) => b.classList.toggle('on', v.includes(i)));
+  const on = thumbs.children[v[0]]; if (on) on.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+}
+
+function layout() {
+  const stage = document.getElementById('stage');
+  const W = stage.clientWidth, H = stage.clientHeight;
+  const newMode = W < 640 ? 'single' : 'spread';
+  const availW = newMode === 'single' ? W - 100 : W - 140;
+  const availH = H - 16;
+  let pw = newMode === 'single' ? availW : availW / 2;
+  pw = Math.min(pw, availH * RATIO);
+  pw = Math.max(120, Math.floor(pw));
+  document.documentElement.style.setProperty('--pw', pw + 'px');
+  document.documentElement.style.setProperty('--ph', Math.floor(pw / RATIO) + 'px');
+  if (newMode !== mode) {
+    mode = newMode;
+    document.body.classList.toggle('single', mode === 'single');
+    if (mode === 'single') { showSingle(page, 0); }
+    else {
+      // sync leaves to current page instantly
+      leaves.forEach(l => l.style.transition = 'none');
+      book.style.transition = 'none';
+      flippedCount = Math.floor((page + 1) / 2);
+      leaves.forEach((leaf, l) => leaf.classList.toggle('flipped', l < flippedCount));
+      zOrder();
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        leaves.forEach(l => l.style.transition = ''); book.style.transition = '';
+      }));
+    }
+  }
+  update();
+}
+
+prevBtn.onclick = () => go(-1);
+nextBtn.onclick = () => go(1);
+document.addEventListener('keydown', e => {
+  if (zoomEl.classList.contains('open')) { if (e.key === 'Escape') closeZoom(); return; }
+  if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') { e.preventDefault(); go(1); }
+  if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); go(-1); }
+  if (e.key === 'Home') goToPage(0);
+  if (e.key === 'End') goToPage(N - 1);
+});
+let tx = null, ty = null;
+const stageEl = document.getElementById('stage');
+stageEl.addEventListener('touchstart', e => { tx = e.touches[0].clientX; ty = e.touches[0].clientY; }, { passive: true });
+stageEl.addEventListener('touchend', e => {
+  if (tx === null) return;
+  const dx = e.changedTouches[0].clientX - tx, dy = e.changedTouches[0].clientY - ty;
+  if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy)) go(dx < 0 ? 1 : -1);
+  tx = null;
+});
+single.addEventListener('click', e => {
+  const r = single.getBoundingClientRect();
+  go(e.clientX - r.left < r.width / 3 ? -1 : 1);
+});
+
+/* zoom */
+const zoomEl = document.getElementById('zoom');
+const zoomPages = zoomEl.querySelector('.pages');
+let zoomScale = 1;
+function sizeZoom() {
+  const vis = zoomPages.children.length || 1;
+  const base = Math.min((window.innerWidth - 40) / vis, (window.innerHeight - 90) * RATIO, 900);
+  [...zoomPages.children].forEach(img => img.style.width = Math.floor(base * zoomScale) + 'px');
+}
+function openZoom() {
+  zoomPages.innerHTML = '';
+  zoomScale = 1;
+  visiblePages().forEach(i => {
+    const img = document.createElement('img'); img.src = PAGES[i].src; img.alt = PAGES[i].label;
+    img.onclick = () => { zoomScale = zoomScale === 1 ? 2 : 1; sizeZoom(); };
+    zoomPages.appendChild(img);
+  });
+  sizeZoom();
+  zoomEl.classList.add('open'); zoomEl.scrollTo(0, 0);
+}
+function closeZoom() { zoomEl.classList.remove('open'); }
+document.getElementById('zoomBtn').onclick = openZoom;
+document.getElementById('zoomClose').onclick = closeZoom;
+
+/* fullscreen */
+const fsBtn = document.getElementById('fsBtn');
+if (!document.fullscreenEnabled) fsBtn.style.display = 'none';
+fsBtn.onclick = () => {
+  try {
+    const p = document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen();
+    if (p && p.catch) p.catch(() => {});
+  } catch (e) {}
+};
+
+window.addEventListener('resize', () => { layout(); if (zoomEl.classList.contains('open')) sizeZoom(); });
+layout();
+</script>
+</body>
+</html>
