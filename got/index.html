@@ -8,363 +8,261 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bg:#110c0e; --ink:#f3ece4; --muted:#b9a9a3; --accent:#c8202a; --gold:#f2d21b;
-    --pw:300px; --ph:474px;
-  }
-  *{box-sizing:border-box}
-  html,body{margin:0;height:100%}
+  :root{ --bg:#0f0a0c; --ink:#f3ece4; --muted:#b9a9a3; --accent:#c8202a; --gold:#f2d21b; }
+  *{ box-sizing:border-box }
+  html,body{ margin:0; height:100%; overflow:hidden }
   body{
     background:
-      radial-gradient(ellipse 70% 55% at 50% 45%, rgba(170,20,30,.28), transparent 70%),
-      radial-gradient(ellipse at 50% 120%, rgba(242,210,27,.06), transparent 60%),
+      radial-gradient(ellipse 65% 60% at 50% 45%, rgba(160,18,28,.30), transparent 72%),
       var(--bg);
     color:var(--ink); font-family:Inter,system-ui,sans-serif;
-    display:flex; flex-direction:column; overflow:hidden;
-    -webkit-tap-highlight-color:transparent;
+    -webkit-tap-highlight-color:transparent; user-select:none;
   }
-  header{ text-align:center; padding:14px 12px 4px; flex:none }
-  header h1{
-    font-family:Cinzel,serif; font-weight:700; letter-spacing:.12em;
-    font-size:clamp(20px,3.2vw,30px); margin:0; text-transform:uppercase;
-  }
-  header p{ margin:4px 0 0; color:var(--muted); font-size:13px; letter-spacing:.06em }
-
-  #stage{ flex:1; position:relative; display:flex; align-items:center; justify-content:center; min-height:0 }
-  #book{
-    position:relative; width:calc(var(--pw)*2); height:var(--ph);
-    transition:transform .8s cubic-bezier(.4,.1,.2,1);
-  }
-  .leaf{
-    position:absolute; left:50%; top:0; width:var(--pw); height:var(--ph);
-    transform-origin:left center; transform-style:preserve-3d;
-    transform:perspective(2600px) rotateY(0deg);
-    transition:transform .8s cubic-bezier(.4,.1,.2,1);
-    cursor:pointer;
-  }
-  .leaf.flipped{ transform:perspective(2600px) rotateY(-180deg) }
-  .face{
-    position:absolute; inset:0; backface-visibility:hidden; -webkit-backface-visibility:hidden;
-    background:#fff; overflow:hidden;
-    box-shadow:0 18px 40px rgba(0,0,0,.55);
-  }
-  .face img{ width:100%; height:100%; display:block; object-fit:contain; user-select:none; -webkit-user-drag:none }
-  .face.back{ transform:rotateY(180deg) }
-  .face.front::after,.face.back::after{ content:""; position:absolute; top:0; bottom:0; width:9%; pointer-events:none }
-  .face.front::after{ left:0; background:linear-gradient(to right, rgba(0,0,0,.22), transparent) }
-  .face.back::after{ right:0; background:linear-gradient(to left, rgba(0,0,0,.22), transparent) }
-  .face.blank{ background:#f6f2ec }
-  .face.cover-face::after{ display:none }
-
-  /* single-page (phone) mode */
-  #single{ position:relative; width:var(--pw); height:var(--ph); display:none; perspective:2000px }
-  #single .face{ backface-visibility:visible; transition:transform .45s ease, opacity .45s ease }
-  #single .face::after{ display:none }
-  #single .face.out-left{ transform:rotateY(70deg) translateX(-30%); opacity:0; transform-origin:left center }
-  #single .face.out-right{ transform:rotateY(-70deg) translateX(30%); opacity:0; transform-origin:right center }
-  body.single #book{ display:none }
-  body.single #single{ display:block }
+  #stage{ position:fixed; inset:0 0 64px 0; display:flex; align-items:center; justify-content:center }
+  #bookWrap{ position:relative; transition:transform .7s cubic-bezier(.4,.1,.2,1) }
+  #book{ margin:0 auto }
+  .page{ background:#fff; overflow:hidden }
+  .page img{ width:100%; height:100%; display:block; object-fit:contain; pointer-events:none }
+  .stf__parent{ filter:drop-shadow(0 20px 40px rgba(0,0,0,.6)) }
 
   .nav{
-    position:absolute; top:50%; transform:translateY(-50%); z-index:50;
-    width:44px; height:44px; border-radius:50%; border:1px solid rgba(255,255,255,.18);
-    background:rgba(20,14,16,.7); color:var(--ink); font-size:22px; line-height:1;
+    position:fixed; top:calc(50% - 32px); transform:translateY(-50%); z-index:20;
+    width:48px; height:48px; border-radius:50%; border:1px solid rgba(255,255,255,.18);
+    background:rgba(20,14,16,.65); color:var(--ink); font-size:26px; line-height:1;
     display:flex; align-items:center; justify-content:center; cursor:pointer;
     backdrop-filter:blur(6px); transition:background .2s, opacity .2s;
   }
   .nav:hover{ background:var(--accent) }
-  .nav:disabled{ opacity:.25; cursor:default; background:rgba(20,14,16,.7) }
-  #prev{ left:max(10px, 2vw) } #next{ right:max(10px, 2vw) }
+  .nav:disabled{ opacity:.2; cursor:default; background:rgba(20,14,16,.65) }
+  #prev{ left:14px } #next{ right:14px }
 
-  footer{ flex:none; padding:6px 12px 12px; display:flex; flex-direction:column; align-items:center; gap:8px }
-  .bar{ display:flex; align-items:center; gap:10px }
-  .bar button{
-    background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.14); color:var(--ink);
-    font:500 13px Inter,sans-serif; padding:7px 12px; border-radius:999px; cursor:pointer;
+  #bar{
+    position:fixed; left:0; right:0; bottom:0; height:64px; z-index:20;
+    display:flex; align-items:center; justify-content:center; gap:10px; padding:0 10px;
   }
-  .bar button:hover{ background:rgba(255,255,255,.14) }
-  #counter{ min-width:110px; text-align:center; font-size:13px; color:var(--muted); font-variant-numeric:tabular-nums }
-  #thumbs{ display:flex; gap:8px; overflow-x:auto; max-width:100%; padding:2px 4px 4px; scrollbar-width:thin }
-  #thumbs button{
-    flex:none; width:38px; height:60px; padding:0; border:2px solid transparent; border-radius:3px;
-    background:#fff; cursor:pointer; opacity:.55; transition:opacity .2s, border-color .2s;
+  #bar button{
+    background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.15); color:var(--ink);
+    font:500 13px Inter,sans-serif; padding:8px 13px; border-radius:999px; cursor:pointer; white-space:nowrap;
   }
-  #thumbs button img{ width:100%; height:100%; object-fit:cover; display:block }
-  #thumbs button:hover{ opacity:.9 }
-  #thumbs button.on{ opacity:1; border-color:var(--gold) }
+  #bar button:hover{ background:rgba(255,255,255,.16) }
+  #title{ font-family:Cinzel,serif; letter-spacing:.12em; font-weight:700; font-size:14px; text-transform:uppercase; opacity:.85 }
+  #counter{ min-width:150px; text-align:center; font-size:13px; color:var(--muted); font-variant-numeric:tabular-nums }
+  #thumbs{ display:flex; gap:6px }
+  #thumbs button{ width:26px !important; height:40px; padding:0 !important; border-radius:3px !important; overflow:hidden; border:2px solid transparent !important; opacity:.5; background:#fff !important }
+  #thumbs button.on{ opacity:1; border-color:var(--gold) !important }
+  #thumbs img{ width:100%; height:100%; object-fit:cover; display:block }
 
-  /* zoom overlay */
-  #zoom{
-    position:fixed; inset:0; z-index:100; background:rgba(8,5,6,.94); display:none;
-    overflow:auto; padding:56px 16px 24px;
+  /* opening splash */
+  #splash{
+    position:fixed; inset:0; z-index:50; cursor:pointer;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:18px; text-align:center;
+    background:radial-gradient(ellipse at 50% 45%, rgba(120,10,20,.55), rgba(8,5,6,.96) 70%);
+    transition:opacity .5s ease; padding:24px;
   }
+  #splash.hide{ opacity:0; pointer-events:none }
+  #splash img{ height:min(52vh,420px); box-shadow:0 20px 50px rgba(0,0,0,.7); border-radius:2px }
+  #splash h1{ font-family:Cinzel,serif; letter-spacing:.14em; margin:0; font-size:clamp(22px,4vw,34px); text-transform:uppercase }
+  #splash p{ margin:0; color:var(--muted); font-size:14px }
+  #splash .go{
+    background:var(--accent); color:#fff; border:0; font:600 16px Inter,sans-serif;
+    padding:12px 26px; border-radius:999px; cursor:pointer; box-shadow:0 8px 24px rgba(200,32,42,.4);
+    animation:pulse 2s infinite;
+  }
+  @keyframes pulse{ 50%{ transform:scale(1.05) } }
+
+  /* zoom */
+  #zoom{ position:fixed; inset:0; z-index:60; background:rgba(8,5,6,.96); display:none; overflow:auto; padding:60px 12px 24px }
   #zoom.open{ display:block }
-  #zoom .pages{ display:flex; gap:4px; justify-content:center; margin:0 auto; width:max-content; max-width:none }
-  #zoom img{ display:block; background:#fff; height:auto }
-  #zoomClose{
-    position:fixed; top:12px; right:12px; z-index:101; background:var(--accent); color:#fff; border:0;
-    font:600 14px Inter,sans-serif; padding:8px 14px; border-radius:999px; cursor:pointer;
-  }
-  #zoomHint{ position:fixed; top:18px; left:16px; color:var(--muted); font-size:12px; z-index:101 }
+  #zoom img{ display:block; margin:0 auto 12px; width:min(100%,1100px); background:#fff }
+  #zoomClose{ position:fixed; top:12px; right:12px; z-index:61; background:var(--accent); color:#fff; border:0; font:600 14px Inter,sans-serif; padding:8px 14px; border-radius:999px; cursor:pointer }
 
-  @media (max-width:560px){ header p{ font-size:12px } .nav{ width:38px; height:38px; font-size:19px } }
+  @media (max-width:700px){
+    #title, #thumbs{ display:none }
+    .nav{ width:40px; height:40px; font-size:22px; background:rgba(20,14,16,.5) }
+    #prev{ left:6px } #next{ right:6px }
+    #counter{ min-width:0 }
+  }
 </style>
 </head>
 <body>
-<header>
-  <h1>Game of Tiaras</h1>
-  <p>All Saints Catholic High School · Drama Production · 2026–2027</p>
-</header>
 
-<div id="stage">
-  <button class="nav" id="prev" aria-label="Previous page">&#8249;</button>
-  <div id="book" aria-live="polite"></div>
-  <div id="single"></div>
-  <button class="nav" id="next" aria-label="Next page">&#8250;</button>
+<div id="stage"><div id="bookWrap"><div id="book"></div></div></div>
+<button class="nav" id="prev" aria-label="Previous page">&#8249;</button>
+<button class="nav" id="next" aria-label="Next page">&#8250;</button>
+
+<div id="bar">
+  <span id="title">Game of Tiaras</span>
+  <span id="counter"></span>
+  <div id="thumbs"></div>
+  <button id="zoomBtn">&#128269; Zoom</button>
+  <button id="fsBtn">&#x26F6; Full screen</button>
 </div>
 
-<footer>
-  <div class="bar">
-    <button id="zoomBtn" title="Zoom in on the current page">&#128269; Zoom</button>
-    <span id="counter"></span>
-    <button id="fsBtn" title="Full screen">&#x26F6; Full screen</button>
-  </div>
-  <div id="thumbs"></div>
-</footer>
+<div id="splash" role="button" aria-label="Open the program">
+  <img src="pages/p00-cover.jpg" alt="Game of Tiaras program cover">
+  <h1>Game of Tiaras</h1>
+  <p>All Saints Catholic High School · Drama Production</p>
+  <button class="go">Open the Program</button>
+</div>
 
 <div id="zoom" role="dialog" aria-label="Zoomed page">
-  <span id="zoomHint">Scroll to read · tap a page to zoom further</span>
   <button id="zoomClose">Close ✕</button>
-  <div class="pages"></div>
+  <div id="zoomPages"></div>
 </div>
 
+<script src="page-flip.js"></script>
 <script>
 /* ------- PAGE LIST: add new pages here, in reading order ------- */
 const PAGES = [
-  { src: "pages/p00-cover.png",             label: "Cover" },
-  { src: "pages/p01-credits.png",           label: "Credits" },
-  { src: "pages/p02-credits-continued.png", label: "Credits (cont.)" },
-  { src: "pages/p03-whos-who.png",          label: "Who's Who" },
+  { src: "pages/p00-cover.jpg",              label: "Cover" },
+  { src: "pages/p01-credits.jpg",            label: "Credits" },
+  { src: "pages/p02-credits-continued.jpg",  label: "Credits (cont.)" },
+  { src: "pages/p03-whos-who.jpg",           label: "Who's Who" },
+  { src: "pages/p04-whos-who-continued.jpg", label: "Who's Who (cont.)" },
 ];
-const RATIO = 371 / 586; // page width / height
+const RATIO = 1500 / 2369; // page width / height
 /* --------------------------------------------------------------- */
 
-const book = document.getElementById('book');
-const single = document.getElementById('single');
+const N = PAGES.length;
+const bookWrap = document.getElementById('bookWrap');
 const prevBtn = document.getElementById('prev'), nextBtn = document.getElementById('next');
-const counter = document.getElementById('counter');
-const thumbs = document.getElementById('thumbs');
-const N = PAGES.length, LEAVES = Math.ceil(N / 2);
-let flippedCount = 0;   // spread mode: leaves turned
-let page = 0;           // single mode: page index
-let mode = null;
-const leaves = [];
-const raising = new Map();
+const counter = document.getElementById('counter'), thumbs = document.getElementById('thumbs');
+let flip = null, current = 0, portrait = false, PW = 300;
 
-function face(i, cls) {
-  const f = document.createElement('div');
-  f.className = 'face ' + cls;
-  if (i < N) {
-    const img = document.createElement('img');
-    img.src = PAGES[i].src; img.alt = PAGES[i].label; img.draggable = false;
-    f.appendChild(img);
-    if (i === 0) f.classList.add('cover-face');
-  } else f.classList.add('blank');
-  return f;
-}
-
-for (let l = 0; l < LEAVES; l++) {
-  const leaf = document.createElement('div');
-  leaf.className = 'leaf';
-  leaf.appendChild(face(2 * l, 'front'));
-  leaf.appendChild(face(2 * l + 1, 'back'));
-  leaf.addEventListener('click', () => {
-    if (leaf.classList.contains('flipped')) go(-1); else go(1);
-  });
-  book.appendChild(leaf);
-  leaves.push(leaf);
-}
+PAGES.forEach(p => { const i = new Image(); i.src = p.src; }); // preload
 
 PAGES.forEach((p, i) => {
   const b = document.createElement('button');
   b.title = p.label; b.setAttribute('aria-label', 'Go to ' + p.label);
-  const img = document.createElement('img'); img.src = p.src; img.alt = '';
-  b.appendChild(img);
-  b.onclick = () => goToPage(i);
+  b.innerHTML = `<img src="${p.src}" alt="">`;
+  b.onclick = () => goTo(i);
   thumbs.appendChild(b);
 });
 
-function zOrder() {
-  leaves.forEach((leaf, l) => {
-    const flipped = l < flippedCount;
-    let z = flipped ? l + 1 : LEAVES - l;
-    if (raising.has(l)) z = 1000;
-    leaf.style.zIndex = z;
-  });
+function dims() {
+  const narrow = innerWidth < 700;
+  const sidePad = narrow ? 8 : 80;
+  const W = innerWidth - sidePad * 2, H = innerHeight - 64 - 20;
+  portrait = narrow || innerWidth < innerHeight * 0.95;
+  let pw = portrait ? Math.min(W, H * RATIO) : Math.min(W / 2, H * RATIO);
+  pw = Math.max(140, Math.floor(pw));
+  return { pw, ph: Math.floor(pw / RATIO) };
 }
 
-function setFlipped(target) {
-  target = Math.max(0, Math.min(LEAVES, target));
-  if (target === flippedCount) return;
-  const dir = target > flippedCount ? 1 : -1;
-  const changing = [];
-  if (dir > 0) for (let l = flippedCount; l < target; l++) changing.push(l);
-  else for (let l = flippedCount - 1; l >= target; l--) changing.push(l);
-  flippedCount = target;
-  changing.forEach((l, k) => {
-    const leaf = leaves[l];
-    clearTimeout(raising.get(l));
-    raising.set(l, setTimeout(() => { raising.delete(l); zOrder(); }, 820 + k * 90));
-    leaf.style.transitionDelay = (k * 90) + 'ms';
-    leaf.classList.toggle('flipped', dir > 0);
+function build() {
+  const { pw, ph } = dims();
+  PW = pw;
+  if (flip) { current = flip.getCurrentPageIndex(); flip.destroy(); }
+  bookWrap.innerHTML = '<div id="book"></div>';
+  const book = document.getElementById('book');
+  book.style.width = (portrait ? pw : pw * 2) + 'px';
+  book.style.height = ph + 'px';
+  PAGES.forEach((p, i) => {
+    const d = document.createElement('div');
+    d.className = 'page';
+    if (i === 0) d.dataset.density = 'hard';
+    d.innerHTML = `<img src="${p.src}" alt="${p.label}">`;
+    book.appendChild(d);
   });
-  zOrder();
-  page = flippedCount === 0 ? 0 : Math.min(N - 1, 2 * flippedCount - 1);
+  flip = new St.PageFlip(book, {
+    width: pw, height: ph, size: 'fixed',
+    showCover: true, usePortrait: portrait,
+    maxShadowOpacity: 0.55, flippingTime: 850,
+    mobileScrollSupport: false, startPage: current,
+    drawShadow: true, autoSize: false,
+  });
+  flip.loadFromHTML(book.querySelectorAll('.page'));
+  flip.on('flip', e => { current = e.data; update(); });
+  flip.on('changeOrientation', update);
+  flip.on('changeState', e => {
+    if (e.data === 'flipping' || e.data === 'user_fold') {
+      const i = flip.getCurrentPageIndex();
+      if (i === 0) center(1);
+    }
+  });
   update();
 }
 
-function showSingle(i, dir) {
-  const old = single.querySelector('.face');
-  const f = face(i, 'front');
-  if (old && dir) {
-    old.classList.add(dir > 0 ? 'out-left' : 'out-right');
-    old.style.zIndex = 2;
-    setTimeout(() => old.remove(), 460);
-  } else if (old) old.remove();
-  single.prepend(f);
+function visible() {
+  if (!flip) return [0];
+  const i = flip.getCurrentPageIndex();
+  if (portrait || i === 0) return [i];
+  // spreads after the cover: (1,2), (3,4) ...
+  const left = i % 2 === 1 ? i : i - 1;
+  return [left, left + 1].filter(x => x < N);
 }
 
-function goToPage(i) {
-  i = Math.max(0, Math.min(N - 1, i));
-  if (mode === 'single') {
-    if (i === page) return;
-    const dir = i > page ? 1 : -1;
-    page = i; flippedCount = Math.floor((page + 1) / 2);
-    showSingle(page, dir); update();
-  } else {
-    setFlipped(Math.floor((i + 1) / 2));
+function center(idx) {
+  let shift = 0;
+  if (!portrait) {
+    if (idx === 0) shift = -PW / 2;
+    else if (N % 2 === 0 && idx >= N - 1) shift = PW / 2;
   }
-}
-
-function go(d) {
-  if (mode === 'single') goToPage(page + d);
-  else setFlipped(flippedCount + d);
-}
-
-function visiblePages() {
-  if (mode === 'single') return [page];
-  const v = [];
-  if (flippedCount > 0) v.push(2 * flippedCount - 1);
-  if (2 * flippedCount < N) v.push(2 * flippedCount);
-  return v;
+  bookWrap.style.transform = `translateX(${shift}px)`;
 }
 
 function update() {
-  const v = visiblePages();
-  // centre the closed book
-  if (mode === 'spread') {
-    let shift = 0;
-    if (flippedCount === 0) shift = -0.5;
-    else if (2 * flippedCount >= N) shift = 0.5;
-    book.style.transform = `translateX(calc(var(--pw) * ${shift}))`;
-  }
-  counter.textContent = v.map(i => PAGES[i].label).join('  ·  ');
-  const atStart = mode === 'single' ? page === 0 : flippedCount === 0;
-  const atEnd = mode === 'single' ? page === N - 1 : (flippedCount === LEAVES || 2 * flippedCount >= N);
-  prevBtn.disabled = atStart; nextBtn.disabled = atEnd;
+  const v = visible();
+  center(flip ? flip.getCurrentPageIndex() : 0);
+  counter.textContent = v.map(i => PAGES[i].label).join('  ·  ') + `   (${v[v.length-1] + 1} / ${N})`;
+  prevBtn.disabled = v[0] === 0;
+  nextBtn.disabled = v[v.length - 1] >= N - 1;
   [...thumbs.children].forEach((b, i) => b.classList.toggle('on', v.includes(i)));
-  const on = thumbs.children[v[0]]; if (on) on.scrollIntoView({ block: 'nearest', inline: 'nearest' });
 }
 
-function layout() {
-  const stage = document.getElementById('stage');
-  const W = stage.clientWidth, H = stage.clientHeight;
-  const newMode = W < 640 ? 'single' : 'spread';
-  const availW = newMode === 'single' ? W - 100 : W - 140;
-  const availH = H - 16;
-  let pw = newMode === 'single' ? availW : availW / 2;
-  pw = Math.min(pw, availH * RATIO);
-  pw = Math.max(120, Math.floor(pw));
-  document.documentElement.style.setProperty('--pw', pw + 'px');
-  document.documentElement.style.setProperty('--ph', Math.floor(pw / RATIO) + 'px');
-  if (newMode !== mode) {
-    mode = newMode;
-    document.body.classList.toggle('single', mode === 'single');
-    if (mode === 'single') { showSingle(page, 0); }
-    else {
-      // sync leaves to current page instantly
-      leaves.forEach(l => l.style.transition = 'none');
-      book.style.transition = 'none';
-      flippedCount = Math.floor((page + 1) / 2);
-      leaves.forEach((leaf, l) => leaf.classList.toggle('flipped', l < flippedCount));
-      zOrder();
-      requestAnimationFrame(() => requestAnimationFrame(() => {
-        leaves.forEach(l => l.style.transition = ''); book.style.transition = '';
-      }));
-    }
-  }
-  update();
-}
+function goTo(i) { if (flip) { center(i); flip.flip(i); } }
+function next() { if (!flip) return; const i = flip.getCurrentPageIndex(); if (i === 0) center(1); flip.flipNext(); }
+function prev() { if (!flip) return; const i = flip.getCurrentPageIndex(); if (i <= 2) center(0); flip.flipPrev(); }
+prevBtn.onclick = prev;
+nextBtn.onclick = next;
+let lastIdx = 0;
 
-prevBtn.onclick = () => go(-1);
-nextBtn.onclick = () => go(1);
 document.addEventListener('keydown', e => {
-  if (zoomEl.classList.contains('open')) { if (e.key === 'Escape') closeZoom(); return; }
-  if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') { e.preventDefault(); go(1); }
-  if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); go(-1); }
-  if (e.key === 'Home') goToPage(0);
-  if (e.key === 'End') goToPage(N - 1);
+  if (zoom.classList.contains('open')) { if (e.key === 'Escape') zoom.classList.remove('open'); return; }
+  if (!splash.classList.contains('hide') && (e.key === 'Enter' || e.key === ' ')) { open(); return; }
+  if (['ArrowRight','PageDown',' '].includes(e.key)) { e.preventDefault(); next(); }
+  if (['ArrowLeft','PageUp'].includes(e.key)) { e.preventDefault(); prev(); }
+  if (e.key === 'Home') goTo(0);
+  if (e.key === 'End') goTo(N - 1);
 });
-let tx = null, ty = null;
-const stageEl = document.getElementById('stage');
-stageEl.addEventListener('touchstart', e => { tx = e.touches[0].clientX; ty = e.touches[0].clientY; }, { passive: true });
-stageEl.addEventListener('touchend', e => {
-  if (tx === null) return;
-  const dx = e.changedTouches[0].clientX - tx, dy = e.changedTouches[0].clientY - ty;
-  if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy)) go(dx < 0 ? 1 : -1);
-  tx = null;
-});
-single.addEventListener('click', e => {
-  const r = single.getBoundingClientRect();
-  go(e.clientX - r.left < r.width / 3 ? -1 : 1);
-});
-
-/* zoom */
-const zoomEl = document.getElementById('zoom');
-const zoomPages = zoomEl.querySelector('.pages');
-let zoomScale = 1;
-function sizeZoom() {
-  const vis = zoomPages.children.length || 1;
-  const base = Math.min((window.innerWidth - 40) / vis, (window.innerHeight - 90) * RATIO, 900);
-  [...zoomPages.children].forEach(img => img.style.width = Math.floor(base * zoomScale) + 'px');
-}
-function openZoom() {
-  zoomPages.innerHTML = '';
-  zoomScale = 1;
-  visiblePages().forEach(i => {
-    const img = document.createElement('img'); img.src = PAGES[i].src; img.alt = PAGES[i].label;
-    img.onclick = () => { zoomScale = zoomScale === 1 ? 2 : 1; sizeZoom(); };
-    zoomPages.appendChild(img);
-  });
-  sizeZoom();
-  zoomEl.classList.add('open'); zoomEl.scrollTo(0, 0);
-}
-function closeZoom() { zoomEl.classList.remove('open'); }
-document.getElementById('zoomBtn').onclick = openZoom;
-document.getElementById('zoomClose').onclick = closeZoom;
 
 /* fullscreen */
+function enterFullscreen() {
+  const el = document.documentElement;
+  const req = el.requestFullscreen || el.webkitRequestFullscreen;
+  if (!req || document.fullscreenElement || document.webkitFullscreenElement) return;
+  try { const p = req.call(el); if (p && p.catch) p.catch(() => {}); } catch (e) {}
+}
+function toggleFullscreen() {
+  if (document.fullscreenElement || document.webkitFullscreenElement) {
+    try { (document.exitFullscreen || document.webkitExitFullscreen).call(document); } catch (e) {}
+  } else enterFullscreen();
+}
 const fsBtn = document.getElementById('fsBtn');
-if (!document.fullscreenEnabled) fsBtn.style.display = 'none';
-fsBtn.onclick = () => {
-  try {
-    const p = document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen();
-    if (p && p.catch) p.catch(() => {});
-  } catch (e) {}
-};
+fsBtn.onclick = toggleFullscreen;
+if (!(document.fullscreenEnabled || document.webkitFullscreenEnabled)) fsBtn.style.display = 'none';
 
-window.addEventListener('resize', () => { layout(); if (zoomEl.classList.contains('open')) sizeZoom(); });
-layout();
+/* splash: browsers only allow full screen after a tap/click, so the first tap opens it */
+const splash = document.getElementById('splash');
+function open() {
+  enterFullscreen();
+  splash.classList.add('hide');
+  setTimeout(next, 650);
+}
+splash.addEventListener('click', open);
+
+/* zoom */
+const zoom = document.getElementById('zoom');
+document.getElementById('zoomBtn').onclick = () => {
+  document.getElementById('zoomPages').innerHTML =
+    visible().map(i => `<img src="${PAGES[i].src}" alt="${PAGES[i].label}">`).join('');
+  zoom.classList.add('open'); zoom.scrollTo(0, 0);
+};
+document.getElementById('zoomClose').onclick = () => zoom.classList.remove('open');
+
+let rt;
+addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(build, 180); });
+build();
 </script>
 </body>
 </html>
